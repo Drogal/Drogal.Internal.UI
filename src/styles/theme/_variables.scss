@@ -1,4 +1,4 @@
-$primaryColor: #5472d4 !default;
+$primaryColor: #1F95E3 !default;
 $primaryLightColor: #91a4e3 !default;
 $primaryLighterColor: scale-color($primaryColor, $lightness: 60%) !default;
 $primaryDarkColor: scale-color($primaryColor, $lightness: -5%) !default;
@@ -10,17 +10,17 @@ $highlightTextColor: #585858 !default;
 $highlightFocusBg: darken($highlightBg, 8%) !default;
 
 $colors: (
-	"blue": #54a6d4,
-	"green": #8bae2c,
-	"yellow": #ffd02a,
-	"cyan": #35a4cc,
+	"blue": #003E75,
+	"green": #4AB8A5,
+	"yellow": #F7A823,
+	"cyan": #31C8FF,
 	"pink": #d45472,
 	"indigo": #5472d4,
 	"teal": #3fbfa0,
-	"orange": #ff922a,
-	"bluegray": #8191a6,
-	"purple": #7654d4,
-	"red": #ff5d44,
+	"orange": #EC6833,
+	"bluegray": #5A707F,
+	"purple": #6758A2,
+	"red": #C00D0D,
 	"primary": $primaryColor
 ) !default;
 
@@ -112,7 +112,7 @@ $inputListItemTextHoverColor: $shade700 !default;
 $inputListItemFocusBg: #e6e9f3 !default;
 $inputListItemTextFocusColor: $shade700 !default;
 $inputListItemBorder: 0 none !default;
-$inputListItemBorderRadius: 6px !default;
+$inputListItemBorderRadius: $borderRadius !default;
 $inputListItemMargin: 0 0 4px 0 !default;
 $inputListItemFocusShadow: inset 0 0 0 0.15rem $focusOutlineColor !default;
 $inputListHeaderPadding: 0.5rem 1.5rem !default;
@@ -149,7 +149,7 @@ $buttonTextActiveColor: $primaryTextColor !default;
 $buttonActiveBorderColor: $primaryDarkerColor !default;
 $raisedButtonShadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
 	0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
-$roundedButtonBorderRadius: 2rem !default;
+$roundedButtonBorderRadius: $borderRadius !default;
 
 $textButtonHoverBgOpacity: 0.04 !default;
 $textButtonActiveBgOpacity: 0.16 !default;
@@ -410,10 +410,10 @@ $calendarCellDatePaddingSM: 0 !default;
 //input switch
 $inputSwitchWidth: 3rem !default;
 $inputSwitchHeight: 1.75rem !default;
-$inputSwitchBorderRadius: 6px !default;
+$inputSwitchBorderRadius: $borderRadius !default;
 $inputSwitchHandleWidth: 1.25rem !default;
 $inputSwitchHandleHeight: 1.25rem !default;
-$inputSwitchHandleBorderRadius: 6px !default;
+$inputSwitchHandleBorderRadius: $borderRadius !default;
 $inputSwitchSliderPadding: 0.25rem !default;
 $inputSwitchSliderOffBg: $shade500 !default;
 $inputSwitchHandleOffBg: $shade000 !default;
@@ -725,7 +725,7 @@ $menuBg: $shade000 !default;
 $menuBorder: 2px solid $shade300 !default;
 $menuTextColor: $shade700 !default;
 $menuitemPadding: 0.75rem 1rem !default;
-$menuitemBorderRadius: 6px !default;
+$menuitemBorderRadius: $borderRadius !default;
 $menuitemTextColor: $shade700 !default;
 $menuitemIconColor: $shade600 !default;
 $menuitemTextHoverColor: $shade700 !default;
@@ -856,7 +856,7 @@ $avatarTextColor: $textColor !default;
 //chip
 $chipBg: $shade300 !default;
 $chipTextColor: $textColor !default;
-$chipBorderRadius: 16px !default;
+$chipBorderRadius: $borderRadius !default;
 $chipFocusBg:$shade400 !default;
 $chipFocusTextColor:$textColor !default;
 
