@@ -1,16 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import '../../../../theme.css'
-import { DataTable } from '../../../../components/DataTable';
+import CustomButton from './customButton';
 
 const meta = {
-  title: 'Drogal Internal UI/DS/DataTable',
-  component: DataTable,
+  title: 'Drogal Internal UI/DS/CustomButton',
+  component: CustomButton,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof DataTable>;
+} satisfies Meta<typeof CustomButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

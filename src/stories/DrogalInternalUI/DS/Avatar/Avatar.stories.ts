@@ -1,54 +1,101 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { fn } from 'storybook/test';
+import '../../../../theme.css'
+import { Avatar } from '../../../../components/Avatar';
+import { IconField } from '../../../../components/IconField';
 
-import { Avatar } from './Avatar';
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'Drogal Internal UI/DS/Avatar',
   component: Avatar,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    label: {
+      control: 'text',
+      description: 'Defines the text to display',
+    },
+    icon: {
+      control: 'text',
+      description: 'Defines the icon to display',
+    },
+    image: {
+      control: 'text',
+      description: 'Defines the image to display',
+    },
+    size: {
+      control: 'select',
+      options: ['normal', 'large', 'xlarge'],
+      description: 'Size of the element',
+    },
+    shape: {
+      control: 'select',
+      options: ['square', 'circle'],
+      description: 'Shape of the element',
+    },
+    style: {
+      control: 'object',
+      description: 'Inline style of the element',
+    },
+    className: {
+      control: 'text',
+      description: 'Style class of the element',
+    },
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  args: { onClick: fn() },
 } satisfies Meta<typeof Avatar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    primary: false,
-    label: "Avatar",
+    label: 'PI',
   },
 };
 
-export const Secondary: Story = {
+export const WithImage: Story = {
   args: {
-    label: 'Avatar',
+    image: 'https://i.pravatar.cc/150?img=12',
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    icon: 'pi pi-user',
   },
 };
 
 export const Large: Story = {
   args: {
+    label: 'LG',
     size: 'large',
-    label: 'Avatar',
+  },
+};
+
+export const XLarge: Story = {
+  args: {
+    label: 'XL',
+    size: 'xlarge',
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'small',
-    label: 'Avatar',
+    label: 'SM',
+  },
+};
+
+export const Circle: Story = {
+  args: {
+    label: 'CR',
+    shape: 'circle',
+  },
+};
+
+export const Square: Story = {
+  args: {
+    label: 'SQ',
+    shape: 'square',
   },
 };
