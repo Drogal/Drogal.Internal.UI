@@ -1,0 +1,209 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introdução" />
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Drogal Design System
+    
+    Sistema de design moderno e componentizado para criar interfaces consistentes e escaláveis.
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">🎨 Design Consistente</h3>
+      <p className="sb-section-item-paragraph">
+        Componentes padronizados que garantem uma experiência visual uniforme em toda a aplicação.
+      </p>
+    </div>
+
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">⚡ Performance</h3>
+      <p className="sb-section-item-paragraph">
+        Otimizado para carregamento rápido e renderização eficiente.
+      </p>
+    </div>
+
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">♿ Acessibilidade</h3>
+      <p className="sb-section-item-paragraph">
+        Componentes desenvolvidos seguindo as melhores práticas de acessibilidade (WCAG 2.1).
+      </p>
+    </div>
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">📦 Componentes</h3>
+      <p className="sb-section-item-paragraph">
+        Biblioteca completa de componentes React prontos para uso, incluindo botões, inputs, cards, modais e muito mais.
+      </p>
+    </div>
+
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">🎭 Temas</h3>
+      <p className="sb-section-item-paragraph">
+        Sistema de temas flexível que permite customização de cores, tipografia e espaçamentos.
+      </p>
+    </div>
+
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">📱 Responsivo</h3>
+      <p className="sb-section-item-paragraph">
+        Todos os componentes são responsivos e funcionam perfeitamente em dispositivos móveis, tablets e desktops.
+      </p>
+    </div>
+  </div>
+
+  <div className='sb-section-title'>
+    ## Como Começar
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">1. Instalação</h3>
+      <p className="sb-section-item-paragraph">
+        Instale o pacote via npm ou yarn:
+      </p>
+      <code>yarn add drogal.internal.ui</code>
+    </div>
+
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">2. Importar CSS</h3>
+      <p className="sb-section-item-paragraph">
+        Importe o arquivo de tema no seu projeto:
+      </p>
+      <code>import 'drogal.internal.ui/theme.css';</code>
+    </div>
+
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">3. Usar Componentes</h3>
+      <p className="sb-section-item-paragraph">
+        Importe e use os componentes:
+      </p>
+      <code>import &#123; Button &#125; from 'drogal.internal.ui';</code>
+    </div>
+  </div>
+
+  <div className='sb-section-title'>
+    ## Recursos
+  </div>
+
+  <div className="sb-features-grid">
+    <div className="sb-grid-item">
+      <h4>📚 Documentação Completa</h4>
+      <p>Documentação detalhada de cada componente com exemplos e casos de uso.</p>
+    </div>
+
+    <div className="sb-grid-item">
+      <h4>🧪 Testes Incluídos</h4>
+      <p>Todos os componentes possuem testes unitários e de integração.</p>
+    </div>
+
+    <div className="sb-grid-item">
+      <h4>🔧 TypeScript</h4>
+      <p>Suporte completo a TypeScript com tipagem forte.</p>
+    </div>
+
+    <div className="sb-grid-item">
+      <h4>🎯 Tree Shaking</h4>
+      <p>Importe apenas os componentes que você precisa.</p>
+    </div>
+  </div>
+
+  <div className='sb-section-title'>
+    ## Equipe
+  </div>
+
+  <p>
+    Desenvolvido e mantido pela equipe Drogal para criar experiências digitais excepcionais.
+  </p>
+</div>
+
+<style>
+  {`
+  .sb-container {
+    margin-bottom: 48px;
+    padding: 20px;
+  }
+
+  .sb-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section-title h2 {
+    margin-top: 48px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+  }
+
+  .sb-section-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sb-section-item-heading {
+    padding-top: 20px !important;
+    padding-bottom: 5px !important;
+    margin: 0 !important;
+  }
+
+  .sb-section-item-paragraph {
+    margin: 0;
+    padding-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  .sb-section-item code {
+    background-color: #f4f4f4;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: block;
+    margin-top: 8px;
+  }
+
+  .sb-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px 20px;
+    margin-top: 24px;
+  }
+
+  .sb-grid-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sb-grid-item h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .sb-grid-item p {
+    margin: 0;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  @media screen and (max-width: 600px) {
+    .sb-section {
+      flex-direction: column;
+    }
+
+    .sb-features-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  `}
+</style>

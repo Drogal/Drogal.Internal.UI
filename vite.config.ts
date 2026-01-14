@@ -1,21 +1,24 @@
-import react from '@vitejs/plugin-react'
-import { glob } from 'glob'
-import { fileURLToPath } from 'node:url'
-import { extname, relative, resolve } from 'path'
-import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
+/// <reference types="vitest/config" />
+import react from '@vitejs/plugin-react';
+import { glob } from 'glob';
+import { fileURLToPath } from 'node:url';
+import { extname, relative, resolve } from 'path';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
+import path from 'node:path';
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
+import { playwright } from '@vitest/browser-playwright';
+const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
+// More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [
-    react(),
-    dts({
-      tsconfigPath: resolve(__dirname, "tsconfig.lib.json"),
-    }),
-  ],
+  plugins: [react(), dts({
+    tsconfigPath: resolve(__dirname, "tsconfig.lib.json")
+  })],
   build: {
-    minify:"terser",
-    terserOptions:{
-      keep_fnames:true,
+    minify: "terser",
+    terserOptions: {
+      keep_fnames: true,
       compress: {
         keep_fnames: true
       }
@@ -26,21 +29,36 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['react', 'react/jsx-runtime'],
-      input: Object.fromEntries(
-        glob.sync('src/**/*.{ts,tsx}', {
-          ignore: ["src/**/*.d.ts"],
-        }).map((file:any) => [
-          relative(
-            'src',
-            file.slice(0, file.length - extname(file).length)
-          ),
-          fileURLToPath(new URL(file, import.meta.url))
-        ])
-      ),
+      input: Object.fromEntries(glob.sync('src/**/*.{ts,tsx}', {
+        ignore: ["src/**/*.d.ts"]
+      }).map((file: any) => [relative('src', file.slice(0, file.length - extname(file).length)), fileURLToPath(new URL(file, import.meta.url))])),
       output: {
         assetFileNames: 'assets/[name][extname]',
-        entryFileNames: '[name].js',
+        entryFileNames: '[name].js'
       }
     }
+  },
+  test: {
+    projects: [{
+      extends: true,
+      plugins: [
+      // The plugin will run tests for the stories defined in your Storybook config
+      // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
+      storybookTest({
+        configDir: path.join(dirname, '.storybook')
+      })],
+      test: {
+        name: 'storybook',
+        browser: {
+          enabled: true,
+          headless: true,
+          provider: playwright({}),
+          instances: [{
+            browser: 'chromium'
+          }]
+        },
+        setupFiles: ['.storybook/vitest.setup.ts']
+      }
+    }]
   }
-})
+});
