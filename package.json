@@ -1,0 +1,48 @@
+{
+  "name": "drogal.internal.ui",
+  "private": false,
+  "version": "0.0.15",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "deploy": "npm publish",
+    "build-style": "sass src/styles/theme:src --no-source-map",
+    "build": "tsc -b && vite build && npm run build-style && cp src/theme.css dist/"
+  },
+  "dependencies": {
+    "glob": "^13.0.0",
+    "primereact": "^10.9.7",
+    "quill": "^2.0.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./theme.css": "./dist/theme.css"
+  },
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "sass": "^1.97.2",
+    "terser": "^5.44.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.4",
+    "vite": "^7.2.4"
+  }
+}
