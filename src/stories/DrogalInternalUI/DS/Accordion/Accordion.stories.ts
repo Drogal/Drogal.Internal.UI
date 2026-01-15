@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import '../../../../theme.css'
-import { Accordion, AccordionTab } from '../../../../components/Accordion';
+import { Accordion } from '../../../../components/Accordion';
+import '../../../../theme.css';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Drogal Internal UI/DS/Accordion',

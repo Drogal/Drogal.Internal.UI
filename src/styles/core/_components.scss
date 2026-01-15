@@ -1,6 +1,8 @@
 @import '_mixins';
 @import '_colors';
 
+@import '_layout';
+
 @import './components/input/_editor';
 
 @layer primereact {
