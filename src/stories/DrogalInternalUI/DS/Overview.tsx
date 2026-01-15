@@ -29,7 +29,7 @@ export const Overview: React.FC = () => {
     <article>
 
       <section className="storybook-page">
-        <h2>OverView DS</h2>
+        <h2>Overview DS</h2>
         <p>Visualização de todos os componentes do Design System</p>
 
         <div className="components-grid">
@@ -187,7 +187,7 @@ export const Overview: React.FC = () => {
               <InputText title="Username" placeholder="Enter your username" name="username" />
               <InputText placeholder="Disabled" disabled />
               <InputText value="Read only text" readOnly />
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 <InputText placeholder="Small" size="small" />
                 <InputText placeholder="Normal" />
                 <InputText placeholder="Large" size="large" />
