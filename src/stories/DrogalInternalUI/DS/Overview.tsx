@@ -1,6 +1,7 @@
 import React from 'react';
 import './overview.css';
 import { Accordion } from '../../../components/Accordion';
+import { AccordionTab } from '../../../components/Accordion.Tab';
 import { Avatar } from '../../../components/Avatar';
 import { Badge } from '../../../components/Badge';
 import { Button } from '../../../components/Button';
@@ -34,17 +35,81 @@ export const Overview: React.FC = () => {
         <div className="components-grid">
           <div className="component-card">
             <h3>Accordion</h3>
-            <Accordion />
+            <Accordion activeIndex={0}>
+              <AccordionTab header="Features">
+                <p className="m-0">
+                  Accordion component provides expandable sections for organizing content in a space-efficient way.
+                  It supports single and multiple expansion modes.
+                </p>
+              </AccordionTab>
+              <AccordionTab header="Configuration">
+                <p className="m-0">
+                  Customize the accordion with different icons, styles, and behaviors.
+                  Control which tabs are open or closed programmatically.
+                </p>
+              </AccordionTab>
+              <AccordionTab header="Usage">
+                <p className="m-0">
+                  Perfect for FAQs, settings panels, and any content that needs to be organized hierarchically.
+                </p>
+              </AccordionTab>
+            </Accordion>
           </div>
 
           <div className="component-card">
             <h3>Avatar</h3>
-            <Avatar />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Avatar label="P" />
+                <Avatar label="V" style={{ backgroundColor: '#9c27b0', color: '#ffffff' }} />
+                <Avatar label="U" style={{ backgroundColor: '#2196F3', color: '#ffffff' }} />
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Avatar icon="pi pi-user" />
+                <Avatar icon="pi pi-user" />
+                <Avatar icon="pi pi-user" />
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Avatar label="P" />
+                <Avatar label="P" size="large" />
+                <Avatar label="P" size="xlarge" />
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Avatar label="P" shape="circle" />
+                <Avatar label="P" shape="square" />
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png" size="large" shape="circle" />
+                <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/asiyajavayant.png" size="large" shape="circle" />
+              </div>
+            </div>
           </div>
 
           <div className="component-card">
             <h3>Badge</h3>
-            <Badge />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Badge value="2" />
+                <Badge value="8" severity="success" />
+                <Badge value="4" severity="info" />
+                <Badge value="12" severity="warning" />
+                <Badge value="3" severity="danger" />
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Badge value="NEW" severity="success" />
+                <Badge value="HOT" severity="danger" />
+                <Badge value="SALE" severity="warning" />
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Badge value="5" severity="secondary" />
+                <Badge value="7" severity="contrast" />
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Badge value="10" size="large" />
+                <Badge value="99" size="xlarge" />
+                <Badge value="100+" severity="danger" size="xlarge" />
+              </div>
+            </div>
           </div>
 
           <div className="component-card">
@@ -96,11 +161,6 @@ export const Overview: React.FC = () => {
           </div> */}
 
           <div className="component-card">
-            <h3>Editor</h3>
-            <Editor />
-          </div>
-
-          <div className="component-card">
             <h3>IconField</h3>
             <IconField />
           </div>
@@ -122,7 +182,20 @@ export const Overview: React.FC = () => {
 
           <div className="component-card">
             <h3>InputText</h3>
-            <InputText />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <InputText placeholder="Enter text" />
+              <InputText title="Username" placeholder="Enter your username" name="username" />
+              <InputText placeholder="Disabled" disabled />
+              <InputText value="Read only text" readOnly />
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <InputText placeholder="Small" size="small" />
+                <InputText placeholder="Normal" />
+                <InputText placeholder="Large" size="large" />
+              </div>
+              <InputText type="email" placeholder="Enter your email" title="Email" />
+              <InputText placeholder="Only integers" keyfilter="int" title="Integer Input" />
+              <InputText placeholder="Invalid input" invalid title="Error Field" />
+            </div>
           </div>
 
           <div className="component-card">
@@ -163,6 +236,11 @@ export const Overview: React.FC = () => {
           <div className="component-card">
             <h3>TabView</h3>
             <TabView />
+          </div>
+
+          <div className="component-card">
+            <h3>Editor</h3>
+            <Editor />
           </div>
         </div>
 
