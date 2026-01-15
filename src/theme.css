@@ -28873,3 +28873,13 @@
     box-shadow: inset 0 -2px 0 0 #1F95E3;
   }
 }
+.drg {
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  display: inline-block;
+  text-transform: none;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+}
