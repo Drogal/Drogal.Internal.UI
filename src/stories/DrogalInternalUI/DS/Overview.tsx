@@ -225,17 +225,140 @@ export const Overview: React.FC = () => {
 
           <div className="component-card">
             <h3>InputTextArea</h3>
-            <InputTextArea />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <InputTextArea
+                placeholder="Enter your text here"
+                rows={5}
+              />
+              <InputTextArea
+                title="Description"
+                placeholder="Enter description"
+                rows={4}
+                name="description"
+              />
+              <InputTextArea
+                title="Auto Resize"
+                placeholder="Type something and watch grow"
+                autoResize
+                rows={3}
+              />
+              <InputTextArea
+                value="This text is read-only and cannot be edited."
+                readOnly
+                rows={3}
+              />
+              <InputTextArea
+                title="Limited to 100 chars"
+                placeholder="Max 100 characters"
+                maxLength={100}
+                rows={4}
+              />
+              <InputTextArea
+                title="Error Field"
+                placeholder="This field has an error"
+                invalid
+                rows={3}
+              />
+            </div>
           </div>
 
           <div className="component-card">
             <h3>MultiSelect</h3>
-            <MultiSelect />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <MultiSelect
+                options={[
+                  { name: 'New York', code: 'NY' },
+                  { name: 'Rome', code: 'RM' },
+                  { name: 'London', code: 'LDN' },
+                  { name: 'Istanbul', code: 'IST' },
+                  { name: 'Paris', code: 'PRS' }
+                ]}
+                optionLabel="name"
+                placeholder="Select Cities"
+                maxSelectedLabels={3}
+              />
+              <MultiSelect
+                title="Select Countries"
+                options={[
+                  { name: 'Brazil', code: 'BR' },
+                  { name: 'France', code: 'FR' },
+                  { name: 'Germany', code: 'DE' },
+                  { name: 'Japan', code: 'JP' },
+                  { name: 'United States', code: 'US' }
+                ]}
+                optionLabel="name"
+                filter
+                filterPlaceholder="Search countries"
+                placeholder="Choose countries"
+                maxSelectedLabels={2}
+              />
+              <MultiSelect
+                options={[
+                  { name: 'New York', code: 'NY' },
+                  { name: 'Rome', code: 'RM' },
+                  { name: 'London', code: 'LDN' },
+                  { name: 'Paris', code: 'PRS' }
+                ]}
+                optionLabel="name"
+                placeholder="Chip Display"
+                display="chip"
+              />
+              <MultiSelect
+                options={[
+                  {
+                    label: 'Germany',
+                    items: [
+                      { label: 'Berlin', value: 'Berlin' },
+                      { label: 'Munich', value: 'Munich' }
+                    ]
+                  },
+                  {
+                    label: 'USA',
+                    items: [
+                      { label: 'New York', value: 'New York' },
+                      { label: 'San Francisco', value: 'San Francisco' }
+                    ]
+                  }
+                ]}
+                optionLabel="label"
+                optionGroupLabel="label"
+                optionGroupChildren="items"
+                placeholder="Grouped Cities"
+                maxSelectedLabels={2}
+              />
+            </div>
           </div>
 
           <div className="component-card">
             <h3>Paginator</h3>
-            <Paginator />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
+              <Paginator 
+                first={0}
+                rows={10}
+                totalRecords={120}
+              />
+              <Paginator 
+                first={0}
+                rows={10}
+                totalRecords={120}
+                rowsPerPageOptions={[10, 20, 30, 50]}
+              />
+              <Paginator 
+                first={0}
+                rows={10}
+                totalRecords={150}
+                template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+              />
+              <Paginator 
+                first={0}
+                rows={25}
+                totalRecords={1000}
+                rowsPerPageOptions={[25, 50, 100]}
+                template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown CurrentPageReport"
+                currentPageReportTemplate="{first} - {last} of {totalRecords}"
+              />
+            </div>
           </div>
 
           <div className="component-card">
