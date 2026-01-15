@@ -1,25 +1,21 @@
 /// <reference types="vitest/config" />
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import react from '@vitejs/plugin-react';
+import { playwright } from '@vitest/browser-playwright';
 import { glob } from 'glob';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { extname, relative, resolve } from 'path';
-import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-
   plugins: [react(), dts({
-    tsconfigPath: resolve(__dirname, "tsconfig.lib.json"),
-    exclude: [
-      '**/*.stories.ts',
-      '**/*.stories.tsx',
-      '**/__stories__/**'
-    ]
+    tsconfigPath: resolve(__dirname, "tsconfig.lib.json")
   })],
-
   build: {
-    cssCodeSplit: false,
     minify: "terser",
     terserOptions: {
       keep_fnames: true,
@@ -37,9 +33,32 @@ export default defineConfig({
         ignore: ["src/**/*.d.ts"]
       }).map((file: any) => [relative('src', file.slice(0, file.length - extname(file).length)), fileURLToPath(new URL(file, import.meta.url))])),
       output: {
-        assetFileNames: '[name][extname]'
+        assetFileNames: 'assets/[name][extname]',
+        entryFileNames: '[name].js'
       }
     }
+  },
+  test: {
+    projects: [{
+      extends: true,
+      plugins: [
+      // The plugin will run tests for the stories defined in your Storybook config
+      // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
+      storybookTest({
+        configDir: path.join(dirname, '.storybook')
+      })],
+      test: {
+        name: 'storybook',
+        browser: {
+          enabled: true,
+          headless: true,
+          provider: playwright({}),
+          instances: [{
+            browser: 'chromium'
+          }]
+        },
+        setupFiles: ['.storybook/vitest.setup.ts']
+      }
+    }]
   }
-
 });
