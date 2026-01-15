@@ -1,6 +1,6 @@
 import {
-    InputTextarea as PureInputTextArea,
-    type InputTextareaProps
+  InputTextarea as PureInputTextArea,
+  type InputTextareaProps
 } from "primereact/inputtextarea";
 
 /**

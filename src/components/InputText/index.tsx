@@ -1,6 +1,6 @@
 import {
-    InputText as PureInputText,
-    type InputTextProps
+  InputText as PureInputText,
+  type InputTextProps
 } from "primereact/inputtext";
 
 /**

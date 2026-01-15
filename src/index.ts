@@ -1,4 +1,5 @@
-export { Accordion, AccordionTab } from "./components/Accordion"
+export { Accordion} from "./components/Accordion"
+export { AccordionTab } from "./components/Accordion.Tab"
 export { Avatar } from "./components/Avatar"
 export { Badge } from "./components/Badge"
 export { Button } from "./components/Button"
