@@ -1,8 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import './icons.css';
-import '../../../theme.css';
-import '../../../outlined-icons.css'
-import '../../../rounded-icons.css'
 import Icon from '../../../components/Icon';
 import EnumIcons from '../../../icons/EnumIcons';
 import { InputText } from '../../../components/InputText';

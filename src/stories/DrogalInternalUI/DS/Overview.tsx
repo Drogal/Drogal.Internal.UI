@@ -23,7 +23,6 @@ import { Skeleton } from '../../../components/Skeleton';
 import { TabMenu } from '../../../components/TabMenu';
 import { TabView } from '../../../components/TabView';
 import { TabPanel } from '../../../components/TabView.TabPanel';
-import '../../../theme.css';
 
 export const Overview: React.FC = () => {
 
@@ -208,7 +207,78 @@ export const Overview: React.FC = () => {
 
           <div className="component-card">
             <h3>InputNumber</h3>
-            <InputNumber />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <InputNumber
+                placeholder="Digite um número"
+              />
+              <InputNumber
+                title="Quantidade"
+                placeholder="Digite a quantidade"
+                name="quantity"
+              />
+              <InputNumber
+                title="Com Botões"
+                showButtons
+                step={1}
+              />
+              <InputNumber
+                title="Botões Empilhados"
+                showButtons
+                buttonLayout="stacked"
+                step={1}
+              />
+              <InputNumber
+                title="Valor entre 0 e 100"
+                showButtons
+                min={0}
+                max={100}
+              />
+              <InputNumber
+                title="Decimais (2 casas)"
+                minFractionDigits={2}
+                maxFractionDigits={2}
+                placeholder="0.00"
+              />
+              <InputNumber
+                title="Moeda (BRL)"
+                mode="currency"
+                currency="BRL"
+                locale="pt-BR"
+              />
+              <InputNumber
+                title="Moeda (USD)"
+                mode="currency"
+                currency="USD"
+                locale="en-US"
+              />
+              <InputNumber
+                title="Com Prefixo"
+                prefix="% "
+              />
+              <InputNumber
+                title="Com Sufixo"
+                suffix=" kg"
+              />
+              <InputNumber
+                title="Separador de Milhar"
+                useGrouping
+                locale="pt-BR"
+              />
+              <InputNumber
+                title="Disabled"
+                disabled
+              />
+              <InputNumber
+                title="Invalid"
+                invalid
+                placeholder="Campo obrigatório"
+              />
+              <InputNumber
+                title="Filled Variant"
+                variant="filled"
+                placeholder="Digite um número"
+              />
+            </div>
           </div>
 
           <div className="component-card">
@@ -332,25 +402,25 @@ export const Overview: React.FC = () => {
           <div className="component-card">
             <h3>Paginator</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
-              <Paginator 
+              <Paginator
                 first={0}
                 rows={10}
                 totalRecords={120}
               />
-              <Paginator 
+              <Paginator
                 first={0}
                 rows={10}
                 totalRecords={120}
                 rowsPerPageOptions={[10, 20, 30, 50]}
               />
-              <Paginator 
+              <Paginator
                 first={0}
                 rows={10}
                 totalRecords={150}
                 template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport"
                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
               />
-              <Paginator 
+              <Paginator
                 first={0}
                 rows={25}
                 totalRecords={1000}
