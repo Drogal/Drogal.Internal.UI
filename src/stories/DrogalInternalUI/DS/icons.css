@@ -68,15 +68,123 @@
 }
 
 .components-grid-icons {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 24px;
   margin-top: 32px;
+}
 
+.icon-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+  align-items: center;
+}
+
+.icon-type-selector {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.type-button {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #666;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.type-button:hover {
+  border-color: #1ea7fd;
+  background-color: #f0f8ff;
+}
+
+.type-button.active {
+  border-color: #1ea7fd;
+  background-color: #1ea7fd;
+  color: #ffffff;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-width: 100px;
+  background-color: #ffffff;
+}
+
+.icon-item:hover {
+  border-color: #1ea7fd;
+  background-color: #f0f8ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(30, 167, 253, 0.2);
+}
+
+.icon-item.copied {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+.icon-item i {
+  font-size: 32px;
+  color: #333;
+}
+
+.icon-name {
+  font-size: 10px;
+  color: #666;
+  text-align: center;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.copied-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  animation: fadeInOut 2s ease;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
 }
 
 .component-card-icons {
