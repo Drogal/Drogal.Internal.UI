@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import '../../../../theme.css'
 import { Avatar } from '../../../../components/Avatar';
-import { IconField } from '../../../../components/IconField';
+import '../../../../theme.css';
 
 const meta = {
   title: 'Drogal Internal UI/DS/Avatar',

@@ -1,15 +1,16 @@
 {
   "name": "drogal.internal.ui",
   "private": false,
-  "version": "0.0.17",
+  "version": "0.0.18",
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "deploy": "npm publish",
+    "dev": "storybook dev -p 6006",
     "start:storybook": "storybook dev -p 6006",
     "build:style": "sass src/styles/theme:src --no-source-map",
-    "build:package": "tsc -b && vite build && npm run build:style && cp src/theme.css dist/",
-    "build:storybook": "storybook build"
+    "build:package": "tsc -b && vite build && npm run build:style && npm run build:icons && node scripts/copy-css.js",
+    "build:storybook": "storybook build",
+    "build:icons": "node scripts/generate-css-files.js"
   },
   "dependencies": {
     "glob": "^13.0.0",
@@ -27,7 +28,10 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./theme.css": "./dist/theme.css"
+    "./theme.css": "./dist/theme.css",
+    "./outlined-icons.css": "./dist/outlined-icons.css",
+    "./rounded-icons.css": "./dist/rounded-icons.css"
+
   },
   "types": "dist/index.d.ts",
   "devDependencies": {

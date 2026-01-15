@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import '../../../../theme.css'
 import { InputSwitch } from '../../../../components/InputSwitch';
+import '../../../../theme.css';
 
 const meta = {
   title: 'Drogal Internal UI/DS/InputSwitch',
@@ -15,4 +15,5 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+//@ts-ignore
 export const Primary: Story = {};
