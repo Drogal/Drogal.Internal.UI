@@ -1,0 +1,6 @@
+.drg-label-input {
+  font-family: var(--font-family);
+  font-feature-settings: var(--font-feature-settings, normal);
+  font-size: $inputTextFontSize;
+  color: $inputTextColor;
+}

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Avatar } from '../../../../components/Avatar';
-import '../../../../theme.css';
+import EnumIcons from '../../../../icons/EnumIcons';
 
 const meta = {
   title: 'Drogal Internal UI/DS/Avatar',
@@ -61,7 +61,7 @@ export const WithImage: Story = {
 
 export const WithIcon: Story = {
   args: {
-    icon: 'pi pi-user',
+    icon: EnumIcons.Outlined.person,
   },
 };
 

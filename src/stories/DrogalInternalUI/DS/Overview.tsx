@@ -1,31 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './overview.css';
 import { Accordion } from '../../../components/Accordion';
 import { AccordionTab } from '../../../components/Accordion.AccordionTab';
+import { AutoComplete } from '../../../components/AutoComplete';
 import { Avatar } from '../../../components/Avatar';
 import { Badge } from '../../../components/Badge';
 import { Button } from '../../../components/Button';
-import { Calendar } from '../../../components/Calendar';
+import { Calendar } from '../../../components/Input/Calendar';
 import { DataTable } from '../../../components/DataTable';
 import { Column } from '../../../components/Column';
 // import { Dialog } from '../../../components/Dialog';
-import { Editor } from '../../../components/Editor';
-import { IconField } from '../../../components/IconField';
-import { InputNumber } from '../../../components/InputNumber';
-import { InputPassword } from '../../../components/InputPassword';
+import { Dropdown } from '../../../components/Dropdown';
+import { Editor } from '../../../components/Input/Editor';
+import { IconField } from '../../../components/Input/IconField';
+import { InputIcon } from '../../../components/Input/InputIcon';
+import { InputNumber } from '../../../components/Input/InputNumber';
+import { InputPassword } from '../../../components/Input/InputPassword';
 // import { InputSwitch } from '../../../components/InputSwitch';
-import { InputText } from '../../../components/InputText';
-import { InputTextArea } from '../../../components/InputTextArea';
-import { MultiSelect } from '../../../components/MultiSelect';
+import { InputText } from '../../../components/Input/InputText';
+import { InputTextArea } from '../../../components/Input/InputTextArea';
+import { MultiSelect } from '../../../components/Input/MultiSelect';
 import { Paginator } from '../../../components/Paginator';
 import { SelectButton } from '../../../components/SelectButton';
 import { Skeleton } from '../../../components/Skeleton';
 import { TabMenu } from '../../../components/TabMenu';
 import { TabView } from '../../../components/TabView';
 import { TabPanel } from '../../../components/TabView.TabPanel';
-import '../../../theme.css';
+import EnumIcons from '../../../icons/EnumIcons';
+import Icon from '../../../components/Icon';
 
 export const Overview: React.FC = () => {
+  const [password, setPassword] = useState('');
+  const [strongPassword, setStrongPassword] = useState('');
+  const [noFeedback, setNoFeedback] = useState('');
+  const [togglePassword, setTogglePassword] = useState('');
+  const [strengthTest, setStrengthTest] = useState('');
+  const [disabledPassword, setDisabledPassword] = useState('senha123');
+  const [invalidPassword, setInvalidPassword] = useState('');
+  const [selectValue, setSelectValue] = useState<any>('Off');
+  const [cityValue, setCityValue] = useState<any>(null);
+  const [multipleValue, setMultipleValue] = useState<any>([]);
+  const [justifyValue, setJustifyValue] = useState<any>(null);
+
+  // AutoComplete states
+  const [autoCompleteValue, setAutoCompleteValue] = useState('');
+  const [autoCompleteItems, setAutoCompleteItems] = useState<string[]>([]);
+  const [countryValue, setCountryValue] = useState<any>(null);
+  const [filteredCountries, setFilteredCountries] = useState<any[]>([]);
+  const [multipleCountries, setMultipleCountries] = useState<any[]>([]);
+  const [filteredMultipleCountries, setFilteredMultipleCountries] = useState<any[]>([]);
+
+  // Dropdown states
+  const [dropdownCity, setDropdownCity] = useState<any>(null);
+  const [dropdownCountry, setDropdownCountry] = useState<any>(null);
+
+  const cities = ['New York', 'Rome', 'London', 'Istanbul', 'Paris', 'Tokyo', 'Berlin', 'Madrid', 'Cairo', 'Sydney'];
+  const countries = [
+    { name: 'Australia', code: 'AU' },
+    { name: 'Brazil', code: 'BR' },
+    { name: 'China', code: 'CN' },
+    { name: 'France', code: 'FR' },
+    { name: 'Germany', code: 'DE' },
+    { name: 'India', code: 'IN' },
+    { name: 'Japan', code: 'JP' },
+    { name: 'United States', code: 'US' }
+  ];
+
+  const searchCities = (event: { query: string }) => {
+    const filtered = cities.filter((city) =>
+      city.toLowerCase().includes(event.query.toLowerCase())
+    );
+    setAutoCompleteItems(filtered);
+  };
+
+  const searchCountries = (event: { query: string }) => {
+    const filtered = countries.filter((country) =>
+      country.name.toLowerCase().includes(event.query.toLowerCase())
+    );
+    setFilteredCountries(filtered);
+  };
+
+  const searchMultipleCountries = (event: { query: string }) => {
+    const filtered = countries.filter((country) =>
+      country.name.toLowerCase().includes(event.query.toLowerCase())
+    );
+    setFilteredMultipleCountries(filtered);
+  };
 
   return (
     <article>
@@ -56,6 +116,133 @@ export const Overview: React.FC = () => {
                 </p>
               </AccordionTab>
             </Accordion>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-accordion--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
+          </div>
+
+          <div className="component-card">
+            <h3>AutoComplete</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <div>
+                <AutoComplete
+                  title='Cities'
+                  value={autoCompleteValue}
+                  suggestions={autoCompleteItems}
+                  completeMethod={searchCities}
+                  onChange={(e) => setAutoCompleteValue(e.value)}
+                  placeholder="Search cities"
+                />
+              </div>
+              <div>
+                <AutoComplete
+                  title='Cities'
+                  value={autoCompleteValue}
+                  suggestions={autoCompleteItems}
+                  completeMethod={searchCities}
+                  onChange={(e) => setAutoCompleteValue(e.value)}
+                  placeholder="Search cities"
+                  dropdown
+                />
+              </div>
+              <div>
+                <AutoComplete
+                  title='Countries'
+                  value={countryValue}
+                  suggestions={filteredCountries}
+                  completeMethod={searchCountries}
+                  onChange={(e) => setCountryValue(e.value)}
+                  field="name"
+                  placeholder="Search countries"
+                />
+              </div>
+              <div>
+                <AutoComplete
+                  title='Countries'
+                  value={multipleCountries}
+                  suggestions={filteredMultipleCountries}
+                  completeMethod={searchMultipleCountries}
+                  onChange={(e) => setMultipleCountries(e.value)}
+                  field="name"
+                  placeholder="Select multiple countries"
+                  multiple
+                />
+              </div>
+              {/* <div> */}
+              <AutoComplete
+                title='Countries'
+                value={multipleCountries}
+                suggestions={filteredMultipleCountries}
+                completeMethod={searchMultipleCountries}
+                onChange={(e) => setMultipleCountries(e.value)}
+                field="name"
+                placeholder="Select multiple countries"
+                multiple
+                dropdown
+              />
+              {/* </div> */}
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-autocomplete--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
+          </div>
+
+          <div className="component-card">
+            <h3>Dropdown</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <div>
+                <Dropdown
+                  title='City'
+                  value={dropdownCity}
+                  onChange={(e) => setDropdownCity(e.value)}
+                  options={cities.map(city => ({ name: city, code: city }))}
+                  optionLabel="name"
+                  placeholder="Select a City"
+                />
+              </div>
+              <div>
+                <Dropdown
+                  title='With Filter'
+                  value={dropdownCountry}
+                  onChange={(e) => setDropdownCountry(e.value)}
+                  options={countries}
+                  optionLabel="name"
+                  placeholder="Select a Country"
+                  filter
+                />
+              </div>
+              <div>
+                <Dropdown
+                  title="With Clear Icon"
+                  value={dropdownCity}
+                  onChange={(e) => setDropdownCity(e.value)}
+                  options={cities.map(city => ({ name: city, code: city }))}
+                  optionLabel="name"
+                  placeholder="Select a City"
+                  showClear
+                />
+              </div>
+              <div>
+                <Dropdown
+                  title="Editable"
+                  value={dropdownCity}
+                  onChange={(e) => setDropdownCity(e.value)}
+                  options={cities.map(city => ({ name: city, code: city }))}
+                  optionLabel="name"
+                  placeholder="Select a City"
+                  editable
+                />
+              </div>
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-dropdown--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card" >
@@ -67,9 +254,9 @@ export const Overview: React.FC = () => {
                 <Avatar label="U" style={{ backgroundColor: '#2196F3', color: '#ffffff' }} />
               </div>
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                <Avatar icon="pi pi-user" />
-                <Avatar icon="pi pi-user" />
-                <Avatar icon="pi pi-user" />
+                <Avatar icon={EnumIcons.Outlined.person} />
+                <Avatar icon={EnumIcons.Outlined.person} />
+                <Avatar icon={EnumIcons.Outlined.person} />
               </div>
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
                 <Avatar label="P" />
@@ -84,6 +271,11 @@ export const Overview: React.FC = () => {
                 <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png" size="large" shape="circle" />
                 <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/asiyajavayant.png" size="large" shape="circle" />
               </div>
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-avatar--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
             </div>
           </div>
 
@@ -111,6 +303,11 @@ export const Overview: React.FC = () => {
                 <Badge value="99" size="xlarge" />
                 <Badge value="100+" severity="danger" size="xlarge" />
               </div>
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-badge--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
             </div>
           </div>
 
@@ -145,19 +342,29 @@ export const Overview: React.FC = () => {
                 <Button label="Disabled" disabled />
               </div>
             </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-button--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card" >
             <h3>Calendar</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
-              <Calendar placeholder="Select a date" showIcon />
-              <Calendar placeholder="Select date and time" showIcon showTime hourFormat="24" />
-              <Calendar placeholder="Select time" showIcon timeOnly hourFormat="24" />
-              <Calendar placeholder="Select date range"
+              <Calendar title='Calendar' placeholder="Select a date" showIcon />
+              <Calendar title='Calendar' placeholder="Select date and time" showIcon showTime hourFormat="24" />
+              <Calendar title='Calendar' placeholder="Select time" showIcon timeOnly hourFormat="24" />
+              <Calendar title='Calendar' placeholder="Select date range"
                 // selectionMode="range"
                 hideOnRangeSelection />
-              <Calendar placeholder="Month & Year" showIcon monthNavigator yearNavigator yearRange="2000:2030" />
-              <Calendar placeholder="Inline calendar" inline />
+              <Calendar title='Calendar' placeholder="Month & Year" showIcon monthNavigator yearNavigator yearRange="2000:2030" />
+              <Calendar title='Calendar' placeholder="Inline calendar" inline />
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-calendar--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
             </div>
           </div>
 
@@ -181,6 +388,11 @@ export const Overview: React.FC = () => {
               <Column field="category" header="Category" sortable />
               <Column field="price" header="Price" sortable />
             </DataTable>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-datatable--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card" >
@@ -188,32 +400,203 @@ export const Overview: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
               <InputText title='Title' placeholder="Enter text" />
               <InputText title="Username" placeholder="Enter your username" name="username" />
-              <InputText placeholder="Disabled" disabled />
-              <InputText value="Read only text" readOnly />
+              <InputText title="Disabled" placeholder="Disabled" disabled />
+              <InputText title="Read Only" value="Read only text" readOnly />
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                <InputText placeholder="Small" size="small" />
-                <InputText placeholder="Normal" />
-                <InputText placeholder="Large" size="large" />
+                <InputText className="p-inputtext-sm" title="Small" placeholder="Small" />
+                <InputText title="Normal" placeholder="Normal" />
+                <InputText className="p-inputtext-lg" title="Large" placeholder="Large" />
               </div>
               <InputText type="email" placeholder="Enter your email" title="Email" />
               <InputText placeholder="Only integers" keyfilter="int" title="Integer Input" />
               <InputText placeholder="Invalid input" invalid title="Error Field" />
             </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-inputtext--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
             <h3>IconField</h3>
-            <IconField />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <IconField iconPosition="left">
+                <InputIcon>
+                  <Icon name={EnumIcons.Outlined.search} />
+                </InputIcon>
+                <InputText title="Search" placeholder="Search" />
+              </IconField>
+              <IconField iconPosition="right">
+                <InputIcon>
+                  <Icon name={EnumIcons.Outlined.mail} />
+                </InputIcon>
+                <InputText title="Email" placeholder="Email" />
+              </IconField>
+              <IconField iconPosition="left">
+                <InputIcon>
+                  <Icon name={EnumIcons.Outlined.person} />
+                </InputIcon>
+                <InputText title="Username" placeholder="Username" />
+              </IconField>
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-iconfield--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
             <h3>InputNumber</h3>
-            <InputNumber />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <InputNumber
+                title="Basic"
+                placeholder="Digite um número"
+              />
+              <InputNumber
+                title="Quantidade"
+                placeholder="Digite a quantidade"
+                name="quantity"
+              />
+              <InputNumber
+                title="Com Botões"
+                showButtons
+                step={1}
+              />
+              <InputNumber
+                title="Botões Empilhados"
+                showButtons
+                buttonLayout="stacked"
+                step={1}
+              />
+              <InputNumber
+                title="Valor entre 0 e 100"
+                showButtons
+                min={0}
+                max={100}
+              />
+              <InputNumber
+                title="Decimais (2 casas)"
+                minFractionDigits={2}
+                maxFractionDigits={2}
+                placeholder="0.00"
+              />
+              <InputNumber
+                title="Moeda (BRL)"
+                mode="currency"
+                currency="BRL"
+                locale="pt-BR"
+              />
+              <InputNumber
+                title="Moeda (USD)"
+                mode="currency"
+                currency="USD"
+                locale="en-US"
+              />
+              <InputNumber
+                title="Com Prefixo"
+                prefix="% "
+              />
+              <InputNumber
+                title="Com Sufixo"
+                suffix=" kg"
+              />
+              <InputNumber
+                title="Separador de Milhar"
+                useGrouping
+                locale="pt-BR"
+              />
+              <InputNumber
+                title="Disabled"
+                disabled
+              />
+              <InputNumber
+                title="Invalid"
+                invalid
+                placeholder="Campo obrigatório"
+              />
+              <InputNumber
+                title="Filled Variant"
+                variant="filled"
+                placeholder="Digite um número"
+              />
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-inputnumber--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
             <h3>InputPassword</h3>
-            <InputPassword />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <InputPassword
+                title="Senha Básica"
+                placeholder="Digite sua senha"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <InputPassword
+                title="Com Medidor de Força"
+                placeholder="Digite uma senha forte"
+                name="strongPassword"
+                feedback={true}
+                value={strongPassword}
+                onChange={(e) => setStrongPassword(e.target.value)}
+              />
+              <InputPassword
+                title="Sem Medidor"
+                placeholder="Digite sua senha"
+                name="noFeedback"
+                feedback={false}
+                value={noFeedback}
+                onChange={(e) => setNoFeedback(e.target.value)}
+              />
+              <InputPassword
+                title="Toggle Mask"
+                placeholder="Senha com alternância"
+                name="togglePassword"
+                toggleMask
+                value={togglePassword}
+                onChange={(e) => setTogglePassword(e.target.value)}
+              />
+              <InputPassword
+                title="Fraca/Média/Forte"
+                placeholder="Teste a força"
+                name="strengthTest"
+                feedback={true}
+                promptLabel="Digite uma senha"
+                weakLabel="Fraca"
+                mediumLabel="Média"
+                strongLabel="Forte"
+                value={strengthTest}
+                onChange={(e) => setStrengthTest(e.target.value)}
+              />
+              <InputPassword
+                title="Desabilitado"
+                placeholder="Campo desabilitado"
+                name="disabled"
+                disabled
+                value={disabledPassword}
+                onChange={(e) => setDisabledPassword(e.target.value)}
+              />
+              <InputPassword
+                title="Inválido"
+                placeholder="Senha obrigatória"
+                name="invalid"
+                className="p-invalid"
+                value={invalidPassword}
+                onChange={(e) => setInvalidPassword(e.target.value)}
+              />
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-inputpassword--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           {/* <div className="component-card">
@@ -225,27 +608,285 @@ export const Overview: React.FC = () => {
 
           <div className="component-card">
             <h3>InputTextArea</h3>
-            <InputTextArea />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <InputTextArea
+                title="Basic"
+                placeholder="Enter your text here"
+                rows={5}
+              />
+              <InputTextArea
+                title="Description"
+                placeholder="Enter description"
+                rows={4}
+                name="description"
+              />
+              <InputTextArea
+                title="Auto Resize"
+                placeholder="Type something and watch grow"
+                autoResize
+                rows={3}
+              />
+              <InputTextArea
+                title="Read Only"
+                value="This text is read-only and cannot be edited."
+                readOnly
+                rows={3}
+              />
+              <InputTextArea
+                title="Limited to 100 chars"
+                placeholder="Max 100 characters"
+                maxLength={100}
+                rows={4}
+              />
+              <InputTextArea
+                title="Error Field"
+                placeholder="This field has an error"
+                invalid
+                rows={3}
+              />
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-inputtextarea--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
             <h3>MultiSelect</h3>
-            <MultiSelect />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <MultiSelect
+                title="Basic"
+                options={[
+                  { name: 'New York', code: 'NY' },
+                  { name: 'Rome', code: 'RM' },
+                  { name: 'London', code: 'LDN' },
+                  { name: 'Istanbul', code: 'IST' },
+                  { name: 'Paris', code: 'PRS' }
+                ]}
+                optionLabel="name"
+                placeholder="Select Cities"
+                maxSelectedLabels={3}
+              />
+              <MultiSelect
+                title="Select Countries"
+                options={[
+                  { name: 'Brazil', code: 'BR' },
+                  { name: 'France', code: 'FR' },
+                  { name: 'Germany', code: 'DE' },
+                  { name: 'Japan', code: 'JP' },
+                  { name: 'United States', code: 'US' }
+                ]}
+                optionLabel="name"
+                filter
+                filterPlaceholder="Search countries"
+                placeholder="Choose countries"
+                maxSelectedLabels={2}
+              />
+              <MultiSelect
+                title="Chip Display"
+                options={[
+                  { name: 'New York', code: 'NY' },
+                  { name: 'Rome', code: 'RM' },
+                  { name: 'London', code: 'LDN' },
+                  { name: 'Paris', code: 'PRS' }
+                ]}
+                optionLabel="name"
+                placeholder="Chip Display"
+                display="chip"
+              />
+              <MultiSelect
+                title="Grouped Cities"
+                options={[
+                  {
+                    label: 'Germany',
+                    items: [
+                      { label: 'Berlin', value: 'Berlin' },
+                      { label: 'Munich', value: 'Munich' }
+                    ]
+                  },
+                  {
+                    label: 'USA',
+                    items: [
+                      { label: 'New York', value: 'New York' },
+                      { label: 'San Francisco', value: 'San Francisco' }
+                    ]
+                  }
+                ]}
+                optionLabel="label"
+                optionGroupLabel="label"
+                optionGroupChildren="items"
+                placeholder="Grouped Cities"
+                maxSelectedLabels={2}
+              />
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-multiselect--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
             <h3>Paginator</h3>
-            <Paginator />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
+              <Paginator
+                first={0}
+                rows={10}
+                totalRecords={120}
+              />
+              <Paginator
+                first={0}
+                rows={10}
+                totalRecords={120}
+                rowsPerPageOptions={[10, 20, 30, 50]}
+              />
+              <Paginator
+                first={0}
+                rows={10}
+                totalRecords={150}
+                template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+              />
+              <Paginator
+                first={0}
+                rows={25}
+                totalRecords={1000}
+                rowsPerPageOptions={[25, 50, 100]}
+                template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown CurrentPageReport"
+                currentPageReportTemplate="{first} - {last} of {totalRecords}"
+              />
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-paginator--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
             <h3>SelectButton</h3>
-            <SelectButton />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>Basic</label>
+                <SelectButton
+                  value={selectValue}
+                  onChange={(e) => setSelectValue(e.value)}
+                  options={['Off', 'On']}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>With Objects</label>
+                <SelectButton
+                  value={cityValue}
+                  onChange={(e) => setCityValue(e.value)}
+                  options={[
+                    { name: 'New York', value: 'NY' },
+                    { name: 'Rome', value: 'RM' },
+                    { name: 'London', value: 'LDN' }
+                  ]}
+                  optionLabel="name"
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>Multiple</label>
+                <SelectButton
+                  value={multipleValue}
+                  onChange={(e) => setMultipleValue(e.value)}
+                  options={[
+                    { name: 'New York', value: 'NY' },
+                    { name: 'Rome', value: 'RM' },
+                    { name: 'London', value: 'LDN' }
+                  ]}
+                  optionLabel="name"
+                  multiple
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>With Icons</label>
+                <SelectButton
+                  value={justifyValue}
+                  onChange={(e) => setJustifyValue(e.value)}
+                  options={[
+                    { icon: <Icon name={EnumIcons.Outlined.format_align_left} />, value: 'left' },
+                    { icon: <Icon name={EnumIcons.Outlined.format_align_center} />, value: 'center' },
+                    { icon: <Icon name={EnumIcons.Outlined.format_align_right} />, value: 'right' },
+                    { icon: <Icon name={EnumIcons.Outlined.format_align_justify} />, value: 'justify' }
+                  ]}
+                  optionLabel="icon"
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>Disabled</label>
+                <SelectButton
+                  options={['Off', 'On']}
+                  disabled
+                />
+              </div>
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-selectbutton--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
             <h3>Skeleton</h3>
-            <Skeleton />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>Rectangle</label>
+                <Skeleton width="100%" height="4rem" />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>Circle</label>
+                <Skeleton shape="circle" size="4rem" />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>Card Layout</label>
+                <div style={{ border: '1px solid var(--surface-border)', borderRadius: '8px', padding: '1rem' }}>
+                  <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+                    <Skeleton shape="circle" size="3rem" />
+                    <div style={{ flex: 1 }}>
+                      <Skeleton width="100%" height="1rem" className="mb-2" />
+                      <Skeleton width="75%" height="1rem" />
+                    </div>
+                  </div>
+                  <Skeleton width="100%" height="8rem" />
+                </div>
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>List Layout</label>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <Skeleton shape="circle" size="2.5rem" />
+                    <Skeleton width="100%" height="1rem" />
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <Skeleton shape="circle" size="2.5rem" />
+                    <Skeleton width="100%" height="1rem" />
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <Skeleton shape="circle" size="2.5rem" />
+                    <Skeleton width="100%" height="1rem" />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '500' }}>Text Lines</label>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <Skeleton width="100%" height="0.875rem" />
+                  <Skeleton width="95%" height="0.875rem" />
+                  <Skeleton width="90%" height="0.875rem" />
+                  <Skeleton width="85%" height="0.875rem" />
+                </div>
+              </div>
+            </div>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-skeleton--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
@@ -259,6 +900,11 @@ export const Overview: React.FC = () => {
               ]}
               activeIndex={0}
             />
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-tabmenu--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
@@ -286,12 +932,23 @@ export const Overview: React.FC = () => {
                 </p>
               </TabPanel>
             </TabView>
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-tabview--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
 
           <div className="component-card">
             <h3>Editor</h3>
-            <Editor />
+            <Editor title="Rich Text Editor" placeholder="Start typing here..." />
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-editor--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
           </div>
+
         </div>
 
       </section>

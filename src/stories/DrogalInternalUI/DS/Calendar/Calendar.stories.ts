@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import '../../../../theme.css'
-import { Calendar } from '../../../../components/Calendar';
+import { Calendar } from '../../../../components/Input/Calendar';
 
 const meta = {
   title: 'Drogal Internal UI/DS/Calendar',
@@ -363,6 +363,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select a date',
     showIcon: true,
   },
@@ -370,6 +371,7 @@ export const Primary: Story = {
 
 export const WithTime: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select date and time',
     showIcon: true,
     showTime: true,
@@ -379,6 +381,7 @@ export const WithTime: Story = {
 
 export const TimeOnly: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select time',
     showIcon: true,
     timeOnly: true,
@@ -388,6 +391,7 @@ export const TimeOnly: Story = {
 
 export const RangeSelection: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select date range',
     showIcon: true,
     // selectionMode: 'range',
@@ -396,6 +400,7 @@ export const RangeSelection: Story = {
 
 export const MultipleSelection: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select multiple dates',
     showIcon: true,
     // selectionMode: 'multiple',
@@ -404,12 +409,14 @@ export const MultipleSelection: Story = {
 
 export const InlineCalendar: Story = {
   args: {
+    title: 'Calendar',
     inline: true,
   },
 };
 
 export const MonthPicker: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select a month',
     showIcon: true,
     view: 'month',
@@ -419,6 +426,7 @@ export const MonthPicker: Story = {
 
 export const YearPicker: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select a year',
     showIcon: true,
     view: 'year',
@@ -428,6 +436,7 @@ export const YearPicker: Story = {
 
 export const WithNavigators: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select a date',
     showIcon: true,
     monthNavigator: true,
@@ -438,6 +447,7 @@ export const WithNavigators: Story = {
 
 export const WithButtonBar: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select a date',
     showIcon: true,
     showButtonBar: true,
@@ -446,6 +456,7 @@ export const WithButtonBar: Story = {
 
 export const MultipleMonths: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select a date',
     showIcon: true,
     numberOfMonths: 3,
@@ -454,6 +465,7 @@ export const MultipleMonths: Story = {
 
 export const TouchUI: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select a date',
     showIcon: true,
     touchUI: true,
@@ -462,6 +474,7 @@ export const TouchUI: Story = {
 
 export const WithMinMaxDates: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Select a date',
     showIcon: true,
     minDate: new Date(2024, 0, 1),
@@ -471,6 +484,7 @@ export const WithMinMaxDates: Story = {
 
 export const Disabled: Story = {
   args: {
+    title: 'Calendar',
     placeholder: 'Disabled',
     showIcon: true,
     disabled: true,

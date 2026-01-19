@@ -7,7 +7,7 @@
 
 @layer primereact {
     @import '_common';
-    
+
     //Input
     @import './components/input/_autocomplete';
     @import './components/input/_calendar';
@@ -34,12 +34,15 @@
     @import './components/input/_slider';
     @import './components/input/_treeselect';
     @import './components/input/_togglebutton';
-    
+
+    //Label
+    @import './components/label/_LabelInput';
+
     //Button
     @import './components/button/_button';
     @import './components/button/_splitbutton';
     @import './components/button/_speeddial';
-    
+
     //Data
     @import './components/data/_carousel';
     @import './components/data/_datatable';
@@ -53,7 +56,7 @@
     @import './components/data/_tree';
     @import './components/data/_treetable';
     @import './components/data/_timeline';
-    
+
     //Panel
     @import './components/panel/_accordion';
     @import './components/panel/_card';
@@ -65,17 +68,17 @@
     @import './components/panel/_scrollpanel';
     @import './components/panel/_tabview';
     @import './components/panel/_toolbar';
-    
+
     //Overlay
     @import './components/overlay/_confirmpopup';
     @import './components/overlay/_dialog';
     @import './components/overlay/_overlaypanel';
     @import './components/overlay/_sidebar';
     @import './components/overlay/_tooltip';
-    
+
     //File
     @import './components/file/_fileupload';
-    
+
     //Menu
     @import './components/menu/_breadcrumb';
     @import './components/menu/_contextmenu';
@@ -88,16 +91,16 @@
     @import './components/menu/_steps';
     @import './components/menu/_tabmenu';
     @import './components/menu/_tieredmenu';
-    
+
     //Messages
     @import './components/messages/_inlinemessage';
     @import './components/messages/_message';
     @import 'components/messages/toast';
-    
+
     //MultiMedia
     @import './components/multimedia/_galleria';
     @import './components/multimedia/_image';
-    
+
     //Misc
     @import './components/misc/_avatar';
     @import './components/misc/_chip';

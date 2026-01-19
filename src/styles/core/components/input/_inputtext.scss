@@ -46,25 +46,27 @@
     }
 }
 
-.p-float-label > label {
+.p-float-label>label {
     left: nth($inputPadding, 2);
     color: $inputPlaceholderTextColor;
     transition-duration: $transitionDuration;
 }
 
-.p-float-label > .p-invalid + label {
+.p-float-label>.p-invalid+label {
     color: $inputErrorBorderColor;
 }
 
-.p-icon-field-left > .p-inputtext {
+// 16/01/2026 - Adicionado ">div>" para aumentar a especificidade e evitar conflito com outras classes
+// E manter a consistência com o seletor .p-icon-field-right>.p-inputtext
+.p-icon-field-left>div>.p-inputtext {
     padding-left: nth($inputPadding, 2) * 2 + $primeIconFontSize;
 }
 
-.p-icon-field-left.p-float-label > label {
+.p-icon-field-left.p-float-label>label {
     left: nth($inputPadding, 2) * 2 + $primeIconFontSize;
 }
 
-.p-icon-field-right > .p-inputtext {
+.p-icon-field-right>.p-inputtext {
     padding-right: nth($inputPadding, 2) * 2 + $primeIconFontSize;
 }
 

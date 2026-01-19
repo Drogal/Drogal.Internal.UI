@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { InputSwitch } from '../../../../components/InputSwitch';
+import { InputSwitch } from '../../../../components/Input/InputSwitch';
 import '../../../../theme.css';
 
 const meta = {

@@ -5,8 +5,8 @@ $primaryDarkColor: scale-color($primaryColor, $lightness: -5%) !default;
 $primaryDarkerColor: scale-color($primaryColor, $lightness: -10%) !default;
 $primaryTextColor: #ffffff !default;
 
-$highlightBg: #ced6f1 !default;
-$highlightTextColor: #585858 !default;
+$highlightBg: $primaryColor !default;
+$highlightTextColor: $primaryTextColor !default;
 $highlightFocusBg: darken($highlightBg, 8%) !default;
 
 $colors: (
@@ -886,9 +886,9 @@ $imagePreviewActionIconFontSize: 1.5rem !default;
 $imagePreviewActionIconBorderRadius: 50% !default;
 
 :root {
-	font-family: Poppins,
+	font-family: Inter,
 		sans-serif;
-	--font-family: Poppins,
+	--font-family: Inter,
 		sans-serif;
 	--surface-a: #{$shade000};
 	--surface-b: #{$shade100};

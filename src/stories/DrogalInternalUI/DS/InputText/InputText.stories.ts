@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import '../../../../theme.css'
-import { InputText } from '../../../../components/InputText';
+import { InputText } from '../../../../components/Input/InputText';
 
 const meta = {
   title: 'Drogal Internal UI/DS/InputText',
@@ -162,6 +162,7 @@ export const Primary: Story = {
 export const WithValue: Story = {
   args: {
     value: 'Sample text',
+    title: 'With Value',
   },
 };
 
@@ -175,6 +176,7 @@ export const WithLabel: Story = {
 
 export const Disabled: Story = {
   args: {
+    title: 'Disabled',
     placeholder: 'Disabled',
     disabled: true,
   },
@@ -182,6 +184,7 @@ export const Disabled: Story = {
 
 export const ReadOnly: Story = {
   args: {
+    title: 'Read Only',
     value: 'Read only text',
     readOnly: true,
   },
@@ -189,6 +192,7 @@ export const ReadOnly: Story = {
 
 export const Small: Story = {
   args: {
+    title: 'Small',
     placeholder: 'Small input',
     className: 'p-inputtext-sm',
   },
@@ -196,6 +200,7 @@ export const Small: Story = {
 
 export const Large: Story = {
   args: {
+    title: 'Large',
     placeholder: 'Large input',
     className: 'p-inputtext-lg',
   },
@@ -203,6 +208,7 @@ export const Large: Story = {
 
 export const WithMaxLength: Story = {
   args: {
+    title: 'Max Length',
     placeholder: 'Max 10 characters',
     maxLength: 10,
   },
@@ -219,6 +225,7 @@ export const Email: Story = {
 
 export const Search: Story = {
   args: {
+    title: 'Search',
     type: 'search',
     placeholder: 'Search...',
   },
@@ -260,6 +267,7 @@ export const Filled: Story = {
   args: {
     placeholder: 'Filled variant',
     variant: 'filled',
+    title: 'Filled',
   },
 };
 
