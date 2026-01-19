@@ -1,36 +1,451 @@
-/* poppins-300 - latin-ext_latin */
+/* Thin */
 @font-face {
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 300;
-src: local(''),
-     url('./fonts/poppins-v15-latin-ext_latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-     url('./fonts/poppins-v15-latin-ext_latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
 }
-/* poppins-regular - latin-ext_latin */
+
 @font-face {
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-src: local(''),
-     url('./fonts/poppins-v15-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-     url('./fonts/poppins-v15-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
 }
-/* poppins-600 - latin-ext_latin */
+
+/* Light */
 @font-face {
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-src: local(''),
-     url('./fonts/poppins-v15-latin-ext_latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-     url('./fonts/poppins-v15-latin-ext_latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
 }
-/* poppins-700 - latin-ext_latin */
+
 @font-face {
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 700;
-src: local(''),
-     url('./fonts/poppins-v15-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-     url('./fonts/poppins-v15-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Regular */
+@font-face {
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-RegularItalic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Medium */
+@font-face {
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Bold */
+@font-face {
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Black */
+@font-face {
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BwSeidoRound";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Bw%20Seido%20Round/BwSeidoRound-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Thin */
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* ExtraLight */
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+/* Light */
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Regular */
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Medium */
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* ExtraBold */
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* Black */
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Inter/Inter_28pt-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+
+/* ExtraLight */
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+/* Light */
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Regular */
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Medium */
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* ExtraBold */
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* Black */
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/RedditSans/RedditSans-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Thin */
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* Light */
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-Light_0.ttf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Regular */
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-Regular_0.ttf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Medium */
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-Bold_0.ttf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* ExtraBold (XBold) */
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-XBold_0.ttf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-XBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* Black */
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Soleto";
+  src: url("https://drogal-design-system.s3.dualstack.sa-east-1.amazonaws.com/fonts/Soleto/Soleto-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
 }

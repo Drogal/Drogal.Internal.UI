@@ -18,7 +18,7 @@ interface LabelInputProps {
 const LabelInput: React.FC<LabelInputProps> = (props) => {
   return (
     <>
-      <label htmlFor={props.name} className={`drg-label-input ${props.className}`}>{props.title}</label>
+      <label htmlFor={props.name} className={`drg-label-input text-bluegray-500 ${props.className}`}>{props.title}</label>
     </>
   );
 }

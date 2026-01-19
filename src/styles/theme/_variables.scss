@@ -36,8 +36,7 @@ $shade800: #585858 !default; //message text, highlight text
 $shade900: #3b3b3b !default; //unused
 
 //global
-$fontFamily: Poppins,
-	sans-serif !default;
+$fontFamily: "Inter" !default;
 $fontSize: 1rem !default;
 $fontWeight: normal !default;
 $textColor: $shade700 !default;
@@ -889,10 +888,8 @@ $imagePreviewActionIconFontSize: 1.5rem !default;
 $imagePreviewActionIconBorderRadius: 50% !default;
 
 :root {
-	font-family: Inter,
-		sans-serif;
-	--font-family: Inter,
-		sans-serif;
+	font-family: "Inter";
+	--font-family: "Inter";
 	--surface-a: #{$shade000};
 	--surface-b: #{$shade100};
 	--surface-c: #{$shade200};
