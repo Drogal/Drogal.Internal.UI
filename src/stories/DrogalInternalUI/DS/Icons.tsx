@@ -1,8 +1,8 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
-import './icons.css';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Icon from '../../../components/Icon';
-import EnumIcons from '../../../icons/EnumIcons';
 import { InputText } from '../../../components/Input/InputText';
+import EnumIcons from '../../../icons/EnumIcons';
+import './icons.css';
 
 export const Icons: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -66,6 +66,7 @@ export const Icons: React.FC = () => {
 
         <div className="icon-controls">
           <InputText
+            title='teste'
             placeholder="Buscar ícone..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
