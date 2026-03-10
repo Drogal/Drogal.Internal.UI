@@ -22462,7 +22462,7 @@
   .p-autocomplete .p-autocomplete-multiple-container .p-autocomplete-input-token input {
     font-family: var(--font-family);
     font-feature-settings: var(--font-feature-settings, normal);
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: #6c6c6c;
     padding: 0;
     margin: 0;
@@ -22768,7 +22768,7 @@
   }
   .p-cascadeselect .p-cascadeselect-label.p-placeholder {
     color: #cac6c6;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   .p-cascadeselect .p-cascadeselect-label:enabled:focus {
     outline: 0 none;
@@ -23042,7 +23042,7 @@
   .p-chips .p-chips-multiple-container .p-chips-input-token input {
     font-family: var(--font-family);
     font-feature-settings: var(--font-feature-settings, normal);
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: #6c6c6c;
     padding: 0;
     margin: 0;
@@ -23180,7 +23180,7 @@
   }
   .p-dropdown .p-dropdown-label.p-placeholder {
     color: #cac6c6;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   .p-dropdown .p-dropdown-label:focus, .p-dropdown .p-dropdown-label:enabled:focus {
     outline: 0 none;
@@ -23414,7 +23414,7 @@
   .p-inputtext {
     font-family: var(--font-family);
     font-feature-settings: var(--font-feature-settings, normal);
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: #6c6c6c;
     background: #ffffff;
     padding: 0.5rem 1.05rem;
@@ -23446,17 +23446,17 @@
     background-color: #f2f2f2;
   }
   .p-inputtext.p-inputtext-sm {
-    font-size: 1rem;
+    font-size: 0.875rem;
     padding: 0.4375rem 0.91875rem;
   }
   .p-inputtext.p-inputtext-lg {
-    font-size: 1rem;
+    font-size: 0.875rem;
     padding: 0.625rem 1.3125rem;
   }
   .p-float-label > label {
     left: 1.05rem;
     color: #cac6c6;
-    font-size: 1rem;
+    font-size: 0.875rem;
     transition-duration: 0.3s;
   }
   .p-float-label > .p-invalid + label {
@@ -23473,19 +23473,19 @@
   }
   ::-webkit-input-placeholder {
     color: #cac6c6;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   :-moz-placeholder {
     color: #cac6c6;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   ::-moz-placeholder {
     color: #cac6c6;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   :-ms-input-placeholder {
     color: #cac6c6;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   .p-input-filled .p-inputtext {
     background-color: #f2f2f2;
@@ -23497,11 +23497,11 @@
     background-color: #f2f2f2;
   }
   .p-inputtext-sm .p-inputtext {
-    font-size: 1rem;
+    font-size: 0.875rem;
     padding: 0.4375rem 0.91875rem;
   }
   .p-inputtext-lg .p-inputtext {
-    font-size: 1rem;
+    font-size: 0.875rem;
     padding: 0.625rem 1.3125rem;
   }
   .p-icon-field {
@@ -23788,7 +23788,7 @@
   }
   .p-multiselect .p-multiselect-label.p-placeholder {
     color: #cac6c6;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   .p-multiselect.p-multiselect-chip .p-multiselect-token {
     padding: 0.25rem 1.05rem;
@@ -24198,7 +24198,7 @@
   }
   .p-treeselect .p-treeselect-label.p-placeholder {
     color: #cac6c6;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   .p-treeselect.p-treeselect-chip .p-treeselect-token {
     padding: 0.25rem 1.05rem;
@@ -24369,7 +24369,7 @@
   .drg-label-input {
     font-family: var(--font-family);
     font-feature-settings: var(--font-feature-settings, normal);
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: #6c6c6c;
     font-weight: 500;
   }
@@ -29085,7 +29085,7 @@
   .p-terminal .p-terminal-input {
     font-family: var(--font-family);
     font-feature-settings: var(--font-feature-settings, normal);
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   .p-badge {
     background: #1F95E3;
