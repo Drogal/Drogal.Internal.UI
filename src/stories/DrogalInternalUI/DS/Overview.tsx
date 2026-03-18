@@ -234,7 +234,6 @@ export const Overview: React.FC = () => {
                   options={cities.map(city => ({ name: city, code: city }))}
                   optionLabel="name"
                   placeholder="Select a City"
-                  editable
                 />
               </div>
             </div>

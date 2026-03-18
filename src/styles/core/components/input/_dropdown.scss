@@ -251,3 +251,12 @@ input.p-dropdown-label {
         }
     }
 }
+
+// React-Select 
+
+.r-dropdown {
+
+    &__control {
+        border-radius: $borderRadius !important;
+    }
+}

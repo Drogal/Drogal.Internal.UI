@@ -23270,6 +23270,9 @@
     color: #6c6c6c;
     background: transparent;
   }
+  .r-dropdown__control {
+    border-radius: 8px !important;
+  }
   .p-inputgroup-addon {
     background: #f5f5f5;
     color: #898989;
