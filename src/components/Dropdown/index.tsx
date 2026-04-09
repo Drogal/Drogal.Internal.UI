@@ -18,7 +18,7 @@ interface LegacyGroupOption {
 type DropdownValue = DropdownOption | DropdownOption[] | null;
 
 interface DropdownChangeEvent {
-  originalEvent?: ActionMeta<DropdownOption>;
+  originalEvent?: ActionMeta<DropdownOption>; 
   value: DropdownValue;
   target: {
     name?: string;
