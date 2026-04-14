@@ -17,9 +17,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const ColorBox = ({ className, label }: { className: string; label: string }) => (
+const ColorBox = ({ className, label, bgColor }: { className?: string; label: string; bgColor?: string }) => (
   <div style={{ textAlign: 'center' }}>
-    <div className={className} style={{ height: '80px', borderRadius: '8px', border: '1px solid #ddd' }}></div>
+    <div className={className} style={{ height: '80px', borderRadius: '8px', border: '1px solid #ddd', backgroundColor: bgColor }}></div>
     <p style={{ marginTop: '0.5rem', fontSize: '0.875rem' }}>{label}</p>
   </div>
 );
@@ -66,6 +66,8 @@ export const TextColors: Story = {
         <p className="text-pink-500" style={{ fontSize: '1.25rem', fontWeight: '500' }}>text-pink-500 - Texto rosa</p>
         <p className="text-indigo-500" style={{ fontSize: '1.25rem', fontWeight: '500' }}>text-indigo-500 - Texto índigo</p>
         <p className="text-gray-500" style={{ fontSize: '1.25rem', fontWeight: '500' }}>text-gray-500 - Texto cinza</p>
+        <p style={{ fontSize: '1.25rem', fontWeight: '500', color: 'var(--red-drg-500)' }}>red-drg-500 - Texto vermelho Drogal</p>
+        <p style={{ fontSize: '1.25rem', fontWeight: '500', color: 'var(--green-drg-500)' }}>green-drg-500 - Texto verde Drogal</p>
       </div>
     </div>
   ),
@@ -82,7 +84,7 @@ export const ColorPalette: Story = {
   render: () => (
     <div>
       <h3>Paleta de Cores Completa</h3>
-      <p>Cores disponíveis: blue, green, red, yellow, purple, pink, indigo, gray, teal, orange, cyan</p>
+      <p>Cores disponíveis: blue, green, red, yellow, purple, pink, indigo, gray, teal, orange, cyan, red-drg, green-drg</p>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '2rem' }}>
         <div>
@@ -146,6 +148,38 @@ export const ColorPalette: Story = {
             <ColorBox className="bg-orange-700" label="700" />
             <ColorBox className="bg-orange-800" label="800" />
             <ColorBox className="bg-orange-900" label="900" />
+          </div>
+        </div>
+
+        <div>
+          <h4>Red Drg</h4>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '0.5rem' }}>
+            <ColorBox bgColor="var(--red-drg-50)" label="50" />
+            <ColorBox bgColor="var(--red-drg-100)" label="100" />
+            <ColorBox bgColor="var(--red-drg-200)" label="200" />
+            <ColorBox bgColor="var(--red-drg-300)" label="300" />
+            <ColorBox bgColor="var(--red-drg-400)" label="400" />
+            <ColorBox bgColor="var(--red-drg-500)" label="500" />
+            <ColorBox bgColor="var(--red-drg-600)" label="600" />
+            <ColorBox bgColor="var(--red-drg-700)" label="700" />
+            <ColorBox bgColor="var(--red-drg-800)" label="800" />
+            <ColorBox bgColor="var(--red-drg-900)" label="900" />
+          </div>
+        </div>
+
+        <div>
+          <h4>Green Drg</h4>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '0.5rem' }}>
+            <ColorBox bgColor="var(--green-drg-50)" label="50" />
+            <ColorBox bgColor="var(--green-drg-100)" label="100" />
+            <ColorBox bgColor="var(--green-drg-200)" label="200" />
+            <ColorBox bgColor="var(--green-drg-300)" label="300" />
+            <ColorBox bgColor="var(--green-drg-400)" label="400" />
+            <ColorBox bgColor="var(--green-drg-500)" label="500" />
+            <ColorBox bgColor="var(--green-drg-600)" label="600" />
+            <ColorBox bgColor="var(--green-drg-700)" label="700" />
+            <ColorBox bgColor="var(--green-drg-800)" label="800" />
+            <ColorBox bgColor="var(--green-drg-900)" label="900" />
           </div>
         </div>
       </div>
