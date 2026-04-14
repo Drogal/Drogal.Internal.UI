@@ -21,7 +21,9 @@ $colors: (
 	"bluegray": #5A707F,
 	"purple": #6758A2,
 	"red": #C00D0D,
-	"primary": $primaryColor) !default;
+	"primary": $primaryColor,
+	"red-drg": #F57796,
+	"green-drg": #71BF91) !default;
 
 //reused color variables
 $shade000: #ffffff !default; //surface
@@ -41,7 +43,7 @@ $fontSize: 1rem !default;
 $fontWeight: normal !default;
 $textColor: $shade700 !default;
 $textSecondaryColor: $shade600 !default;
-$borderRadius: 8px !default;
+$borderRadius: 6px !default;
 $transitionDuration: 0.3s !default;
 $formElementTransition: background-color $transitionDuration,
 	color $transitionDuration,
