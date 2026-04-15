@@ -8,7 +8,8 @@
     "dev": "storybook dev -p 6006",
     "start:storybook": "storybook dev -p 6006",
     "build:style": "sass src/styles/theme:src --no-source-map",
-    "build:package": "tsc -b && vite build && npm run build:style && npm run build:icons && node scripts/copy-css.js",
+    "build:package": "tsc -b && vite build && npm run build:dts && npm run build:style && npm run build:icons && node scripts/copy-css.js",
+    "build:dts": "dts-bundle-generator --out-file=dist/index.d.ts src/index.ts --no-banner --external-inlining-mode=all",
     "build:storybook": "storybook build",
     "build:icons": "node scripts/generate-css-files.js"
   },

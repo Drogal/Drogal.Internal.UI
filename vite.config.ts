@@ -14,9 +14,7 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   plugins: [react(), dts({
     tsconfigPath: resolve(__dirname, "tsconfig.lib.json"),
-    rollupTypes: true,
     insertTypesEntry: true,
-    bundledPackages: ['primereact', 'react-select'],
   })],
   build: {
     minify: "terser",
