@@ -11,9 +11,9 @@ export const Icons: React.FC = () => {
   const [visibleCount, setVisibleCount] = useState(100);
   const observerRef = useRef<HTMLDivElement>(null);
 
-  const handleCopyIconName = (iconName: string) => {
-    navigator.clipboard.writeText(iconName);
-    setCopiedIcon(iconName);
+  const handleCopyIconName = (key: string, copyText: string) => {
+    navigator.clipboard.writeText(copyText);
+    setCopiedIcon(key);
     setTimeout(() => setCopiedIcon(null), 2000);
   };
 
@@ -117,8 +117,8 @@ import EnumIcons from 'drogal.internal.ui/EnumIcons';`}</pre>
                     <div
                       key={key}
                       className={`icon-item ${copiedIcon === key ? 'copied' : ''}`}
-                      onClick={() => handleCopyIconName(key)}
-                      title={`Clique para copiar: ${key}`}
+                      onClick={() => handleCopyIconName(key, EnumIcons.Rounded[key as keyof typeof EnumIcons.Rounded])}
+                      title={`Clique para copiar: ${EnumIcons.Rounded[key as keyof typeof EnumIcons.Rounded]}`}
                     >
                       <Icon name={EnumIcons.Rounded[key as keyof typeof EnumIcons.Rounded]} />
                       <span className="icon-name">{key}</span>
@@ -138,8 +138,8 @@ import EnumIcons from 'drogal.internal.ui/EnumIcons';`}</pre>
                     <div
                       key={key}
                       className={`icon-item ${copiedIcon === key ? 'copied' : ''}`}
-                      onClick={() => handleCopyIconName(key)}
-                      title={`Clique para copiar: ${key}`}
+                      onClick={() => handleCopyIconName(key, EnumIcons.Outlined[key as keyof typeof EnumIcons.Outlined])}
+                      title={`Clique para copiar: ${EnumIcons.Outlined[key as keyof typeof EnumIcons.Outlined]}`}
                     >
                       <Icon name={EnumIcons.Outlined[key as keyof typeof EnumIcons.Outlined]} />
                       <span className="icon-name">{key}</span>
