@@ -13,7 +13,9 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [react(), dts({
-    tsconfigPath: resolve(__dirname, "tsconfig.lib.json")
+    tsconfigPath: resolve(__dirname, "tsconfig.lib.json"),
+    rollupTypes: true,
+    insertTypesEntry: true,
   })],
   build: {
     minify: "terser",

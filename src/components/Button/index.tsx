@@ -1,5 +1,7 @@
 import { Button as PureButton, type ButtonProps } from "primereact/button";
 
+export type { ButtonProps };
+
 /**
  * @description
  * Componente Button baseado no PrimeReact.

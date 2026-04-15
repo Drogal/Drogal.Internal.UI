@@ -19,11 +19,11 @@ import LabelInput from "../../Label/LabelInput";
  */
 
 
-interface ExtendedProps extends InputTextProps {
+export interface InputTextDrgProps extends InputTextProps {
   title: string;
 }
 
-export const InputText = (props: ExtendedProps) => {
+export const InputText = (props: InputTextDrgProps) => {
   return (
     <div className="drg-input-spacing">
       <LabelInput title={props.title} name={props.name} />
