@@ -26,6 +26,8 @@ export { TabMenu } from "./components/TabMenu"
 export { TabView } from "./components/TabView"
 export { TabPanel } from "./components/TabView.TabPanel"
 export { ToolTip } from "./components/ToolTip"
+import EnumIcons from "./icons/EnumIcons"
+export { EnumIcons }
 
 
 
