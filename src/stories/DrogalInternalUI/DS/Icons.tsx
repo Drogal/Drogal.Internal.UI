@@ -66,15 +66,14 @@ export const Icons: React.FC = () => {
 
         <div style={{ background: '#f8f9fa', border: '1px solid #e0e0e0', borderRadius: 8, padding: '20px 24px', marginBottom: 8 }}>
           <h3 style={{ margin: '0 0 12px', fontSize: 16, fontWeight: 700 }}>Como usar</h3>
-          <p style={{ margin: '0 0 8px' }}>Importe o componente <code>Icon</code> e o enum <code>EnumIcons</code>:</p>
-          <pre style={{ background: '#1e1e1e', color: '#d4d4d4', borderRadius: 6, padding: '12px 16px', fontSize: 13, overflowX: 'auto', margin: '0 0 12px' }}>{`import Icon from 'drogal.internal.ui';
-import EnumIcons from 'drogal.internal.ui/EnumIcons';`}</pre>
-          <p style={{ margin: '0 0 8px' }}>Use a prop <code>name</code> passando um valor de <code>EnumIcons.Outlined</code> ou <code>EnumIcons.Rounded</code>:</p>
+          <p style={{ margin: '0 0 8px' }}>Importe o componente <code>Icon</code>:</p>
+          <pre style={{ background: '#1e1e1e', color: '#d4d4d4', borderRadius: 6, padding: '12px 16px', fontSize: 13, overflowX: 'auto', margin: '0 0 12px' }}>{`import Icon from 'drogal.internal.ui';`}</pre>
+          <p style={{ margin: '0 0 8px' }}>Use a prop <code>name</code> passando um valor:</p>
           <pre style={{ background: '#1e1e1e', color: '#d4d4d4', borderRadius: 6, padding: '12px 16px', fontSize: 13, overflowX: 'auto', margin: 0 }}>{`// Ícone Outlined
-<Icon name={EnumIcons.Rounded.home} />
+<Icon name={drg-outlined-4k} />
 
 // Com estilo customizado
-<Icon name={EnumIcons.Outlined.favorite} style={{ fontSize: '2rem', color: 'red' }} />`}</pre>
+<Icon name={drg-outlined-4k} style={{ fontSize: '2rem', color: 'red' }} />`}</pre>
         </div>
 
         <div className="icon-controls">

@@ -14,7 +14,7 @@ const meta = {
   argTypes: {
     name: {
       control: 'text',
-      description: 'Nome do ícone. Utilize os valores de EnumIcons.Outlined ou EnumIcons.Rounded',
+      description: 'Nome do ícone. Nome pode ser encontrado corretamente na lista de Icons disponíveis.',
       table: {
         type: { summary: 'string' },
       },
