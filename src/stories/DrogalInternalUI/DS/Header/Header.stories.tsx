@@ -17,7 +17,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Componente de cabeçalho fixo da aplicação. Exibe o logo (ou nome) à esquerda, conteúdo customizável no centro via `children` e o ícone de perfil do usuário à direita.',
+          'Componente de cabeçalho fixo da aplicação. Exibe o logo (ou nome) à esquerda, conteúdo customizável no centro via `children` e o ícone de perfil do usuário à direita. <br/><br/>OBS: O header é responsivo e mantém a usabilidade em telas menores. Content-width: 1510px',
       },
     },
   },
@@ -28,15 +28,15 @@ const meta = {
       description: 'URL da imagem do logotipo',
       table: { type: { summary: 'string' } },
     },
+    logoHref: {
+      control: 'text',
+      description: 'URL para o qual o logo redireciona ao ser clicado',
+      table: { type: { summary: 'string' } },
+    },
     logoAlt: {
       control: 'text',
       description: 'Texto alternativo da imagem do logotipo',
       table: { type: { summary: 'string' }, defaultValue: { summary: 'Logo' } },
-    },
-    name: {
-      control: 'text',
-      description: 'Nome exibido quando não há imagem de logo',
-      table: { type: { summary: 'string' }, defaultValue: { summary: 'DROGAL' } },
     },
     user: {
       control: 'object',
@@ -52,17 +52,7 @@ const meta = {
       control: false,
       description: 'Conteúdo opcional exibido no centro do header, respeitando a altura máxima de 80px',
       table: { type: { summary: 'ReactNode' } },
-    },
-    className: {
-      control: 'text',
-      description: 'Classe CSS adicional aplicada ao elemento `<header>`',
-      table: { type: { summary: 'string' } },
-    },
-    style: {
-      control: 'object',
-      description: 'Estilo inline adicional aplicado ao elemento `<header>`',
-      table: { type: { summary: 'CSSProperties' } },
-    },
+    }
   },
   decorators: [
     (Story) => (
@@ -93,6 +83,7 @@ export const ComLogo: Story = {
   args: {
     user: sampleUser,
     logoSrc: 'https://projetos.drogal.com.br/b6eccb34a71fe322927bcbda3df13658.png',
+    logoHref: 'https://www.drogal.com.br',
     logoAlt: 'Logo da empresa',
   },
   parameters: {
@@ -117,21 +108,6 @@ export const ComChildren: Story = {
     docs: {
       description: {
         story: 'Header com conteúdo customizado no centro via `children`. O conteúdo respeita o height máximo de 80px.',
-      },
-    },
-  },
-};
-
-export const ComClassNameEStyle: Story = {
-  args: {
-    user: sampleUser,
-    className: 'minha-classe-customizada',
-    style: { background: 'var(--primary-color)' },
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Demonstra o uso das props `className` e `style` para customização visual do header.',
       },
     },
   },

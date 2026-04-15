@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import styles from './Header.module.css';
 import Icon from '../Icon';
 import EnumIcons from '../../icons/EnumIcons';
+import LogoDrogal from '../../assets/Logo/logo-drogal.svg';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -13,29 +14,28 @@ export interface UserInfo {
 
 export interface HeaderProps {
   logoSrc?: string;
+  logoHref?: string;
   logoAlt?: string;
-  name?: string;
   user?: UserInfo;
   onLogout?: () => void;
   children?: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 // ── Logo ─────────────────────────────────────────────────────────────────────
 
 interface LogoProps {
   src?: string;
+  href?: string;
   alt?: string;
   name?: string;
 }
 
-const Logo: React.FC<LogoProps> = ({ src, alt = 'Logo', name = 'DROGAL' }) => (
-  <div className={styles.logo}>
+const Logo: React.FC<LogoProps> = ({ src, alt = 'Logo', href }) => (
+  <div className={styles.logo} onClick={() => href ? window.location.replace(href) : window.location.replace('/')}>
     {src ? (
       <img src={src} alt={alt} className={styles.logoImg} />
     ) : (
-      <span className={styles.logoText}>{name}</span>
+      <img src={LogoDrogal} alt={alt} className={styles.logoImg} style={{ height: '43px' }} />
     )}
   </div>
 );
@@ -75,14 +75,21 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, onLogout }) => {
       </button>
 
       {open && (
+
         <div className={styles.dropdown}>
           {user && (
             <div className={styles.dropdownHeader}>
-              <span className={styles.dropdownName}>{user.name}</span>
-              <span className={styles.dropdownProfile}>{user.profile}</span>
-              {user.version && <span className={styles.dropdownVersion}>Versão: {user.version}</span>}
+              <span className={styles.dropdownName}>{user.name?.toLocaleUpperCase()}</span>
+              <span className={styles.dropdownProfile}>{user.profile?.toLocaleUpperCase()}</span>
             </div>
           )}
+
+          <button className={styles.dropdownItem} disabled style={{ cursor: 'auto' }}>
+            <span className={styles.dropdownItemIcon}>
+              <Icon name={EnumIcons.Outlined.info} />
+            </span>
+            Versão: {user && user.version}
+          </button>
           <button className={styles.dropdownItem} onClick={onLogout}>
             <span className={styles.dropdownItemIcon}>
               <Icon name={EnumIcons.Outlined.exit_to_app} />
@@ -97,12 +104,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, onLogout }) => {
 
 // ── Header ────────────────────────────────────────────────────────────────────
 
-const Header: React.FC<HeaderProps> = ({ logoSrc, logoAlt, name, user, onLogout, children, className, style }) => (
-  <header className={`${styles.header}${className ? ` ${className}` : ''}`} style={style} role="banner">
-    <Logo src={logoSrc} alt={logoAlt} name={name} />
-    {children && <div className={styles.headerContent}>{children}</div>}
-    <div className={styles.headerSpacer} />
-    <UserMenu user={user} onLogout={onLogout} />
+const Header: React.FC<HeaderProps> = ({ logoSrc, logoAlt, logoHref, user, onLogout, children }) => (
+  <header className={`${styles.header}`} role="banner">
+    <div className={styles.wrapperHeader}>
+
+      <Logo src={logoSrc} alt={logoAlt} href={logoHref} />
+      {children && <div className={styles.headerContent}>{children}</div>}
+      <div className={styles.headerSpacer} />
+      <UserMenu user={user} onLogout={onLogout} />
+    </div>
   </header>
 );
 
