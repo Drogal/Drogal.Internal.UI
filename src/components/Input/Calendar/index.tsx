@@ -1,4 +1,5 @@
-import { Calendar as PureCalendar, type CalendarProps } from "primereact/calendar";
+import { Calendar as PureCalendar } from "primereact/calendar";
+import type { CalendarProps } from "../../../types/local__primereact/calendar/calendar";
 import LabelInput from "../../Label/LabelInput";
 
 interface ExtendedProps extends CalendarProps {

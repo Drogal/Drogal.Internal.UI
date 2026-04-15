@@ -1,4 +1,5 @@
-import { Button as PureButton, type ButtonProps } from "primereact/button";
+import { Button as PureButton } from "primereact/button";
+import type { ButtonProps } from "../../types/local__primereact/button/button";
 
 export type { ButtonProps };
 

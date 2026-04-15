@@ -1,7 +1,5 @@
-import {
-    Skeleton as PureSkeleton,
-    type SkeletonProps
-} from "primereact/skeleton";
+import { Skeleton as PureSkeleton } from "primereact/skeleton";
+import type { SkeletonProps } from "../../types/local__primereact/skeleton/skeleton";
 
 /**
  * @description

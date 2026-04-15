@@ -1,4 +1,5 @@
-import { Editor as PureEditor, type EditorProps } from "primereact/editor";
+import { Editor as PureEditor } from "primereact/editor";
+import type { EditorProps } from "../../../types/local__primereact/editor/editor";
 import LabelInput from "../../Label/LabelInput";
 
 interface ExtendedProps extends EditorProps {

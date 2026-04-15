@@ -1,7 +1,5 @@
-import {
-  Password as PureInputPassword,
-  type PasswordProps
-} from "primereact/password";
+import { Password as PureInputPassword } from "primereact/password";
+import type { PasswordProps } from "../../../types/local__primereact/password/password";
 import LabelInput from "../../Label/LabelInput";
 
 interface ExtendedProps extends PasswordProps {

@@ -1,4 +1,5 @@
-import { Badge as PureBadge, type BadgeProps } from "primereact/badge";
+import { Badge as PureBadge } from "primereact/badge";
+import type { BadgeProps } from "../../types/local__primereact/badge/badge";
 
 /**
  * @description

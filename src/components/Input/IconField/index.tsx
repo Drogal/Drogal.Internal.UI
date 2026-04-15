@@ -1,4 +1,5 @@
-import { IconField as PureIconField, type IconFieldProps } from "primereact/iconfield";
+import { IconField as PureIconField } from "primereact/iconfield";
+import type { IconFieldProps } from "../../../types/local__primereact/iconfield/iconfield";
 
 /**
  * @description

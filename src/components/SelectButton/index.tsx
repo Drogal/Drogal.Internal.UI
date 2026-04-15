@@ -1,7 +1,5 @@
-import {
-    SelectButton as PureSelectButton,
-    type SelectButtonProps
-} from "primereact/selectbutton";
+import { SelectButton as PureSelectButton } from "primereact/selectbutton";
+import type { SelectButtonProps } from "../../types/local__primereact/selectbutton/selectbutton";
 
 /**
  * @description

@@ -1,4 +1,5 @@
-import { Dialog as PureDialog, type DialogProps } from "primereact/dialog";
+import { Dialog as PureDialog } from "primereact/dialog";
+import type { DialogProps } from "../../types/local__primereact/dialog/dialog";
 
 /**
  * @description

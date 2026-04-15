@@ -1,7 +1,5 @@
-import {
-  InputNumber as PureInputNumber,
-  type InputNumberProps
-} from "primereact/inputnumber";
+import { InputNumber as PureInputNumber } from "primereact/inputnumber";
+import type { InputNumberProps } from "../../../types/local__primereact/inputnumber/inputnumber";
 import LabelInput from "../../Label/LabelInput";
 
 interface ExtendedProps extends InputNumberProps {

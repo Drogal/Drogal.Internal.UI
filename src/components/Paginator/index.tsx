@@ -1,7 +1,5 @@
-import {
-    Paginator as PurePaginator,
-    type PaginatorProps
-} from "primereact/paginator";
+import { Paginator as PurePaginator } from "primereact/paginator";
+import type { PaginatorProps } from "../../types/local__primereact/paginator/paginator";
 
 /**
  * @description

@@ -1,7 +1,5 @@
-import {
-  InputSwitch as PureInputSwitch,
-  type InputSwitchProps
-} from "primereact/inputswitch";
+import { InputSwitch as PureInputSwitch } from "primereact/inputswitch";
+import type { InputSwitchProps } from "../../../types/local__primereact/inputswitch/inputswitch";
 import LabelInput from "../../Label/LabelInput";
 
 interface ExtendedProps extends InputSwitchProps {

@@ -1,4 +1,5 @@
-import { AutoComplete as PureAutoComplete, type AutoCompleteProps } from "primereact/autocomplete";
+import { AutoComplete as PureAutoComplete } from "primereact/autocomplete";
+import type { AutoCompleteProps } from "../../types/local__primereact/autocomplete/autocomplete";
 import LabelInput from "../Label/LabelInput";
 
 // @ts-ignore: Ignore next line for documentation generation

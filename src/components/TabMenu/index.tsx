@@ -1,7 +1,5 @@
-import {
-    TabMenu as PureTabMenu,
-    type TabMenuProps
-} from "primereact/tabmenu";
+import { TabMenu as PureTabMenu } from "primereact/tabmenu";
+import type { TabMenuProps } from "../../types/local__primereact/tabmenu/tabmenu";
 
 /**
  * @description

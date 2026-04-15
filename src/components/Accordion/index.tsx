@@ -1,4 +1,5 @@
-import { Accordion as PureAccordion, type AccordionProps } from "primereact/accordion";
+import { Accordion as PureAccordion } from "primereact/accordion";
+import type { AccordionProps } from "../../types/local__primereact/accordion/accordion";
 
 
 /**

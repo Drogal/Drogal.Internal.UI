@@ -1,8 +1,5 @@
-import {
-  DataTable as PureDataTable,
-  type DataTableProps,
-  type DataTableValueArray
-} from "primereact/datatable";
+import { DataTable as PureDataTable, type DataTableValueArray } from "primereact/datatable";
+import type { DataTableProps } from "../../types/local__primereact/datatable/datatable";
 
 /**
  * @description

@@ -1,7 +1,5 @@
-import {
-  Tooltip as PureToolTip,
-  type TooltipProps
-} from "primereact/tooltip";
+import { Tooltip as PureToolTip } from "primereact/tooltip";
+import type { TooltipProps } from "../../types/local__primereact/tooltip/tooltip";
 
 /**
  * @description

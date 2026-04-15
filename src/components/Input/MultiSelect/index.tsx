@@ -1,7 +1,5 @@
-import {
-  MultiSelect as PureMultiSelect,
-  type MultiSelectProps
-} from "primereact/multiselect";
+import { MultiSelect as PureMultiSelect } from "primereact/multiselect";
+import type { MultiSelectProps } from "../../../types/local__primereact/multiselect/multiselect";
 import LabelInput from "../../Label/LabelInput";
 
 

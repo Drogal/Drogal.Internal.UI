@@ -1,7 +1,5 @@
-import {
-  TabView as PureTabView,
-  type TabViewProps
-} from "primereact/tabview";
+import { TabView as PureTabView } from "primereact/tabview";
+import type { TabViewProps } from "../../types/local__primereact/tabview/tabview";
 
 /**
  * @description

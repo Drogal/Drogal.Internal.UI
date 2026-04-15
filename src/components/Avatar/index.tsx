@@ -1,4 +1,5 @@
-import { Avatar as PureAvatar, type AvatarProps } from "primereact/avatar";
+import { Avatar as PureAvatar } from "primereact/avatar";
+import type { AvatarProps } from "../../types/local__primereact/avatar/avatar";
 
 /**
  * @description

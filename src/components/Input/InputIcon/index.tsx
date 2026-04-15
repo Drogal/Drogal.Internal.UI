@@ -1,5 +1,6 @@
 
-import { InputIcon as PureInputIcon, type InputIconProps } from "primereact/inputicon";
+import { InputIcon as PureInputIcon } from "primereact/inputicon";
+import type { InputIconProps } from "../../../types/local__primereact/inputicon/inputicon";
 
 /**
  * @description

@@ -1,4 +1,5 @@
-import { Column as PureColumn, type ColumnProps } from "primereact/column";
+import { Column as PureColumn } from "primereact/column";
+import type { ColumnProps } from "../../types/local__primereact/column/column";
 
 /**
  * @description
