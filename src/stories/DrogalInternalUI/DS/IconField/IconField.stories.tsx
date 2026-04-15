@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../theme.css'
 import { IconField } from '../../../../components/Input/IconField';
 import { InputText } from '../../../../components/Input/InputText';
-import Icon from '../../../../components/Icon';
+import { Icon } from '../../../../components/Icon';
 import EnumIcons from '../../../../icons/EnumIcons';
 import { InputIcon } from '../../../../components/Input/InputIcon';
 

@@ -27,7 +27,7 @@ import { TabMenu } from '../../../components/TabMenu';
 import { TabView } from '../../../components/TabView';
 import { TabPanel } from '../../../components/TabView.TabPanel';
 import EnumIcons from '../../../icons/EnumIcons';
-import Icon from '../../../components/Icon';
+import { Icon } from '../../../components/Icon';
 
 export const Overview: React.FC = () => {
   const [password, setPassword] = useState('');

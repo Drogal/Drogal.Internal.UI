@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import '../../../../theme.css';
-import Icon from '../../../../components/Icon';
+import { Icon } from '../../../../components/Icon';
 import EnumIcons from '../../../../icons/EnumIcons';
 
 const meta = {

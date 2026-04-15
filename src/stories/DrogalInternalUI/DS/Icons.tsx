@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import Icon from '../../../components/Icon';
+import { Icon } from '../../../components/Icon';
 import { InputText } from '../../../components/Input/InputText';
 import EnumIcons from '../../../icons/EnumIcons';
 import './icons.css';
