@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './Header.module.css';
-import Icon from '../Icon';
 import EnumIcons from '../../icons/EnumIcons';
 import LogoDrogal from '../../assets/Logo/logo-drogal.svg';
+import { Icon } from '../Icon';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -104,7 +104,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, onLogout }) => {
 
 // ── Header ────────────────────────────────────────────────────────────────────
 
-const Header: React.FC<HeaderProps> = ({ logoSrc, logoAlt, logoHref, user, onLogout, children }) => (
+export const Header: React.FC<HeaderProps> = ({ logoSrc, logoAlt, logoHref, user, onLogout, children }) => (
   <header className={`${styles.header}`} role="banner">
     <div className={styles.wrapperHeader}>
 
@@ -115,5 +115,3 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, logoAlt, logoHref, user, onLog
     </div>
   </header>
 );
-
-export default Header;

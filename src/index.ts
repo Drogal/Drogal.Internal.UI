@@ -28,6 +28,7 @@ export { TabMenu } from "./components/TabMenu"
 export { TabView } from "./components/TabView"
 export { TabPanel } from "./components/TabView.TabPanel"
 export { ToolTip } from "./components/ToolTip"
-
+export { Header } from "./components/Header"
+export { Icon } from "./components/Icon"
 
 
