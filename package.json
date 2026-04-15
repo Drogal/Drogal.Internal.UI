@@ -4,6 +4,7 @@
   "version": "0.0.29",
   "type": "module",
   "scripts": {
+    "release:patch": "npm version patch",
     "deploy": "npm publish",
     "dev": "storybook dev -p 6006",
     "start:storybook": "storybook dev -p 6006",
