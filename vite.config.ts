@@ -16,6 +16,7 @@ export default defineConfig({
     tsconfigPath: resolve(__dirname, "tsconfig.lib.json"),
     rollupTypes: true,
     insertTypesEntry: true,
+    bundledPackages: ['primereact', 'react-select'],
   })],
   build: {
     minify: "terser",
