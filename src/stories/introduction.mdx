@@ -77,7 +77,16 @@ import { Meta } from "@storybook/addon-docs/blocks";
     </div>
 
     <div className="sb-section-item">
-      <h3 className="sb-section-item-heading">3. Usar Componentes</h3>
+      <h3 className="sb-section-item-heading">3. Importar ICONS</h3>
+      <p className="sb-section-item-paragraph">
+        Importe o arquivo de tema no seu projeto:
+      </p>
+      <code>import 'drogal.internal.ui/outlined-icons.css';<br/>
+      import 'drogal.internal.ui/rounded-icons.css';</code>
+    </div>
+
+    <div className="sb-section-item">
+      <h3 className="sb-section-item-heading">4. Usar Componentes</h3>
       <p className="sb-section-item-paragraph">
         Importe e use os componentes:
       </p>
@@ -130,7 +139,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
   .sb-section {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 20px;
     margin-bottom: 32px;
   }
