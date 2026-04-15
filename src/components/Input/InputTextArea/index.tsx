@@ -1,7 +1,7 @@
 import {
-  InputTextarea as PureInputTextArea,
-  type InputTextareaProps
+  InputTextarea as PureInputTextArea
 } from "primereact/inputtextarea";
+import type { InputTextareaProps } from "../../../types/local__primereact/inputtextarea/inputtextarea";
 import LabelInput from "../../Label/LabelInput";
 
 interface ExtendedProps extends InputTextareaProps {

@@ -1,7 +1,7 @@
 import {
-  InputText as PureInputText,
-  type InputTextProps
+  InputText as PureInputText
 } from "primereact/inputtext";
+import type { InputTextProps } from "../../../types/local__primereact/inputtext/inputtext";
 import LabelInput from "../../Label/LabelInput";
 
 /**
