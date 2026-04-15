@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "release:patch": "npm version patch",
+    "update:tags": "git push --follow-tags",
     "deploy": "npm publish",
     "dev": "storybook dev -p 6006",
     "start:storybook": "storybook dev -p 6006",
