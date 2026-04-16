@@ -1,6 +1,6 @@
 /* ── Layout ─────────────────────────────────────────────────────────────────── */
 
-.header {
+.drg-header {
   grid-area: header;
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@
   box-shadow: var(--card-shadow, 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12));
 }
 
-.wrapperHeader {
+.drg-wrapper-header {
   display: flex;
   align-items: center;
   width: 1510px;
@@ -27,11 +27,11 @@
   ;
 }
 
-.headerSpacer {
+.drg-header-spacer {
   flex: 1;
 }
 
-.headerContent {
+.drg-header-content {
   display: flex;
   align-items: center;
   height: 80px;
@@ -41,7 +41,7 @@
 
 /* ── Logo ─────────────────────────────────────────────────────────────────── */
 
-.logo {
+.drg-logo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,14 +51,14 @@
   cursor: pointer;
 }
 
-.logoImg {
+.drg-logo-img {
   height: 28px;
   width: auto;
 }
 
 /* ── User Menu ────────────────────────────────────────────────────────────── */
 
-.userMenu {
+.drg-user-menu {
   position: relative;
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@
   height: 80px;
 }
 
-.avatarButton {
+.drg-avatar-button {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -80,16 +80,16 @@
   transition: background-color var(--transition-duration, 0.3s);
 }
 
-.avatarButton:hover {
+.drg-avatar-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.avatarIcon {
+.drg-avatar-icon {
   font-size: 1.5rem;
   color: var(--primary-color-text);
 }
 
-.dropdown {
+.drg-dropdown {
   position: absolute;
   top: 68px;
   right: 15px;
@@ -101,21 +101,21 @@
   overflow: hidden;
 }
 
-.dropdownHeader {
+.drg-dropdown-header {
   display: flex;
   flex-direction: column;
   padding: var(--inline-spacing) var(--content-padding);
   margin-top: 8px;
 }
 
-.dropdownName {
+.drg-dropdown-name {
   font-size: 0.875rem;
   color: var(--text-color);
   text-align: center;
   font-family: var(--font-family);
 }
 
-.dropdownProfile {
+.drg-dropdown-profile {
   font-size: 0.8125rem;
   color: var(--text-color-secondary);
   text-align: center;
@@ -124,7 +124,7 @@
   font-family: var(--font-family);
 }
 
-.dropdownVersion {
+.drg-dropdown-version {
   display: flex;
   justify-content: center;
   font-size: 0.75rem;
@@ -135,7 +135,7 @@
   opacity: 0.7;
 }
 
-.dropdownItem {
+.drg-dropdown-item {
   display: flex;
   align-items: center;
   gap: var(--inline-spacing);
@@ -151,10 +151,10 @@
   transition: background-color var(--transition-duration, 0.3s);
 }
 
-.dropdownItem:hover {
+.drg-dropdown-item:hover {
   background-color: var(--surface-hover);
 }
 
-.dropdownItemIcon {
+.drg-dropdown-item-icon {
   font-size: 1.125rem;
 }

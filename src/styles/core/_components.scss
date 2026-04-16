@@ -5,6 +5,9 @@
 
 @import './components/input/_editor';
 
+// ## Drogal components ##
+@import './components/header/_header';
+
 @layer primereact {
     @import '_common';
 
