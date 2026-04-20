@@ -1,0 +1,45 @@
+.drg-bg-frame {
+  display: flex;
+  flex-direction: column;
+  border-radius: $borderRadius;
+  padding: 2.09rem 1.88rem;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1.2rem;
+  }
+
+  &__title {
+    font-family: var();
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--bluegray-500);
+    line-height: 0.7;
+  }
+
+  &__subtitle {
+    font-family: var(--font-family-soleto);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--bluegray-500);
+    line-height: 0.7;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--filled {
+    background-color: $shade100;
+    border: none;
+  }
+
+  &--outlined {
+    background-color: transparent;
+    border: 1px solid $shade400;
+  }
+}

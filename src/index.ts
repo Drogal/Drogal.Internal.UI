@@ -28,6 +28,8 @@ export { TabMenu } from "./components/TabMenu"
 export { TabView } from "./components/TabView"
 export { TabPanel } from "./components/TabView.TabPanel"
 export { ToolTip } from "./components/ToolTip"
+export { BgFrame } from "./components/BgFrame"
+export type { BgFrameProps, BgFrameVariant } from "./components/BgFrame"
 export { Header } from "./components/Header"
 export { Icon } from "./components/Icon"
 

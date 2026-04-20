@@ -179,6 +179,7 @@ export const Disabled: Story = {
     title: 'Disabled',
     placeholder: 'Disabled',
     disabled: true,
+    variant: 'filled',
   },
 };
 
