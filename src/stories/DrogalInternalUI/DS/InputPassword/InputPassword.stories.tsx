@@ -28,7 +28,9 @@ const meta = {
     },
     disabled: {
       control: 'boolean',
-      description: 'When present, it specifies that the component should be disabled',
+      description:
+        'Desabilita o campo, impedindo interação do usuário. ' +
+        '⚠️ **Obrigatório usar em conjunto com `variant="filled"`** — sem essa variante, o estado visual de desabilitado não é aplicado corretamente pelo tema.',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
@@ -137,9 +139,11 @@ const meta = {
     variant: {
       control: 'select',
       options: ['outlined', 'filled'],
-      description: 'Specifies the input variant of the component',
+      description:
+        'Variante visual do input. `outlined` é o padrão (fundo transparente com borda). ' +
+        '`filled` aplica fundo sólido — **uso obrigatório quando `disabled={true}`**, garantindo o contraste visual correto do estado desabilitado.',
       table: {
-        type: { summary: 'outlined | filled' },
+        type: { summary: "'filled' | 'outlined'" },
         defaultValue: { summary: 'outlined' },
       },
     },
@@ -292,5 +296,18 @@ export const Disabled: Story = {
     title: 'Disabled Password',
     placeholder: 'Disabled',
     disabled: true,
+    variant: 'filled',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Campo desabilitado. **`variant="filled"` é obrigatório neste caso** — é a única variante que renderiza corretamente o estado desabilitado no tema, aplicando o fundo com opacidade reduzida e impedindo qualquer interação visual.\n\n' +
+          '```tsx\n' +
+          '<InputPassword disabled variant="filled" placeholder="Desabilitado" />\n' +
+          '```\n\n' +
+          '> Usar `disabled` sem `variant="filled"` resulta em estado visual inconsistente.',
+      },
+    },
   },
 };

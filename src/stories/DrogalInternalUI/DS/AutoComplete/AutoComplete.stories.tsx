@@ -111,7 +111,9 @@ const meta = {
     },
     disabled: {
       control: 'boolean',
-      description: 'Quando presente, desabilita o componente',
+      description:
+        'Desabilita o campo, impedindo interação do usuário. ' +
+        '⚠️ **Obrigatório usar em conjunto com `variant="filled"`** — sem essa variante, o estado visual de desabilitado não é aplicado corretamente pelo tema.',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
@@ -128,9 +130,11 @@ const meta = {
     variant: {
       control: 'select',
       options: ['outlined', 'filled'],
-      description: 'Variante do estilo do input',
+      description:
+        'Variante visual do input. `outlined` é o padrão (fundo transparente com borda). ' +
+        '`filled` aplica fundo sólido — **uso obrigatório quando `disabled={true}`**, garantindo o contraste visual correto do estado desabilitado.',
       table: {
-        type: { summary: 'string' },
+        type: { summary: "'filled' | 'outlined'" },
         defaultValue: { summary: 'outlined' },
       },
     },
@@ -529,11 +533,17 @@ export const Disabled: Story = {
     title: 'City',
     placeholder: 'Disabled',
     disabled: true,
+    variant: 'filled',
   },
   parameters: {
     docs: {
       description: {
-        story: 'AutoComplete desabilitado.',
+        story:
+          'Campo desabilitado. **`variant="filled"` é obrigatório neste caso** — é a única variante que renderiza corretamente o estado desabilitado no tema, aplicando o fundo com opacidade reduzida e impedindo qualquer interação visual.\n\n' +
+          '```tsx\n' +
+          '<AutoComplete disabled variant="filled" placeholder="Desabilitado" />\n' +
+          '```\n\n' +
+          '> Usar `disabled` sem `variant="filled"` resulta em estado visual inconsistente.',
       },
     },
   },

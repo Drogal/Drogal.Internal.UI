@@ -21,13 +21,16 @@ import LabelInput from "../../Label/LabelInput";
 
 export interface InputTextDrgProps extends InputTextProps {
   title: string;
+  disabled?: boolean;
 }
 
 export const InputText = (props: InputTextDrgProps) => {
+
+  const { disabled } = props;
   return (
     <div className="drg-input-spacing">
       <LabelInput title={props.title} name={props.name} />
-      <PureInputText {...props} />
+      <PureInputText {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
     </div>
   );
 };

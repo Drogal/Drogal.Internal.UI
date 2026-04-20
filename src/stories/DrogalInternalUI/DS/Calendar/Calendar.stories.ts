@@ -177,7 +177,9 @@ const meta = {
     },
     disabled: {
       control: 'boolean',
-      description: 'When present, it specifies that the element should be disabled',
+      description:
+        'Desabilita o componente, impedindo seleção de datas. ' +
+        '⚠️ **Obrigatório usar em conjunto com `variant="filled"`** — sem essa variante, o estado visual de desabilitado não é aplicado corretamente pelo tema.',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
@@ -488,5 +490,18 @@ export const Disabled: Story = {
     placeholder: 'Disabled',
     showIcon: true,
     disabled: true,
+    variant: 'filled',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Campo desabilitado. **`variant="filled"` é obrigatório neste caso** — é a única variante que renderiza corretamente o estado desabilitado no tema, aplicando o fundo com opacidade reduzida e impedindo qualquer interação visual.\n\n' +
+          '```tsx\n' +
+          '<Calendar disabled variant="filled" showIcon />\n' +
+          '```\n\n' +
+          '> Usar `disabled` sem `variant="filled"` resulta em estado visual inconsistente.',
+      },
+    },
   },
 };
