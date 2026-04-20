@@ -16,10 +16,11 @@ interface ExtendedProps extends AutoCompleteProps {
  * mantendo total compatibilidade com suas props originais.
  */
 export const AutoComplete = (props: ExtendedProps) => {
+  const { disabled } = props;
   return (
     <div className="drg-input-spacing">
       <LabelInput title={props.title} name={props.name} />
-      <PureAutoComplete {...props} />
+      <PureAutoComplete {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
     </div>
   );
 };

@@ -16,11 +16,11 @@ interface ExtendedProps extends CalendarProps {
  * mantendo total compatibilidade com suas props originais.
  */
 export const Calendar = (props: ExtendedProps) => {
+  const { disabled } = props;
   return (
     <div className="drg-input-spacing">
       <LabelInput title={props.title} name={props.name} />
-      <PureCalendar {...props} />
+      <PureCalendar {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
     </div>
-  )
-
+  );
 };

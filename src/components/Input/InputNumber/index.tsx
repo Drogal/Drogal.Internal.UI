@@ -19,10 +19,11 @@ interface ExtendedProps extends InputNumberProps {
  * mantendo total compatibilidade com suas props originais.
  */
 export const InputNumber = (props: ExtendedProps) => {
+  const { disabled } = props;
   return (
     <div className="drg-input-spacing">
       <LabelInput title={props.title} name={props.name} />
-      <PureInputNumber {...props} />
+      <PureInputNumber {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
     </div>
   );
 };
