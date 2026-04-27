@@ -24,28 +24,28 @@ type SectionItem = {
 };
 
 const ALL_SECTIONS: SectionItem[] = [
-  { id: 'inputs',    label: 'Inputs de Texto',   active: true  },
-  { id: 'dropdown',  label: 'Dropdown / Select',  active: true  },
-  { id: 'buttons',   label: 'Buttons',            active: true  },
-  { id: 'switch',    label: 'Switch & Toggle',    active: true  },
-  { id: 'avatar',    label: 'Avatar & Badge',     active: true  },
-  { id: 'dialog',    label: 'Dialog',             active: false },
-  { id: 'skeleton',  label: 'Skeleton',           active: false },
-  { id: 'form',      label: 'Formulário Exemplo', active: false },
+  { id: 'inputs', label: 'Inputs de Texto', active: true },
+  { id: 'dropdown', label: 'Dropdown / Select', active: true },
+  { id: 'buttons', label: 'Buttons', active: true },
+  { id: 'switch', label: 'Switch & Toggle', active: true },
+  { id: 'avatar', label: 'Avatar & Badge', active: true },
+  { id: 'dialog', label: 'Dialog', active: false },
+  { id: 'skeleton', label: 'Skeleton', active: false },
+  { id: 'form', label: 'Formulário Exemplo', active: false },
 ];
 
 const cityOptions = [
-  { label: 'São Paulo',       value: 'SP'  },
-  { label: 'Rio de Janeiro',  value: 'RJ'  },
-  { label: 'Belo Horizonte',  value: 'BH'  },
-  { label: 'Curitiba',        value: 'CWB' },
-  { label: 'Porto Alegre',    value: 'POA' },
+  { label: 'São Paulo', value: 'SP' },
+  { label: 'Rio de Janeiro', value: 'RJ' },
+  { label: 'Belo Horizonte', value: 'BH' },
+  { label: 'Curitiba', value: 'CWB' },
+  { label: 'Porto Alegre', value: 'POA' },
 ];
 
 const statusOptions = [
-  { label: 'Ativo',      value: 'active'   },
-  { label: 'Inativo',    value: 'inactive' },
-  { label: 'Pendente',   value: 'pending'  },
+  { label: 'Ativo', value: 'active' },
+  { label: 'Inativo', value: 'inactive' },
+  { label: 'Pendente', value: 'pending' },
 ];
 
 // ─── bloco visual reutilizável ───────────────────────────────────────────────
@@ -83,7 +83,7 @@ function InputsSection() {
 }
 
 function DropdownSection() {
-  const [city, setCity]     = useState<string | null>(null);
+  const [city, setCity] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null);
 
   return (
@@ -93,7 +93,7 @@ function DropdownSection() {
           title="Cidade"
           options={cityOptions}
           value={city}
-          onChange={(e) => setCity(e.value as string)}
+          onChange={(e) => setCity(e.value as any)}
           placeholder="Selecione uma cidade"
           className="w-full"
         />
@@ -101,7 +101,7 @@ function DropdownSection() {
           title="Status"
           options={statusOptions}
           value={status}
-          onChange={(e) => setStatus(e.value as string)}
+          onChange={(e) => setStatus(e.value as any)}
           placeholder="Selecione o status"
           showClear
           className="w-full"
@@ -116,16 +116,16 @@ function ButtonsSection() {
     <Section title="Buttons">
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         <Button label="Primary" />
-        <Button label="Secondary"  severity="secondary" />
-        <Button label="Success"    severity="success" />
-        <Button label="Warning"    severity="warning" />
-        <Button label="Danger"     severity="danger" />
-        <Button label="Info"       severity="info" />
-        <Button label="Outlined"   outlined />
-        <Button label="Text"       text />
-        <Button label="Disabled"   disabled />
-        <Button label="Com ícone"  icon="pi pi-check" iconPos="left" />
-        <Button label="Loading"    loading />
+        <Button label="Secondary" severity="secondary" />
+        <Button label="Success" severity="success" />
+        <Button label="Warning" severity="warning" />
+        <Button label="Danger" severity="danger" />
+        <Button label="Info" severity="info" />
+        <Button label="Outlined" outlined />
+        <Button label="Text" text />
+        <Button label="Disabled" disabled />
+        <Button label="Com ícone" icon="pi pi-check" iconPos="left" />
+        <Button label="Loading" loading />
       </div>
     </Section>
   );
@@ -140,11 +140,11 @@ function SwitchSection() {
     <Section title="Switch & Toggle">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <InputSwitch checked={sw1} onChange={(e) => setSw1(e.value)} />
+          <InputSwitch title='Switch' checked={sw1} onChange={(e) => setSw1(e.value)} />
           <span style={{ fontSize: 14 }}>{sw1 ? 'Ligado' : 'Desligado'}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <InputSwitch checked={sw2} onChange={(e) => setSw2(e.value)} />
+          <InputSwitch title='Toggle' checked={sw2} onChange={(e) => setSw2(e.value)} />
           <span style={{ fontSize: 14 }}>{sw2 ? 'Habilitado' : 'Desabilitado'}</span>
         </div>
         <SelectButton
@@ -168,10 +168,10 @@ function AvatarSection() {
           <Avatar icon="pi pi-bell" size="large" shape="circle" />
           <Badge value="3" severity="danger" style={{ position: 'absolute', top: -4, right: -4 }} />
         </div>
-        <Badge value="Novo"     severity="success" />
+        <Badge value="Novo" severity="success" />
         <Badge value="Pendente" severity="warning" />
-        <Badge value="Erro"     severity="danger" />
-        <Badge value="Info"     severity="info" />
+        <Badge value="Erro" severity="danger" />
+        <Badge value="Info" severity="info" />
       </div>
     </Section>
   );
@@ -208,8 +208,8 @@ function SkeletonSection() {
     <Section title="Skeleton">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         <Skeleton width="100%" height="2rem" />
-        <Skeleton width="75%"  height="2rem" />
-        <Skeleton width="50%"  height="2rem" />
+        <Skeleton width="75%" height="2rem" />
+        <Skeleton width="50%" height="2rem" />
         <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginTop: 8 }}>
           <Skeleton shape="circle" size="4rem" />
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -223,14 +223,14 @@ function SkeletonSection() {
 }
 
 function FormSection() {
-  const [name,     setName]     = useState('');
-  const [email,    setEmail]    = useState('');
-  const [city,     setCity]     = useState<string | null>(null);
-  const [active,   setActive]   = useState(true);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [city, setCity] = useState<string | null>(null);
+  const [active, setActive] = useState(true);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = () => setSubmitted(true);
-  const handleReset  = () => { setName(''); setEmail(''); setCity(null); setActive(true); setSubmitted(false); };
+  const handleReset = () => { setName(''); setEmail(''); setCity(null); setActive(true); setSubmitted(false); };
 
   return (
     <Section title="Formulário Exemplo">
@@ -244,23 +244,22 @@ function FormSection() {
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <InputText  title="Nome"    value={name}  onChange={(e) => setName(e.target.value)}  placeholder="Seu nome" />
-          <InputText  title="E-mail"  type="email"  value={email} onChange={(e) => setEmail(e.target.value)} placeholder="seu@email.com" />
+          <InputText title="Nome" value={name} onChange={(e) => setName(e.target.value)} placeholder="Seu nome" />
+          <InputText title="E-mail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="seu@email.com" />
           <Dropdown
             title="Cidade"
             options={cityOptions}
             value={city}
-            onChange={(e) => setCity(e.value as string)}
+            onChange={(e) => setCity(e.value as any)}
             placeholder="Selecione"
             className="w-full"
           />
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <InputSwitch checked={active} onChange={(e) => setActive(e.value)} />
-            <span style={{ fontSize: 14 }}>Conta ativa</span>
+            <InputSwitch title="Conta ativa" checked={active} onChange={(e) => setActive(e.value)} />
           </div>
           <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-            <Button label="Limpar"  severity="secondary" outlined onClick={handleReset} />
-            <Button label="Enviar"  onClick={handleSubmit} />
+            <Button label="Limpar" severity="secondary" outlined onClick={handleReset} />
+            <Button label="Enviar" onClick={handleSubmit} />
           </div>
         </div>
       )}
@@ -271,14 +270,14 @@ function FormSection() {
 // ─── mapa de seções ──────────────────────────────────────────────────────────
 
 const SECTION_MAP: Record<string, React.ReactNode> = {
-  inputs:   <InputsSection />,
+  inputs: <InputsSection />,
   dropdown: <DropdownSection />,
-  buttons:  <ButtonsSection />,
-  switch:   <SwitchSection />,
-  avatar:   <AvatarSection />,
-  dialog:   <DialogSection />,
+  buttons: <ButtonsSection />,
+  switch: <SwitchSection />,
+  avatar: <AvatarSection />,
+  dialog: <DialogSection />,
   skeleton: <SkeletonSection />,
-  form:     <FormSection />,
+  form: <FormSection />,
 };
 
 // ─── Playground principal ────────────────────────────────────────────────────
