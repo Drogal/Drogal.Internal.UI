@@ -252,11 +252,53 @@ input.p-dropdown-label {
     }
 }
 
-// React-Select 
+// React-Select
 
 .r-dropdown {
 
     &__control {
         border-radius: $borderRadius !important;
+        min-height: unset !important;
+        border: $inputBorder !important;
+        box-shadow: none !important;
+
+        &:hover {
+            border-color: $inputHoverBorderColor !important;
+        }
+
+        &--is-focused {
+            @include focused-input();
+        }
+    }
+
+    &__single-value {
+        color: $inputTextColor !important;
+        font-family: var(--font-family) !important;
+        font-size: $inputTextFontSize !important;
+    }
+
+    &__placeholder {
+        color: $inputPlaceholderTextColor !important;
+        font-family: var(--font-family) !important;
+        font-size: $inputTextFontSize !important;
+    }
+
+    &__input {
+        font-family: var(--font-family) !important;
+        font-size: $inputTextFontSize !important;
+    }
+
+    &__value-container {
+        padding: nth($inputPadding, 1) nth($inputPadding, 2) !important;
+    }
+
+    &__input-container {
+        margin: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    &__indicator {
+        padding: 0 nth($inputPadding, 1) !important;
     }
 }

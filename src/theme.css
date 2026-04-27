@@ -23491,6 +23491,43 @@
   }
   .r-dropdown__control {
     border-radius: 6px !important;
+    min-height: unset !important;
+    border: 1px solid #e1e1e1 !important;
+    box-shadow: none !important;
+  }
+  .r-dropdown__control:hover {
+    border-color: #cecece !important;
+  }
+  .r-dropdown__control--is-focused {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.1rem rgb(165.4, 212.6, 243.8);
+    border-color: #91a4e3;
+  }
+  .r-dropdown__single-value {
+    color: #6c6c6c !important;
+    font-family: var(--font-family) !important;
+    font-size: 0.875rem !important;
+  }
+  .r-dropdown__placeholder {
+    color: #cac6c6 !important;
+    font-family: var(--font-family) !important;
+    font-size: 0.875rem !important;
+  }
+  .r-dropdown__input {
+    font-family: var(--font-family) !important;
+    font-size: 0.875rem !important;
+  }
+  .r-dropdown__value-container {
+    padding: 0.5rem 1.05rem !important;
+  }
+  .r-dropdown__input-container {
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .r-dropdown__indicator {
+    padding: 0 0.5rem !important;
   }
   .p-inputgroup-addon {
     background: #f5f5f5;
