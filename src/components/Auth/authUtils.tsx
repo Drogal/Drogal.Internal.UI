@@ -98,6 +98,33 @@ const authUtils = () => {
   };
 
   /**
+ * @description
+ * Recupera as propriedades armazenadas no token JWT.
+ *
+ * @returns {Record<string, unknown> | null} Propriedades do token ou null caso não exista
+ */
+  const getTokenProperties = (): Record<string, unknown> | null => {
+    const token = getToken();
+
+    if (!token) return null;
+
+    try {
+      const payload = token.split(".")[1];
+
+      if (!payload) return null;
+
+      const base64 = payload
+        .replace(/-/g, "+")
+        .replace(/_/g, "/")
+        .padEnd(Math.ceil(payload.length / 4) * 4, "=");
+
+      return JSON.parse(atob(base64));
+    } catch {
+      return null;
+    }
+  };
+
+  /**
    * @description
    * Redireciona o usuário para a página de login.
    * @param appName: nome do aplicativo que será utilizando como identidade na tela do sso
@@ -124,6 +151,7 @@ const authUtils = () => {
     removeToken,
     prepareToken,
     isTokenValid,
+    getTokenProperties,
     logout,
     redirectToLogin,
   };
