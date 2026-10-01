@@ -3,6 +3,9 @@
   "private": false,
   "version": "0.0.35",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "release:patch": "npm version patch",
     "update:tags": "git push --follow-tags",
