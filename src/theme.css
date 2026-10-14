@@ -22593,6 +22593,263 @@
   border: 1px solid #e1e1e1;
 }
 
+/* ── Scheduler ──────────────────────────────────────────────────────────────── */
+.drg-scheduler {
+  --drg-scheduler-lines-width: 6rem;
+  --drg-scheduler-column-min-width: 9rem;
+  --drg-scheduler-row-height: 2.25rem;
+  --drg-scheduler-gap: 4px;
+  --drg-scheduler-max-height: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #ebebeb;
+  border-radius: 6px;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: #6c6c6c;
+  /* ── Cabeçalho ──────────────────────────────────────────────────────────── */
+}
+.drg-scheduler__header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.drg-scheduler__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.drg-scheduler__nav-button.p-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  justify-content: center;
+}
+.drg-scheduler__nav-button.p-button .p-button-icon {
+  font-size: 1.25rem;
+}
+.drg-scheduler__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #585858;
+  white-space: nowrap;
+}
+.drg-scheduler__views {
+  margin-left: auto;
+}
+.drg-scheduler {
+  /* ── Grade ──────────────────────────────────────────────────────────────── */
+}
+.drg-scheduler__body {
+  overflow: auto;
+  max-height: var(--drg-scheduler-max-height);
+}
+.drg-scheduler__grid {
+  display: grid;
+  gap: var(--drg-scheduler-gap);
+  min-width: 100%;
+}
+.drg-scheduler__corner, .drg-scheduler__column-header, .drg-scheduler__line-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: #f5f5f5;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #585858;
+}
+.drg-scheduler__corner {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+.drg-scheduler__column-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  flex-direction: column;
+  gap: 0.125rem;
+  border: 1px solid transparent;
+}
+.drg-scheduler__column-header--highlight {
+  background: var(--primary-100);
+  border-color: var(--primary-300);
+  color: var(--primary-800);
+}
+.drg-scheduler__column-header--highlight .drg-scheduler__column-subtitle {
+  color: var(--primary-800);
+}
+.drg-scheduler__column-header--clickable {
+  cursor: pointer;
+  font: inherit;
+}
+.drg-scheduler__column-header--clickable:hover {
+  background: #edf0fa;
+}
+.drg-scheduler__column-subtitle {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #898989;
+}
+.drg-scheduler__line-header {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  justify-content: flex-start;
+  background: #ffffff;
+  border-radius: 0;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #6c6c6c;
+}
+.drg-scheduler__line-header--clickable {
+  cursor: pointer;
+  font: inherit;
+  border-top: 0 none;
+  border-left: 0 none;
+  border-right: 0 none;
+}
+.drg-scheduler__line-header--clickable:hover {
+  background: #edf0fa;
+}
+.drg-scheduler {
+  /* ── Células ────────────────────────────────────────────────────────────── */
+}
+.drg-scheduler__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.125rem;
+  min-width: 0;
+  padding: 0.25rem 0.5rem;
+  border: 0 none;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  text-align: center;
+  overflow: hidden;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.drg-scheduler__cell .drg-icon {
+  font-size: 1rem;
+}
+.drg-scheduler__cell:enabled {
+  cursor: pointer;
+}
+.drg-scheduler__cell:focus-visible {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem rgb(165.4, 212.6, 243.8);
+  z-index: 1;
+}
+.drg-scheduler__cell--available {
+  background: var(--green-drg-100);
+  color: var(--green-drg-700);
+}
+.drg-scheduler__cell--available:enabled:hover {
+  background: var(--green-drg-200);
+}
+.drg-scheduler__cell--reserved {
+  background: var(--red-drg-100);
+  color: #585858;
+}
+.drg-scheduler__cell--reserved:enabled:hover {
+  background: var(--red-drg-200);
+}
+.drg-scheduler__cell--unavailable {
+  background: #ebebeb;
+  color: #898989;
+}
+.drg-scheduler__cell--unavailable:enabled:hover {
+  background: #e1e1e1;
+}
+.drg-scheduler__cell-title, .drg-scheduler__cell-subtitle {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.drg-scheduler__cell-title {
+  font-weight: 700;
+  color: #585858;
+}
+.drg-scheduler__cell-subtitle {
+  font-size: 0.75rem;
+  color: #6c6c6c;
+}
+.drg-scheduler {
+  /* ── Legenda ────────────────────────────────────────────────────────────── */
+}
+.drg-scheduler__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0.75rem 0 0;
+  list-style: none;
+  border-top: 1px solid #ebebeb;
+  font-size: 0.8125rem;
+  color: #6c6c6c;
+}
+.drg-scheduler__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.drg-scheduler__legend-swatch {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 4px;
+}
+.drg-scheduler__legend-swatch--available {
+  background: var(--green-drg-100);
+  border: 1px solid var(--green-drg-300);
+}
+.drg-scheduler__legend-swatch--reserved {
+  background: var(--red-drg-100);
+  border: 1px solid var(--red-drg-300);
+}
+.drg-scheduler__legend-swatch--unavailable {
+  background: #ebebeb;
+  border: 1px solid #e1e1e1;
+}
+.drg-scheduler {
+  /* ── Estados ────────────────────────────────────────────────────────────── */
+}
+.drg-scheduler__loading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--drg-scheduler-gap);
+}
+.drg-scheduler__empty {
+  margin: 0;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #898989;
+}
+.drg-scheduler__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @layer primereact {
   * {
     box-sizing: border-box;
