@@ -22696,7 +22696,7 @@
 .drg-scheduler__column-subtitle {
   font-size: 0.8125rem;
   font-weight: 400;
-  color: #898989;
+  color: #6c6c6c;
 }
 .drg-scheduler__line-header {
   position: sticky;
@@ -22785,7 +22785,7 @@
 }
 .drg-scheduler__cell-subtitle {
   font-size: 0.75rem;
-  color: #6c6c6c;
+  color: #585858;
 }
 .drg-scheduler {
   /* ── Legenda ────────────────────────────────────────────────────────────── */
