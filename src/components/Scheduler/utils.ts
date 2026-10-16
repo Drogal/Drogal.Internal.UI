@@ -47,6 +47,17 @@ export const addDays = (date: Date, amount: number): Date => {
   return result;
 };
 
+export const addMonths = (date: Date, amount: number): Date => {
+  const result = new Date(date.getTime());
+  result.setDate(1);
+  result.setMonth(result.getMonth() + amount);
+  return result;
+};
+
+export const startOfMonth = (date: Date): Date => new Date(date.getFullYear(), date.getMonth(), 1);
+
+export const endOfMonth = (date: Date): Date => new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
 export const isSameDay = (a: Date, b: Date): boolean =>
   a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 
@@ -99,6 +110,12 @@ export const formatDateKey = (date: Date): string =>
 
 /** "29/09" */
 export const formatDayMonth = (date: Date): string => `${pad2(date.getDate())}/${pad2(date.getMonth() + 1)}`;
+
+/** "01" */
+export const formatDayNumber = (date: Date): string => pad2(date.getDate());
+
+/** "outubro de 2026" */
+export const formatMonthTitle = (date: Date): string => `${monthLongFormatter.format(date)} de ${date.getFullYear()}`;
 
 /** "Seg" */
 export const formatWeekdayLabel = (date: Date): string => WEEKDAY_LABELS[date.getDay()];

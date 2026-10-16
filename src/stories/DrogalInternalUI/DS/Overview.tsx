@@ -30,6 +30,7 @@ import EnumIcons from '../../../icons/EnumIcons';
 import { Icon } from '../../../components/Icon';
 import { Scheduler } from '../../../components/Scheduler';
 import { mapHorariosToScheduler } from '../../../components/Scheduler/adapter';
+import { SideMenu } from '../../../components/SideMenu';
 
 /** Semana de exemplo do Scheduler (apenas o período da manhã, para caber no card). */
 const schedulerOverview = mapHorariosToScheduler({
@@ -975,6 +976,26 @@ export const Overview: React.FC = () => {
             />
             <div className="component-card-footer">
               <a href="../?path=/docs/drogal-internal-ui-ds-scheduler--docs" className="component-link" target="_parent">
+                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
+              </a>
+            </div>
+          </div>
+
+          <div className="component-card">
+            <h3>SideMenu</h3>
+            <SideMenu
+              sticky={false}
+              activeId="overview"
+              items={[
+                { id: 'overview', label: 'Visão geral', icon: EnumIcons.Outlined.dashboard },
+                { id: 'flows', label: 'Fluxos de execução', icon: EnumIcons.Outlined.list_alt },
+                { id: 'agents', label: 'Agentes', icon: EnumIcons.Outlined.dns },
+                { id: 'collector', label: 'Coletor', icon: EnumIcons.Outlined.move_to_inbox },
+                { id: 'throughput', label: 'Vazão', icon: EnumIcons.Outlined.tune },
+              ]}
+            />
+            <div className="component-card-footer">
+              <a href="../?path=/docs/drogal-internal-ui-ds-sidemenu--docs" className="component-link" target="_parent">
                 Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
               </a>
             </div>

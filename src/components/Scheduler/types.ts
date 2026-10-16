@@ -78,6 +78,8 @@ export interface SchedulerCell {
    * Por padrão é derivado dos títulos das linhas ocupadas.
    */
   timeLabel?: string;
+  /** Destaca a célula (ex.: dia atual na visão mensal). */
+  highlight?: boolean;
   onClick?: () => void;
 }
 
@@ -108,7 +110,7 @@ export interface SchedulerProps {
   showLegend?: boolean;
   /** Sobrescreve os rótulos da legenda e das descrições acessíveis. */
   legend?: Partial<SchedulerLegendLabels>;
-  /** Exibe um skeleton no lugar da grade. */
+  /** Exibe um skeleton com o formato da grade da visão atual. */
   loading?: boolean;
   /** Mensagem exibida quando não há colunas ou linhas. */
   emptyMessage?: string;

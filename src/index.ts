@@ -54,10 +54,13 @@ export { mapHorariosToScheduler } from "./components/Scheduler/adapter"
 export type {
   MapHorariosOptions,
   SchedulerData,
-  SchedulerAdapterView,
   SchedulerSlotClickEvent,
   SchedulerTimeRange,
 } from "./components/Scheduler/adapter"
 export { useSchedulerNavigation } from "./components/Scheduler/useSchedulerNavigation"
 export type { SchedulerNavigation, UseSchedulerNavigationOptions } from "./components/Scheduler/useSchedulerNavigation"
 export { DEFAULT_LEGEND_LABELS, SCHEDULER_VIEW_LABELS } from "./components/Scheduler/constants"
+
+// SideMenu
+export { SideMenu } from "./components/SideMenu"
+export type { SideMenuProps, SideMenuItem, SideMenuGroup, SideMenuItemTemplateOptions } from "./components/SideMenu"

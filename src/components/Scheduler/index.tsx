@@ -1,12 +1,11 @@
-import { Skeleton } from "../Skeleton";
 import { DEFAULT_LEGEND_LABELS } from "./constants";
 import { SchedulerGrid } from "./SchedulerGrid";
 import { SchedulerHeader } from "./SchedulerHeader";
 import { SchedulerLegend } from "./SchedulerLegend";
+import { SchedulerSkeleton } from "./SchedulerSkeleton";
 import type { SchedulerLegendLabels, SchedulerProps, SchedulerView } from "./types";
 
 const DEFAULT_VIEWS: SchedulerView[] = ["day", "week", "month"];
-const SKELETON_ROWS = 8;
 
 const byOrder = <T extends { order: number }>(a: T, b: T) => a.order - b.order;
 
@@ -51,13 +50,7 @@ export const Scheduler = ({
 
   const renderBody = () => {
     if (loading) {
-      return (
-        <div className="drg-scheduler__loading" role="status" aria-busy="true" aria-label="Carregando horários">
-          {Array.from({ length: SKELETON_ROWS }, (_, index) => (
-            <Skeleton key={index} width="100%" height="var(--drg-scheduler-row-height)" />
-          ))}
-        </div>
-      );
+      return <SchedulerSkeleton view={view} columns={sortedColumns.length} rows={sortedLines.length} />;
     }
 
     if (isEmpty) {
@@ -76,7 +69,7 @@ export const Scheduler = ({
   };
 
   return (
-    <div className={`drg-scheduler${className ? ` ${className}` : ""}`} style={style}>
+    <div className={`drg-scheduler drg-scheduler--view-${view}${className ? ` ${className}` : ""}`} style={style}>
       {showHeader && (
         <SchedulerHeader
           title={title}

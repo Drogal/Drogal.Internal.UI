@@ -1,23 +1,23 @@
 import { useState } from "react";
-import type { SchedulerAdapterView } from "./adapter";
-import { addDays, toDate } from "./utils";
+import type { SchedulerView } from "./types";
+import { addDays, addMonths, toDate } from "./utils";
 
 export interface UseSchedulerNavigationOptions {
   /** @default new Date() */
   initialDate?: Date | string;
   /** @default "week" */
-  initialView?: SchedulerAdapterView;
+  initialView?: SchedulerView;
 }
 
 export interface SchedulerNavigation {
   /** Data de referência da visão atual. */
   date: Date;
   setDate: (date: Date) => void;
-  view: SchedulerAdapterView;
-  setView: (view: SchedulerAdapterView) => void;
-  /** Volta um dia ou uma semana, conforme a visão. */
+  view: SchedulerView;
+  setView: (view: SchedulerView) => void;
+  /** Volta um dia, uma semana ou um mês, conforme a visão. */
   previous: () => void;
-  /** Avança um dia ou uma semana, conforme a visão. */
+  /** Avança um dia, uma semana ou um mês, conforme a visão. */
   next: () => void;
   /** Volta para a data atual. */
   today: () => void;
@@ -34,16 +34,21 @@ export interface SchedulerNavigation {
  */
 export const useSchedulerNavigation = (options: UseSchedulerNavigationOptions = {}): SchedulerNavigation => {
   const [date, setDate] = useState<Date>(() => toDate(options.initialDate ?? new Date()));
-  const [view, setView] = useState<SchedulerAdapterView>(options.initialView ?? "week");
-  const step = view === "day" ? 1 : 7;
+  const [view, setView] = useState<SchedulerView>(options.initialView ?? "week");
+
+  const move = (direction: 1 | -1) =>
+    setDate((current) => {
+      if (view === "month") return addMonths(current, direction);
+      return addDays(current, direction * (view === "day" ? 1 : 7));
+    });
 
   return {
     date,
     setDate,
     view,
     setView,
-    previous: () => setDate((current) => addDays(current, -step)),
-    next: () => setDate((current) => addDays(current, step)),
+    previous: () => move(-1),
+    next: () => move(1),
     today: () => setDate(new Date()),
   };
 };

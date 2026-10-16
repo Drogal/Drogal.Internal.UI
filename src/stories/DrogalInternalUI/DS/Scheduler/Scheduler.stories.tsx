@@ -51,6 +51,17 @@ const HORARIOS: Horario[] = [
   horario(12, 2, 'Paulo Nunes', 'Financeiro', '09-29', '15:00', '16:30'),
   horario(13, 2, 'Manutenção', 'Facilities', '09-30', '14:00', '16:00', 'Excessao'),
   horario(14, 2, 'Beatriz Rocha', 'Jurídico', '10-02', '09:00', '09:45'),
+  // demais semanas de outubro (visão mensal)
+  horario(15, 1, 'Bruno Lima', 'TI', '10-06', '09:00', '10:30'),
+  horario(16, 1, 'Larissa Melo', 'RH', '10-06', '14:00', '15:00'),
+  horario(17, 1, 'Comitê de Produto', 'Produto', '10-14', '10:00', '12:00'),
+  horario(18, 1, 'Auditoria', 'Financeiro', '10-21', '08:00', '12:00', 'Excessao'),
+  horario(19, 1, 'Marcos Dias', 'Logística', '10-27', '15:00', '16:00'),
+  horario(20, 1, 'Renata Souza', 'Marketing', '10-27', '16:00', '17:00'),
+  // dia lotado (08/10) e dia bloqueado o expediente inteiro (20/10)
+  horario(21, 1, 'Workshop de Vendas', 'Comercial', '10-08', '08:00', '12:00'),
+  horario(22, 1, 'Workshop de Vendas', 'Comercial', '10-08', '12:30', '17:00'),
+  horario(23, 1, 'Manutenção', 'Facilities', '10-20', '08:00', '18:30', 'Excessao'),
 ];
 
 /** Almoço e fim do expediente, bloqueados em todos os dias. */
@@ -74,6 +85,15 @@ const dia = mapHorariosToScheduler({
   view: 'day',
   date: HOJE,
   today: HOJE,
+  horarios: HORARIOS,
+  codigoSala: 1,
+  blockedRanges: EXPEDIENTE,
+});
+
+const mes = mapHorariosToScheduler({
+  view: 'month',
+  date: new Date(2026, 9, 15),
+  today: new Date(2026, 9, 15),
   horarios: HORARIOS,
   codigoSala: 1,
   blockedRanges: EXPEDIENTE,
@@ -111,9 +131,18 @@ function SchedulerControlado() {
       ]);
       setMensagem(`Reserva criada em ${start.toLocaleString('pt-BR')}.`);
     },
-    onHorarioClick: (item) => {
-      setHorarios((atual) => atual.filter((h) => h.Id !== item.Id));
-      setMensagem(`Reserva de ${item.NomeUsuario} cancelada.`);
+    onHorarioClick: (item, grupo) => {
+      const ids = new Set(grupo.map((h) => h.Id));
+      setHorarios((atual) => atual.filter((h) => !ids.has(h.Id)));
+      setMensagem(
+        grupo.length > 1
+          ? `${grupo.length} reservas de ${item.NomeUsuario} canceladas.`
+          : `Reserva de ${item.NomeUsuario} cancelada.`,
+      );
+    },
+    onDayClick: (day) => {
+      nav.setDate(day);
+      nav.setView('day');
     },
   });
 
@@ -122,10 +151,7 @@ function SchedulerControlado() {
       <Scheduler
         {...data}
         view={nav.view}
-        views={['day', 'week']}
-        onViewChange={(view) => {
-          if (view !== 'month') nav.setView(view);
-        }}
+        onViewChange={nav.setView}
         onPrevious={nav.previous}
         onNext={nav.next}
         onToday={() => nav.setDate(HOJE)}
@@ -147,6 +173,10 @@ function SchedulerPorSala() {
     horarios: HORARIOS,
     codigoSala,
     blockedRanges: EXPEDIENTE,
+    onDayClick: (day) => {
+      nav.setDate(day);
+      nav.setView('day');
+    },
   });
 
   return (
@@ -168,10 +198,7 @@ function SchedulerPorSala() {
         cells={data.cells}
         title={data.title}
         view={nav.view}
-        views={['day', 'week']}
-        onViewChange={(view) => {
-          if (view !== 'month') nav.setView(view);
-        }}
+        onViewChange={nav.setView}
         onPrevious={nav.previous}
         onNext={nav.next}
         onToday={() => nav.setDate(HOJE)}
@@ -197,7 +224,8 @@ const meta = {
           'para a navegação entre períodos use <code>useSchedulerNavigation</code>.<br/><br/>' +
           'Dimensões ajustáveis por CSS custom properties no elemento raiz: <code>--drg-scheduler-lines-width</code>, ' +
           '<code>--drg-scheduler-column-min-width</code>, <code>--drg-scheduler-row-height</code>, ' +
-          '<code>--drg-scheduler-gap</code> e <code>--drg-scheduler-max-height</code>.',
+          '<code>--drg-scheduler-gap</code>, <code>--drg-scheduler-max-height</code> e ' +
+          '<code>--drg-scheduler-title-width</code> (largura mínima do título entre as setas, para elas não se moverem ao trocar o período).',
       },
     },
   },
@@ -341,6 +369,28 @@ export const Dia: Story = {
   },
 };
 
+export const Mes: Story = {
+  args: {
+    columns: mes.columns,
+    lines: mes.lines,
+    cells: mes.cells,
+    title: mes.title,
+    linesHeader: 'Semana',
+    view: 'month',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Visão mensal: uma linha por semana e uma célula por dia. O dia continua disponível enquanto houver horário livre ' +
+          '(com a quantidade no subtítulo), fica reservado quando as reservas lotam o expediente e indisponível quando bloqueios ' +
+          'e exceções ocupam o dia inteiro ou quando está fora do mês. O dia atual recebe destaque e <code>onDayClick</code> ' +
+          'do adapter torna os dias clicáveis.',
+      },
+    },
+  },
+};
+
 export const NavegacaoControlada: Story = {
   render: () => <SchedulerControlado />,
   parameters: {
@@ -348,7 +398,9 @@ export const NavegacaoControlada: Story = {
       description: {
         story:
           'Exemplo completo com <code>useSchedulerNavigation</code>: setas, "Hoje" e troca de visão controlados pelo pai. ' +
-          'Clicar em um slot disponível cria uma reserva e clicar em uma reserva a remove (estado local da story).',
+          'Clicar em um slot disponível cria uma reserva, clicar em uma reserva a remove (estado local da story) ' +
+          'e clicar em um dia na visão mensal abre a visão diária daquele dia. Reservas contíguas do mesmo usuário ' +
+          'são unidas em uma célula só (<code>mergeAdjacent</code>).',
       },
     },
   },
@@ -376,7 +428,46 @@ export const Loading: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Enquanto <code>loading</code> é verdadeiro a grade é substituída por um skeleton.',
+        story:
+          'Enquanto <code>loading</code> é verdadeiro a grade é substituída por um skeleton com o formato da visão atual. ' +
+          'Com <code>columns</code> e <code>lines</code> informados o skeleton usa as mesmas quantidades; sem eles, usa um padrão por visão.',
+      },
+    },
+  },
+};
+
+export const LoadingDia: Story = {
+  args: {
+    columns: [],
+    lines: [],
+    cells: [],
+    title: dia.title,
+    view: 'day',
+    loading: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Loading da visão diária sem dados prévios: uma coluna e o número padrão de linhas.',
+      },
+    },
+  },
+};
+
+export const LoadingMes: Story = {
+  args: {
+    columns: [],
+    lines: [],
+    cells: [],
+    title: mes.title,
+    linesHeader: 'Semana',
+    view: 'month',
+    loading: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Loading da visão mensal sem dados prévios: cinco colunas e cinco semanas com a altura de linha da visão mensal.',
       },
     },
   },

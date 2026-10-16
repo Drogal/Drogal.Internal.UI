@@ -20,7 +20,7 @@ interface SchedulerCellProps {
 
 export const SchedulerCell = ({ cell, description, style }: SchedulerCellProps) => {
   const hasText = Boolean(cell.title || cell.subtitle);
-  const className = `drg-scheduler__cell drg-scheduler__cell--${cell.variant}`;
+  const className = `drg-scheduler__cell drg-scheduler__cell--${cell.variant}${cell.highlight ? " drg-scheduler__cell--highlight" : ""}`;
 
   const content = hasText ? (
     <>
