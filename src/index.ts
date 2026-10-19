@@ -34,3 +34,33 @@ export { Header } from "./components/Header"
 export { Icon } from "./components/Icon"
 
 
+
+// Scheduler
+export { Scheduler } from "./components/Scheduler"
+export type {
+  SchedulerProps,
+  SchedulerColumn,
+  SchedulerLine,
+  SchedulerCell,
+  SchedulerCellVariant,
+  SchedulerGridArea,
+  SchedulerLegendLabels,
+  SchedulerView,
+  Sala,
+  Horario,
+  HorarioTipo,
+} from "./components/Scheduler/types"
+export { mapHorariosToScheduler } from "./components/Scheduler/adapter"
+export type {
+  MapHorariosOptions,
+  SchedulerData,
+  SchedulerSlotClickEvent,
+  SchedulerTimeRange,
+} from "./components/Scheduler/adapter"
+export { useSchedulerNavigation } from "./components/Scheduler/useSchedulerNavigation"
+export type { SchedulerNavigation, UseSchedulerNavigationOptions } from "./components/Scheduler/useSchedulerNavigation"
+export { DEFAULT_LEGEND_LABELS, SCHEDULER_VIEW_LABELS } from "./components/Scheduler/constants"
+
+// SideMenu
+export { SideMenu } from "./components/SideMenu"
+export type { SideMenuProps, SideMenuItem, SideMenuGroup, SideMenuItemTemplateOptions } from "./components/SideMenu"

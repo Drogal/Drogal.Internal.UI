@@ -1,0 +1,154 @@
+/* ── SideMenu ───────────────────────────────────────────────────────────────── */
+
+.drg-side-menu {
+  --drg-side-menu-width: 14rem;
+  --drg-side-menu-top: calc(80px + 1rem);
+  --drg-side-menu-gap: 0.25rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: var(--font-family);
+  font-size: 1rem;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--drg-side-menu-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem;
+    border: 0 none;
+    border-radius: $borderRadius;
+    background: transparent;
+    color: $textColor;
+    font: inherit;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 120ms ease, color 120ms ease;
+
+    .drg-icon {
+      flex-shrink: 0;
+      font-size: 1.25rem;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: $shade200;
+      color: var(--surface-700);
+    }
+
+    &:focus-visible {
+      @include focused();
+    }
+
+    &--active,
+    &--active:hover,
+    &--active:focus-visible {
+      background: $primaryColor;
+      color: $primaryTextColor;
+    }
+
+    &--disabled,
+    &:disabled {
+      opacity: $disabledOpacity;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &__label {
+    white-space: nowrap;
+  }
+
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--drg-side-menu-gap);
+
+    & + & {
+      padding-top: 0.5rem;
+      border-top: 1px solid $shade300;
+    }
+  }
+
+  &__group-title {
+    display: flex;
+    flex-basis: 100%; // na fila horizontal, o título ocupa a linha e os itens do grupo vêm abaixo dele
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.5rem 0.25rem;
+    color: $textColor;
+    font-size: 0.875rem;
+    font-weight: 600;
+
+    .drg-icon {
+      flex-shrink: 0;
+      font-size: 1.125rem;
+    }
+  }
+
+  &__header,
+  &__footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    width: var(--drg-side-menu-width);
+    flex-shrink: 0;
+
+    &__list {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+
+    &__group {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: stretch;
+
+      & + & {
+        margin-top: 0.25rem;
+      }
+    }
+
+    &__group-title {
+      flex-basis: auto;
+    }
+
+    &__header,
+    &__footer {
+      justify-content: flex-start;
+    }
+
+    &--sticky {
+      position: sticky;
+      top: var(--drg-side-menu-top);
+      align-self: flex-start;
+      max-height: calc(100vh - var(--drg-side-menu-top) - 1rem);
+      overflow-y: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__link {
+      transition: none;
+    }
+  }
+}
