@@ -22427,6 +22427,38 @@
   flex: 1;
 }
 
+/* ── Botão de menu (hambúrguer) ───────────────────────────────────────────── */
+/* Só abaixo de 768px, onde o SideMenu vira gaveta; no desktop o menu fica ao lado do conteúdo. */
+.drg-header-menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin-left: 0.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--primary-color-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color var(--transition-duration, 0.3s);
+}
+.drg-header-menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.drg-header-menu-button:focus-visible {
+  outline: 2px solid var(--primary-color-text);
+  outline-offset: 2px;
+}
+@media (max-width: 767px) {
+  .drg-header-menu-button {
+    display: inline-flex;
+  }
+}
+
 .drg-header-content {
   display: flex;
   align-items: center;
@@ -22593,276 +22625,8 @@
   border: 1px solid #e1e1e1;
 }
 
-/* ── Scheduler ──────────────────────────────────────────────────────────────── */
-.drg-scheduler {
-  --drg-scheduler-lines-width: 6rem;
-  --drg-scheduler-column-min-width: 9rem;
-  --drg-scheduler-row-height: 3rem;
-  --drg-scheduler-gap: 2px;
-  --drg-scheduler-max-height: none;
-  --drg-scheduler-title-width: 26rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  padding: 1rem;
-  background: #ffffff;
-  border: 1px solid #ebebeb;
-  border-radius: 6px;
-  font-family: var(--font-family);
-  font-size: 0.875rem;
-  color: #6c6c6c;
-}
-.drg-scheduler--view-month {
-  --drg-scheduler-lines-width: 8rem;
-  --drg-scheduler-row-height: 4.5rem;
-}
-.drg-scheduler--view-month .drg-scheduler__cell-title {
-  font-size: 1rem;
-}
-.drg-scheduler {
-  /* ── Cabeçalho ──────────────────────────────────────────────────────────── */
-}
-.drg-scheduler__header {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-.drg-scheduler__nav {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.drg-scheduler__nav-button.p-button {
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0;
-  justify-content: center;
-}
-.drg-scheduler__nav-button.p-button .p-button-icon {
-  font-size: 1.25rem;
-}
-.drg-scheduler__title {
-  min-width: var(--drg-scheduler-title-width);
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: #585858;
-  text-align: center;
-  white-space: nowrap;
-}
-.drg-scheduler__views {
-  margin-left: auto;
-}
-.drg-scheduler {
-  /* ── Grade ──────────────────────────────────────────────────────────────── */
-}
-.drg-scheduler__body {
-  overflow: auto;
-  max-height: var(--drg-scheduler-max-height);
-}
-.drg-scheduler__grid {
-  display: grid;
-  gap: var(--drg-scheduler-gap);
-  min-width: 100%;
-}
-.drg-scheduler__corner, .drg-scheduler__column-header, .drg-scheduler__line-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  background: #f5f5f5;
-  border-radius: 6px;
-  font-weight: 600;
-  color: #585858;
-}
-.drg-scheduler__corner {
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 3;
-}
-.drg-scheduler__column-header {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  flex-direction: column;
-  gap: 0.125rem;
-  border: 1px solid transparent;
-}
-.drg-scheduler__column-header--highlight {
-  background: var(--primary-200);
-  border-color: var(--primary-400);
-  color: var(--primary-900);
-}
-.drg-scheduler__column-header--highlight .drg-scheduler__column-subtitle {
-  color: var(--primary-900);
-}
-.drg-scheduler__column-header--clickable {
-  cursor: pointer;
-  font: inherit;
-}
-.drg-scheduler__column-header--clickable:hover {
-  background: #edf0fa;
-}
-.drg-scheduler__column-subtitle {
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: #585858;
-}
-.drg-scheduler__line-header {
-  position: sticky;
-  left: 0;
-  z-index: 1;
-  background: #ffffff;
-  border-radius: 0;
-  border-bottom: 1px solid #ebebeb;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #585858;
-}
-.drg-scheduler__line-header--clickable {
-  cursor: pointer;
-  font: inherit;
-  border-top: 0 none;
-  border-left: 0 none;
-  border-right: 0 none;
-}
-.drg-scheduler__line-header--clickable:hover {
-  background: #edf0fa;
-}
-.drg-scheduler {
-  /* ── Células ────────────────────────────────────────────────────────────── */
-}
-.drg-scheduler__cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.125rem;
-  min-width: 0;
-  padding: 0.25rem 0.5rem;
-  border: 0 none;
-  border-radius: 6px;
-  font: inherit;
-  font-size: 0.8125rem;
-  line-height: 1.2;
-  text-align: center;
-  overflow: hidden;
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-.drg-scheduler__cell .drg-icon {
-  font-size: 1rem;
-}
-.drg-scheduler__cell:enabled {
-  cursor: pointer;
-}
-.drg-scheduler__cell:focus-visible {
-  outline: 0 none;
-  outline-offset: 0;
-  box-shadow: 0 0 0 0.1rem rgb(165.4, 212.6, 243.8);
-  z-index: 1;
-}
-.drg-scheduler__cell--available {
-  background: var(--green-drg-200);
-  color: var(--green-drg-900);
-}
-.drg-scheduler__cell--available:enabled:hover {
-  background: var(--green-drg-300);
-}
-.drg-scheduler__cell--reserved {
-  background: var(--red-drg-200);
-  color: var(--red-drg-900);
-}
-.drg-scheduler__cell--reserved:enabled:hover {
-  background: var(--red-drg-300);
-}
-.drg-scheduler__cell--unavailable {
-  background: #e1e1e1;
-  color: #585858;
-}
-.drg-scheduler__cell--unavailable:enabled:hover {
-  background: #cecece;
-}
-.drg-scheduler__cell--highlight {
-  box-shadow: inset 0 0 0 2px var(--primary-600);
-}
-.drg-scheduler__cell-title, .drg-scheduler__cell-subtitle {
-  max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.drg-scheduler__cell-title {
-  font-weight: 700;
-  color: #3b3b3b;
-}
-.drg-scheduler__cell-subtitle {
-  font-size: 0.75rem;
-  color: #585858;
-}
-.drg-scheduler {
-  /* ── Legenda ────────────────────────────────────────────────────────────── */
-}
-.drg-scheduler__legend {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0.75rem 0 0;
-  list-style: none;
-  border-top: 1px solid #ebebeb;
-  font-size: 0.8125rem;
-  color: #585858;
-}
-.drg-scheduler__legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.drg-scheduler__legend-swatch {
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 4px;
-}
-.drg-scheduler__legend-swatch--available {
-  background: var(--green-drg-200);
-  border: 1px solid var(--green-drg-400);
-}
-.drg-scheduler__legend-swatch--reserved {
-  background: var(--red-drg-200);
-  border: 1px solid var(--red-drg-400);
-}
-.drg-scheduler__legend-swatch--unavailable {
-  background: #e1e1e1;
-  border: 1px solid #cecece;
-}
-.drg-scheduler {
-  /* ── Estados ────────────────────────────────────────────────────────────── */
-}
-.drg-scheduler__skeleton .p-skeleton {
-  border-radius: 6px;
-}
-.drg-scheduler__empty {
-  margin: 0;
-  padding: 2rem 1rem;
-  text-align: center;
-  color: #898989;
-}
-.drg-scheduler__sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 /* ── SideMenu ───────────────────────────────────────────────────────────────── */
+/* As regras de coluna, que a gaveta do celular repete; no desktop elas vêm do @media de 768px abaixo. */
 .drg-side-menu {
   --drg-side-menu-width: 14rem;
   --drg-side-menu-top: calc(80px + 1rem);
@@ -22954,6 +22718,34 @@
   display: flex;
   justify-content: center;
 }
+.drg-side-menu {
+  /* A barra do botão de fechar e o fundo escurecido só aparecem na gaveta aberta do celular (fim do arquivo). */
+}
+.drg-side-menu__drawer-bar, .drg-side-menu__backdrop {
+  display: none;
+}
+.drg-side-menu__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0 none;
+  border-radius: 50%;
+  background: transparent;
+  color: #6c6c6c;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.drg-side-menu__close:hover {
+  background: #edf0fa;
+}
+.drg-side-menu__close:focus-visible {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem rgb(165.4, 212.6, 243.8);
+}
 @media (min-width: 768px) {
   .drg-side-menu {
     width: var(--drg-side-menu-width);
@@ -22991,6 +22783,68 @@
   }
 }
 
+/* ── Gaveta no celular ──────────────────────────────────────────────────────── */
+/* Com `onMobileClose`, abaixo de 768px o menu sai da página e só aparece aberto, como gaveta à esquerda, por cima do
+   cabeçalho (z-index 999) e de um fundo escurecido. */
+@media (max-width: 767px) {
+  .drg-side-menu--drawer {
+    display: none;
+  }
+  .drg-side-menu--drawer.drg-side-menu--open .drg-side-menu__list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .drg-side-menu--drawer.drg-side-menu--open .drg-side-menu__group {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+  .drg-side-menu--drawer.drg-side-menu--open .drg-side-menu__group + .drg-side-menu__group {
+    margin-top: 0.25rem;
+  }
+  .drg-side-menu--drawer.drg-side-menu--open .drg-side-menu__group-title {
+    flex-basis: auto;
+  }
+  .drg-side-menu--drawer.drg-side-menu--open .drg-side-menu__header,
+  .drg-side-menu--drawer.drg-side-menu--open .drg-side-menu__footer {
+    justify-content: flex-start;
+  }
+  .drg-side-menu--drawer.drg-side-menu--open {
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    width: min(85vw, 18rem);
+    padding: 0.75rem 1rem 1rem;
+    overflow-y: auto;
+    background: #ffffff;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    animation: drg-side-menu-entra 160ms ease-out;
+  }
+  .drg-side-menu--drawer.drg-side-menu--open .drg-side-menu__drawer-bar {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .drg-side-menu__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+@keyframes drg-side-menu-entra {
+  from {
+    transform: translateX(-100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drg-side-menu--drawer.drg-side-menu--open {
+    animation: none;
+  }
+}
 @layer primereact {
   * {
     box-sizing: border-box;

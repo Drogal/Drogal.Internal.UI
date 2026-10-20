@@ -1,4 +1,5 @@
-import { useId, type ComponentProps, type CSSProperties, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, type ComponentProps, type CSSProperties, type MouseEvent, type ReactNode } from "react";
+import EnumIcons from "../../icons/EnumIcons";
 import { Icon } from "../Icon";
 
 type IconName = ComponentProps<typeof Icon>["name"];
@@ -55,6 +56,15 @@ export interface SideMenuProps {
   stickyTop?: string;
   /** @default "Navegação principal" */
   ariaLabel?: string;
+  /**
+   * Gaveta no celular. Com `onMobileClose`, abaixo de 768px o menu sai da página e vira uma gaveta à esquerda, aberta
+   * enquanto `mobileOpen` (o botão de menu do `Header`, `onMenuToggle`, alterna). Fecha no fundo escurecido, no Esc,
+   * no botão de fechar e ao escolher um item. Sem `onMobileClose`, as telas menores mostram a fila horizontal.
+   */
+  mobileOpen?: boolean;
+  onMobileClose?: () => void;
+  /** Para o `aria-controls` do botão de menu do `Header` (`menuId`). */
+  id?: string;
   className?: string;
   style?: CSSProperties;
 }
@@ -77,6 +87,9 @@ const itemKey = (item: SideMenuItem): string | number => item.id ?? item.href ??
  *
  * Os itens podem vir soltos (`items`) ou em grupos com título (`groups`); na fila
  * horizontal das telas menores, cada grupo começa uma linha com o seu título.
+ *
+ * Com `onMobileClose`, as telas menores trocam a fila horizontal por uma gaveta,
+ * aberta pelo botão de menu do `Header` (`onMenuToggle`).
  */
 export const SideMenu = ({
   items = [],
@@ -87,10 +100,44 @@ export const SideMenu = ({
   sticky = true,
   stickyTop,
   ariaLabel = "Navegação principal",
+  mobileOpen = false,
+  onMobileClose,
+  id,
   className,
   style,
 }: SideMenuProps) => {
   const groupIdPrefix = useId();
+  const drawer = onMobileClose !== undefined;
+  const open = drawer && mobileOpen;
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  // O fechar mais recente, sem fazer o efeito de abertura rodar de novo a cada render do pai.
+  const onMobileCloseRef = useRef(onMobileClose);
+  useLayoutEffect(() => {
+    onMobileCloseRef.current = onMobileClose;
+  });
+
+  // Gaveta aberta: Esc fecha, o foco vai para o botão de fechar e, no celular, a página atrás não rola. Ao fechar, o
+  // foco volta para quem o tinha ao abrir (o botão de menu do Header), e não fica no botão de fechar escondido.
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onMobileCloseRef.current?.();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    closeButtonRef.current?.focus();
+
+    const lockScroll = window.matchMedia?.("(max-width: 767px)").matches ?? false;
+    const previousOverflow = document.body.style.overflow;
+    if (lockScroll) document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      if (lockScroll) document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus();
+    };
+  }, [open]);
   const navStyle = {
     ...style,
     ...(stickyTop ? { "--drg-side-menu-top": stickyTop } : {}),
@@ -157,28 +204,63 @@ export const SideMenu = ({
     </ul>
   );
 
-  return (
-    <nav
-      className={`drg-side-menu${sticky ? " drg-side-menu--sticky" : ""}${className ? ` ${className}` : ""}`}
-      aria-label={ariaLabel}
-      style={navStyle}
-    >
-      {header && <div className="drg-side-menu__header">{header}</div>}
-      {(items.length > 0 || groups.length === 0) && renderList(items)}
-      {groups.map((group, position) => {
-        const titleId = `${groupIdPrefix}-group-${position}`;
+  const navClassName = [
+    "drg-side-menu",
+    sticky && "drg-side-menu--sticky",
+    drawer && "drg-side-menu--drawer",
+    open && "drg-side-menu--open",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-        return (
-          <div key={group.id ?? group.label} className="drg-side-menu__group" role="group" aria-labelledby={titleId}>
-            <span id={titleId} className="drg-side-menu__group-title" title={group.description}>
-              {group.icon && <Icon name={group.icon} aria-hidden="true" />}
-              <span className="drg-side-menu__label">{group.label}</span>
-            </span>
-            {renderList(group.items)}
+  return (
+    <>
+      {open && <div className="drg-side-menu__backdrop" aria-hidden="true" onClick={onMobileClose} />}
+      <nav
+        id={id}
+        className={navClassName}
+        aria-label={ariaLabel}
+        style={navStyle}
+        // Na gaveta, escolher um item fecha: o clique sobe do link (ou do NavLink do `template`) até aqui.
+        onClick={
+          open
+            ? (event) => {
+                if ((event.target as HTMLElement).closest(`.${LINK_CLASS}`)) onMobileClose?.();
+              }
+            : undefined
+        }
+      >
+        {drawer && (
+          <div className="drg-side-menu__drawer-bar">
+            <button
+              ref={closeButtonRef}
+              type="button"
+              className="drg-side-menu__close"
+              aria-label="Fechar menu"
+              onClick={onMobileClose}
+            >
+              <Icon name={EnumIcons.Outlined.close} aria-hidden="true" />
+            </button>
           </div>
-        );
-      })}
-      {footer && <div className="drg-side-menu__footer">{footer}</div>}
-    </nav>
+        )}
+        {header && <div className="drg-side-menu__header">{header}</div>}
+        {(items.length > 0 || groups.length === 0) && renderList(items)}
+        {groups.map((group, position) => {
+          const titleId = `${groupIdPrefix}-group-${position}`;
+
+          return (
+            <div key={group.id ?? group.label} className="drg-side-menu__group" role="group" aria-labelledby={titleId}>
+              <span id={titleId} className="drg-side-menu__group-title" title={group.description}>
+                {group.icon && <Icon name={group.icon} aria-hidden="true" />}
+                <span className="drg-side-menu__label">{group.label}</span>
+              </span>
+              {renderList(group.items)}
+            </div>
+          );
+        })}
+        {footer && <div className="drg-side-menu__footer">{footer}</div>}
+      </nav>
+    </>
   );
 };

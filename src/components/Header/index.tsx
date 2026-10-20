@@ -18,6 +18,15 @@ export interface HeaderProps {
   user?: UserInfo;
   onLogout?: () => void;
   children?: React.ReactNode;
+  /**
+   * Com ele, abaixo de 768px aparece o botão de menu (hambúrguer), à esquerda do logo, para abrir o `SideMenu` em
+   * gaveta (`mobileOpen` e `onMobileClose` dele). No desktop o botão não aparece.
+   */
+  onMenuToggle?: () => void;
+  /** Se a gaveta está aberta, para o `aria-expanded` e o rótulo do botão. */
+  menuOpen?: boolean;
+  /** O `id` do `SideMenu` que o botão abre, para o `aria-controls`. */
+  menuId?: string;
 }
 
 // ── Logo ─────────────────────────────────────────────────────────────────────
@@ -103,10 +112,32 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, onLogout }) => {
 
 // ── Header ────────────────────────────────────────────────────────────────────
 
-export const Header: React.FC<HeaderProps> = ({ logoSrc, logoAlt, logoHref, user, onLogout, children }) => (
+export const Header: React.FC<HeaderProps> = ({
+  logoSrc,
+  logoAlt,
+  logoHref,
+  user,
+  onLogout,
+  children,
+  onMenuToggle,
+  menuOpen = false,
+  menuId,
+}) => (
   <header className="drg-header" role="banner">
     <div className="drg-wrapper-header">
 
+      {onMenuToggle && (
+        <button
+          type="button"
+          className="drg-header-menu-button"
+          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={menuOpen}
+          aria-controls={menuId}
+          onClick={onMenuToggle}
+        >
+          <Icon name={EnumIcons.Outlined.menu} aria-hidden="true" />
+        </button>
+      )}
       <Logo src={logoSrc} alt={logoAlt} href={logoHref} />
       {children && <div className="drg-header-content">{children}</div>}
       <div className="drg-header-spacer" />
