@@ -31,6 +31,40 @@
   flex: 1;
 }
 
+/* ── Botão de menu (hambúrguer) ───────────────────────────────────────────── */
+
+/* Só abaixo de 768px, onde o SideMenu vira gaveta; no desktop o menu fica ao lado do conteúdo. */
+.drg-header-menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin-left: 0.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--primary-color-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color var(--transition-duration, 0.3s);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color-text);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 767px) {
+    display: inline-flex;
+  }
+}
+
 .drg-header-content {
   display: flex;
   align-items: center;

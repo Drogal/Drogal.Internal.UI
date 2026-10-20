@@ -1,5 +1,32 @@
 /* ── SideMenu ───────────────────────────────────────────────────────────────── */
 
+/* As regras de coluna, que a gaveta do celular repete; no desktop elas vêm do @media de 768px abaixo. */
+@mixin drg-side-menu-coluna {
+  .drg-side-menu__list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .drg-side-menu__group {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+
+  .drg-side-menu__group + .drg-side-menu__group {
+    margin-top: 0.25rem;
+  }
+
+  .drg-side-menu__group-title {
+    flex-basis: auto;
+  }
+
+  .drg-side-menu__header,
+  .drg-side-menu__footer {
+    justify-content: flex-start;
+  }
+}
+
 .drg-side-menu {
   --drg-side-menu-width: 14rem;
   --drg-side-menu-top: calc(80px + 1rem);
@@ -109,6 +136,35 @@
     justify-content: center;
   }
 
+  /* A barra do botão de fechar e o fundo escurecido só aparecem na gaveta aberta do celular (fim do arquivo). */
+  &__drawer-bar,
+  &__backdrop {
+    display: none;
+  }
+
+  &__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 0 none;
+    border-radius: 50%;
+    background: transparent;
+    color: $textColor;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background: $shade200;
+    }
+
+    &:focus-visible {
+      @include focused();
+    }
+  }
+
   @media (min-width: 768px) {
     width: var(--drg-side-menu-width);
     flex-shrink: 0;
@@ -150,5 +206,57 @@
     &__link {
       transition: none;
     }
+  }
+}
+
+/* ── Gaveta no celular ──────────────────────────────────────────────────────── */
+
+/* Com `onMobileClose`, abaixo de 768px o menu sai da página e só aparece aberto, como gaveta à esquerda, por cima do
+   cabeçalho (z-index 999) e de um fundo escurecido. */
+@media (max-width: 767px) {
+  .drg-side-menu--drawer {
+    display: none;
+  }
+
+  .drg-side-menu--drawer.drg-side-menu--open {
+    @include drg-side-menu-coluna;
+
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    width: min(85vw, 18rem);
+    padding: 0.75rem 1rem 1rem;
+    overflow-y: auto;
+    background: $shade000;
+    box-shadow: $overlayMenuShadow;
+    animation: drg-side-menu-entra 160ms ease-out;
+
+    .drg-side-menu__drawer-bar {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .drg-side-menu__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes drg-side-menu-entra {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drg-side-menu--drawer.drg-side-menu--open {
+    animation: none;
   }
 }

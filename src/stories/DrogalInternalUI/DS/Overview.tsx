@@ -28,23 +28,7 @@ import { TabView } from '../../../components/TabView';
 import { TabPanel } from '../../../components/TabView.TabPanel';
 import EnumIcons from '../../../icons/EnumIcons';
 import { Icon } from '../../../components/Icon';
-import { Scheduler } from '../../../components/Scheduler';
-import { mapHorariosToScheduler } from '../../../components/Scheduler/adapter';
 import { SideMenu } from '../../../components/SideMenu';
-
-/** Semana de exemplo do Scheduler (apenas o período da manhã, para caber no card). */
-const schedulerOverview = mapHorariosToScheduler({
-  date: new Date(2026, 8, 30),
-  today: new Date(2026, 8, 30),
-  endHour: 12,
-  blockedRanges: [{ start: '12:00', end: '12:30' }],
-  horarios: [
-    { Id: 1, CodigoUsuario: 10, CodigoSala: 1, NomeUsuario: 'Carlos Silva', Departamento: 'TI', DataInicio: '2026-09-28T09:00:00', DataFim: '2026-09-28T10:00:00', Tipo: 'Reserva' },
-    { Id: 2, CodigoUsuario: 20, CodigoSala: 1, NomeUsuario: 'Ana Paula', Departamento: 'Marketing', DataInicio: '2026-09-29T10:00:00', DataFim: '2026-09-29T11:00:00', Tipo: 'Reserva' },
-    { Id: 3, CodigoUsuario: 30, CodigoSala: 1, NomeUsuario: 'Nilton Rodrigues', Departamento: 'TI', DataInicio: '2026-09-30T09:00:00', DataFim: '2026-09-30T10:00:00', Tipo: 'Reserva' },
-    { Id: 4, CodigoUsuario: 40, CodigoSala: 1, NomeUsuario: 'João Pereira', Departamento: 'Planejamento', DataInicio: '2026-10-01T08:30:00', DataFim: '2026-10-01T09:30:00', Tipo: 'Reserva' },
-  ],
-});
 
 export const Overview: React.FC = () => {
   const [password, setPassword] = useState('');
@@ -960,22 +944,6 @@ export const Overview: React.FC = () => {
             <Editor title="Rich Text Editor" placeholder="Start typing here..." />
             <div className="component-card-footer">
               <a href="../?path=/docs/drogal-internal-ui-ds-editor--docs" className="component-link" target="_parent">
-                Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
-              </a>
-            </div>
-          </div>
-
-          <div className="component-card" style={{ gridColumn: '1 / -1' }}>
-            <h3>Scheduler</h3>
-            <Scheduler
-              columns={schedulerOverview.columns}
-              lines={schedulerOverview.lines}
-              cells={schedulerOverview.cells}
-              title={schedulerOverview.title}
-              views={['week']}
-            />
-            <div className="component-card-footer">
-              <a href="../?path=/docs/drogal-internal-ui-ds-scheduler--docs" className="component-link" target="_parent">
                 Ver documentação <Icon name={EnumIcons.Outlined.arrow_forward_ios} />
               </a>
             </div>

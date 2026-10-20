@@ -5,6 +5,7 @@ import '../../../../theme.css';
 import { SideMenu } from '../../../../components/SideMenu';
 import type { SideMenuGroup, SideMenuItem } from '../../../../components/SideMenu';
 import { Badge } from '../../../../components/Badge';
+import { Header } from '../../../../components/Header';
 import EnumIcons from '../../../../icons/EnumIcons';
 
 const ITEMS: SideMenuItem[] = [
@@ -59,6 +60,40 @@ function SideMenuControlado() {
       <div style={{ flex: 1, padding: '1rem', background: '#f1f3f5', borderRadius: 6, minHeight: 200 }}>
         Conteúdo de <strong>{ITEMS.find((item) => item.id === activeId)?.label}</strong>
       </div>
+    </div>
+  );
+}
+
+/** O menu em gaveta no celular: o botão de menu do Header abre, e escolher um item, o fundo, o Esc ou o × fecham. */
+function GavetaNoCelularDemo() {
+  const [aberto, setAberto] = useState(false);
+  const [ativo, setAtivo] = useState<string | number>('inovacao');
+  const groups = GROUPS.map((group) => ({
+    ...group,
+    items: group.items.map((item) => ({ ...item, onClick: () => setAtivo(item.id ?? item.label) })),
+  }));
+  const nome = groups.flatMap((group) => group.items).find((item) => item.id === ativo)?.label;
+
+  return (
+    <div style={{ flex: 1 }}>
+      <Header
+        user={{ name: 'Ana Souza', profile: 'TI' }}
+        onMenuToggle={() => setAberto((valor) => !valor)}
+        menuOpen={aberto}
+        menuId="menu-gaveta"
+      />
+      <SideMenu
+        id="menu-gaveta"
+        groups={groups}
+        activeId={ativo}
+        sticky={false}
+        ariaLabel="Agendas"
+        mobileOpen={aberto}
+        onMobileClose={() => setAberto(false)}
+      />
+      <p style={{ padding: '1rem' }}>
+        Agenda escolhida: <strong>{nome}</strong>
+      </p>
     </div>
   );
 }
@@ -233,6 +268,22 @@ export const ComGrupos: Story = {
           'Itens em <code>groups</code>, cada grupo com o seu título, como as agendas por tipo do Drogal.Reservas. ' +
           'A <code>description</code> do grupo aparece ao passar o mouse no título. O ativo é procurado em todos os ' +
           'grupos; na fila horizontal das telas menores, cada grupo começa uma linha.',
+      },
+    },
+  },
+};
+
+export const GavetaNoCelular: Story = {
+  render: () => <GavetaNoCelularDemo />,
+  globals: { viewport: { value: 'mobile1', isRotated: false } },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Com <code>onMobileClose</code>, abaixo de 768px o menu sai da página e vira uma gaveta à esquerda, aberta ' +
+          'pelo botão de menu do <code>Header</code> (<code>onMenuToggle</code>, <code>menuOpen</code> e ' +
+          '<code>menuId</code>). Fecha ao escolher um item, no fundo escurecido, no Esc ou no botão de fechar. ' +
+          'No desktop, o botão não aparece e o menu fica ao lado do conteúdo, como sempre.',
       },
     },
   },

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 
 import '../../../../theme.css';
 import { Header } from '../../../../components/Header';
@@ -9,6 +10,25 @@ const sampleUser = {
   version: '2.1.0',
 };
 
+/** O botão de menu alternando o aberto/fechado, como a tela faz com o `SideMenu` em gaveta. */
+function HeaderComMenuDemo() {
+  const [aberto, setAberto] = useState(false);
+
+  return (
+    <>
+      <Header
+        user={sampleUser}
+        onMenuToggle={() => setAberto((valor) => !valor)}
+        menuOpen={aberto}
+        menuId="menu-exemplo"
+      />
+      <p style={{ margin: 0, padding: '1rem', fontSize: '14px' }}>
+        Menu {aberto ? 'aberto' : 'fechado'}: <code>menuOpen</code> = {String(aberto)}
+      </p>
+    </>
+  );
+}
+
 const meta = {
   title: 'Drogal Internal UI/DS/Header',
   component: Header,
@@ -17,7 +37,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Componente de cabeçalho fixo da aplicação. Exibe o logo (ou nome) à esquerda, conteúdo customizável no centro via `children` e o ícone de perfil do usuário à direita. <br/><br/>OBS: O header é responsivo e mantém a usabilidade em telas menores. Content-width: 1510px',
+          'Componente de cabeçalho fixo da aplicação. Exibe o logo (ou nome) à esquerda, conteúdo customizável no centro via `children` e o ícone de perfil do usuário à direita. <br/><br/>Com `onMenuToggle`, abaixo de 768px aparece o botão de menu (hambúrguer) à esquerda do logo, para abrir o `SideMenu` em gaveta (veja a story **ComMenuNoCelular** e, no SideMenu, a **GavetaNoCelular**). No desktop o botão não aparece. <br/><br/>OBS: O header é responsivo e mantém a usabilidade em telas menores. Content-width: 1510px',
       },
     },
   },
@@ -52,7 +72,23 @@ const meta = {
       control: false,
       description: 'Conteúdo opcional exibido no centro do header, respeitando a altura máxima de 80px',
       table: { type: { summary: 'ReactNode' } },
-    }
+    },
+    onMenuToggle: {
+      action: 'onMenuToggle',
+      description:
+        'Com ele, abaixo de 768px aparece o botão de menu (hambúrguer) à esquerda do logo, para abrir e fechar o `SideMenu` em gaveta (`mobileOpen` e `onMobileClose` dele). No desktop o botão não aparece.',
+      table: { type: { summary: '() => void' } },
+    },
+    menuOpen: {
+      control: 'boolean',
+      description: 'Se a gaveta está aberta: vai no `aria-expanded` do botão e troca o rótulo entre "Abrir menu" e "Fechar menu"',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
+    menuId: {
+      control: 'text',
+      description: 'O `id` do `SideMenu` que o botão abre, para o `aria-controls`',
+      table: { type: { summary: 'string' } },
+    },
   },
   decorators: [
     (Story) => (
@@ -119,6 +155,19 @@ export const SemUsuario: Story = {
     docs: {
       description: {
         story: 'Header sem usuário autenticado. O ícone de perfil ainda é exibido, mas o dropdown não mostra informações de usuário.',
+      },
+    },
+  },
+};
+
+export const ComMenuNoCelular: Story = {
+  render: () => <HeaderComMenuDemo />,
+  globals: { viewport: { value: 'mobile1', isRotated: false } },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Com `onMenuToggle`, abaixo de 768px aparece o botão de menu à esquerda do logo. Ele alterna `menuOpen`, que vai no `aria-expanded` e troca o rótulo entre "Abrir menu" e "Fechar menu"; `menuId` liga o botão ao menu pelo `aria-controls`. Esta story abre na largura de celular: em telas largas o botão não aparece. Para o uso completo, com o `SideMenu` em gaveta, veja a story GavetaNoCelular do SideMenu.',
       },
     },
   },
