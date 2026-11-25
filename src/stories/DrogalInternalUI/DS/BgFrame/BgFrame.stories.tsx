@@ -4,6 +4,21 @@ import '../../../../theme.css';
 import { BgFrame } from '../../../../components/BgFrame';
 import { InputText } from '../../../../components/Input/InputText';
 import { Button } from '../../../../components/Button';
+import EnumIcons from '../../../../icons/EnumIcons';
+
+const ConteudoExemplo = () => (
+  <div
+    style={{
+      border: '1px dashed #e1e1e1',
+      borderRadius: 6,
+      padding: '2rem',
+      textAlign: 'center',
+      color: '#898989',
+    }}
+  >
+    Conteúdo (substitua)
+  </div>
+);
 
 const meta = {
   title: 'Drogal Internal UI/DS/BgFrame',
@@ -13,7 +28,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Componente de fundo estrutural utilizado como container de seções em páginas ou modais. Suporta título, subtítulo, cores customizáveis e duas variantes visuais: <strong>filled</strong> (fundo sólido) e <strong>outlined</strong> (fundo transparente com borda).',
+          'Componente de fundo estrutural utilizado como container de seções em páginas ou modais. Suporta título, subtítulo, cores customizáveis e três variantes visuais: <strong>filled</strong> (fundo sólido), <strong>outlined</strong> (fundo transparente com borda) e <strong>card</strong> (fundo branco com sombra, com ícone e ação no cabeçalho).',
       },
     },
   },
@@ -31,12 +46,22 @@ const meta = {
     },
     variant: {
       control: 'select',
-      options: ['filled', 'outlined'],
+      options: ['filled', 'outlined', 'card'],
       description: 'Variante visual do componente',
       table: {
-        type: { summary: "'filled' | 'outlined'" },
+        type: { summary: "'filled' | 'outlined' | 'card'" },
         defaultValue: { summary: 'filled' },
       },
+    },
+    icon: {
+      control: false,
+      description: 'Ícone à esquerda do título (`EnumIcons`)',
+      table: { type: { summary: 'IconName' } },
+    },
+    actions: {
+      control: false,
+      description: 'Conteúdo à direita do cabeçalho, como um botão de ação',
+      table: { type: { summary: 'ReactNode' } },
     },
     children: {
       control: false,
@@ -119,6 +144,54 @@ export const ApenasTexto: Story = {
     docs: {
       description: {
         story: 'Frame somente com título e subtítulo, sem conteúdo interno.',
+      },
+    },
+  },
+};
+
+export const Card: Story = {
+  args: {
+    title: 'Título do card',
+    icon: EnumIcons.Outlined.person,
+    variant: 'card',
+    actions: <Button label="Ação (F2)" size="small" />,
+    children: <ConteudoExemplo />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Variante <code>card</code>: fundo branco, sombra leve, ícone à esquerda do título e ação à direita (<code>actions</code>). Usada nas seções do Sistema de Vendas (cliente, produtos, pagamento).',
+      },
+    },
+  },
+};
+
+export const CardSemAcao: Story = {
+  args: {
+    title: 'Título do card',
+    icon: EnumIcons.Outlined.person,
+    variant: 'card',
+    children: <ConteudoExemplo />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Card com título e ícone, sem ação no cabeçalho.',
+      },
+    },
+  },
+};
+
+export const CardSemCabecalho: Story = {
+  args: {
+    variant: 'card',
+    children: <ConteudoExemplo />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Card só com conteúdo. Sem <code>title</code>, <code>subtitle</code> e <code>actions</code>, o cabeçalho não é renderizado.',
       },
     },
   },

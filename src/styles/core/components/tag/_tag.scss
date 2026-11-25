@@ -1,0 +1,54 @@
+// Medidas do Figma do Sistema de Vendas: 24px de altura, 10px nas laterais e raio de 4px.
+// Aplicadas só no Tag do DS (classe drg-tag), sem alterar o .p-tag do tema.
+.p-tag.drg-tag {
+  padding: 0.25rem 0.625rem;
+  line-height: 1rem;
+  border-radius: 4px;
+
+  .p-tag-value {
+    line-height: 1rem;
+  }
+
+  &.p-tag-rounded {
+    border-radius: 10rem;
+  }
+
+  // O tema não define o secondary no solid (ficaria azul). Cinza com contraste AA para texto branco.
+  &.p-tag-secondary {
+    background-color: $shade700;
+    color: #ffffff;
+  }
+}
+
+// Variante "subtle" do Tag: fundo claro e texto na cor da severidade.
+// Cores tiradas do Figma do Sistema de Vendas (File Item: "Enviado", "Erro", "62%").
+// A variante "solid" usa o estilo padrão do tema (misc/_tag.scss).
+.p-tag.drg-tag--subtle {
+  background-color: $shade200;
+  color: $primaryColor;
+
+  &.p-tag-success {
+    background-color: #f1f6e5;
+    color: #5b7419;
+  }
+
+  &.p-tag-info {
+    background-color: #e8f5fa;
+    color: #1f6f8b;
+  }
+
+  &.p-tag-warning {
+    background-color: #fff3e6;
+    color: #a85a0e;
+  }
+
+  &.p-tag-danger {
+    background-color: #fcf2f4;
+    color: #a83a54;
+  }
+
+  &.p-tag-secondary {
+    background-color: $shade100;
+    color: $shade700;
+  }
+}

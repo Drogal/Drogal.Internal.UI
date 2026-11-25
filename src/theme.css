@@ -22594,9 +22594,30 @@
 }
 .drg-bg-frame__header {
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.drg-bg-frame__heading {
+  display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  margin-bottom: 1.2rem;
+  flex: 1;
+  min-width: 0;
+}
+.drg-bg-frame__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.drg-bg-frame__icon .drg-icon {
+  font-size: 1.25rem;
+}
+.drg-bg-frame__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 .drg-bg-frame__title {
   font-family: var();
@@ -22623,6 +22644,31 @@
 .drg-bg-frame--outlined {
   background-color: transparent;
   border: 1px solid #e1e1e1;
+}
+.drg-bg-frame--card {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.02), 0 0 2px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.drg-bg-frame--card .drg-bg-frame__header {
+  margin-bottom: 1rem;
+}
+.drg-bg-frame--card .drg-bg-frame__heading {
+  gap: 0.25rem;
+}
+.drg-bg-frame--card .drg-bg-frame__icon,
+.drg-bg-frame--card .drg-bg-frame__title {
+  color: var(--gray-900);
+}
+.drg-bg-frame--card .drg-bg-frame__title {
+  font-weight: 600;
+  line-height: 1.4;
+}
+.drg-bg-frame--card .drg-bg-frame__subtitle {
+  color: #898989;
+  line-height: 1.4;
 }
 
 /* ── SideMenu ───────────────────────────────────────────────────────────────── */
@@ -22845,6 +22891,47 @@
     animation: none;
   }
 }
+.p-tag.drg-tag {
+  padding: 0.25rem 0.625rem;
+  line-height: 1rem;
+  border-radius: 4px;
+}
+.p-tag.drg-tag .p-tag-value {
+  line-height: 1rem;
+}
+.p-tag.drg-tag.p-tag-rounded {
+  border-radius: 10rem;
+}
+.p-tag.drg-tag.p-tag-secondary {
+  background-color: #6c6c6c;
+  color: #ffffff;
+}
+
+.p-tag.drg-tag--subtle {
+  background-color: #edf0fa;
+  color: #1F95E3;
+}
+.p-tag.drg-tag--subtle.p-tag-success {
+  background-color: #f1f6e5;
+  color: #5b7419;
+}
+.p-tag.drg-tag--subtle.p-tag-info {
+  background-color: #e8f5fa;
+  color: #1f6f8b;
+}
+.p-tag.drg-tag--subtle.p-tag-warning {
+  background-color: #fff3e6;
+  color: #a85a0e;
+}
+.p-tag.drg-tag--subtle.p-tag-danger {
+  background-color: #fcf2f4;
+  color: #a83a54;
+}
+.p-tag.drg-tag--subtle.p-tag-secondary {
+  background-color: #f5f5f5;
+  color: #6c6c6c;
+}
+
 @layer primereact {
   * {
     box-sizing: border-box;
