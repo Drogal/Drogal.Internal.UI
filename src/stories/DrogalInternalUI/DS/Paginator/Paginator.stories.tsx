@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import '../../../../theme.css'
-import { Paginator } from '../../../../components/Paginator';
+import { Paginator, type PaginatorProps } from '../../../../components/Paginator';
 
 const meta = {
   title: 'Drogal Internal UI/DS/Paginator',
@@ -217,3 +218,27 @@ export const FullTemplate: Story = {
     pageLinkSize: 5,
   },
 };
+
+const CompactExample = (args: PaginatorProps) => {
+  const [first, setFirst] = useState(args.first ?? 0);
+  return <Paginator {...args} first={first} onPageChange={(event) => setFirst(event.first)} />;
+};
+
+export const Compact: Story = {
+  args: { compact: true, first: 0, rows: 10, totalRecords: 1560 },
+  render: (args) => <CompactExample {...args} />,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Paginador compacto do Sistema de Vendas (<code>compact</code>): primeira e última página, a atual com as vizinhas e reticências. Mesmo <code>first</code>, <code>rows</code>, <code>totalRecords</code> e <code>onPageChange</code> do Paginator normal.',
+      },
+    },
+  },
+};
+
+export const CompactNoMeio: Story = {
+  args: { compact: true, first: 490, rows: 10, totalRecords: 1560 },
+  render: (args) => <CompactExample {...args} />,
+};
+

@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../theme.css'
 import { Dialog } from '../../../../components/Dialog';
 import { Button } from '../../../../components/Button';
+import { DescriptionList } from '../../../../components/DescriptionList';
+import { Tag } from '../../../../components/Tag';
 import { useState } from 'react';
 
 const meta = {
@@ -520,3 +522,53 @@ export const Responsive: Story = {
     onHide() { },
   },
 };
+
+/**
+ * Receita do cabeçalho do Sistema de Vendas (Dialog Header no Figma): título, subtítulo
+ * e um Tag de status à direita, antes do botão de fechar. Não precisa de componente:
+ * o `header` do Dialog aceita qualquer conteúdo e já ocupa a largura toda.
+ */
+const NotaFiscalHeader = () => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', flex: 1, minWidth: 0 }}>
+      <span style={{ color: 'var(--gray-900)', lineHeight: '1.75rem' }}>Nota fiscal 001284</span>
+      <span style={{ color: '#898989', fontSize: '0.875rem', fontWeight: 400, lineHeight: '1.25rem' }}>
+        NF-e · Série 001 · Venda 008742
+      </span>
+    </div>
+    <Tag value="Autorizada" severity="success" />
+  </div>
+);
+
+const NotaFiscalDialog = () => {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <>
+      <Button label="Ver nota fiscal" onClick={() => setVisible(true)} />
+      <Dialog header={<NotaFiscalHeader />} visible={visible} style={{ width: '32rem' }} onHide={() => setVisible(false)}>
+        <DescriptionList
+          items={[
+            { label: 'Cliente', value: 'XV DE PIRACICABA S.A.F' },
+            { label: 'Emissão', value: '25/11/2026 10:42' },
+            { label: 'Total', value: 'R$ 3.224,16' },
+          ]}
+        />
+      </Dialog>
+    </>
+  );
+};
+
+export const ComCabecalhoDeStatus: Story = {
+  render: () => <NotaFiscalDialog />,
+  args: { header: 'Nota fiscal 001284', onHide() { } },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Receita do cabeçalho do Sistema de Vendas: título, subtítulo e <code>Tag</code> de status à direita, antes do botão de fechar. Monte o conteúdo e passe em <code>header</code>; o título já ocupa a largura toda.',
+      },
+    },
+  },
+};
+

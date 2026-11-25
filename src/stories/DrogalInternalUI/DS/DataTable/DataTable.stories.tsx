@@ -3,6 +3,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../theme.css'
 import { DataTable } from '../../../../components/DataTable';
 import { Column } from 'primereact/column';
+import { useState } from 'react';
+import { Button } from '../../../../components/Button';
+import { InputNumber } from '../../../../components/Input/InputNumber';
+import { Paginator } from '../../../../components/Paginator';
+import { Tag } from '../../../../components/Tag';
+import EnumIcons from '../../../../icons/EnumIcons';
 
 // Sample data
 const products = [
@@ -628,3 +634,88 @@ export const FullFeatured: Story = {
     tableStyle: { minWidth: '50rem' },
   },
 };
+
+/*
+ * Receita das células do Sistema de Vendas (DataTable Cell Content no Figma).
+ * Não são componentes: são templates `body` de cada Column, montados com o que a lib já tem.
+ */
+interface NotaFiscal {
+  id: string;
+  numero: string;
+  serie: string;
+  venda: string;
+  status: 'Autorizada' | 'Cancelada' | 'Rejeitada';
+  quantidade: number;
+}
+
+const NOTAS: NotaFiscal[] = [
+  { id: '1', numero: '001284', serie: '001', venda: '008742', status: 'Autorizada', quantidade: 1 },
+  { id: '2', numero: '001283', serie: '001', venda: '008741', status: 'Cancelada', quantidade: 2 },
+  { id: '3', numero: '001282', serie: '001', venda: '008740', status: 'Rejeitada', quantidade: 1 },
+];
+
+const STATUS_SEVERITY = { Autorizada: 'success', Cancelada: 'secondary', Rejeitada: 'danger' } as const;
+
+/** Texto em duas linhas: principal escuro e secundário cinza. */
+const duasLinhas = (nota: NotaFiscal) => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem' }}>
+    <span style={{ color: 'var(--gray-900)', fontWeight: 600 }}>
+      {nota.numero} / {nota.serie}
+    </span>
+    <span style={{ color: '#898989', fontSize: '0.75rem' }}>Venda {nota.venda}</span>
+  </div>
+);
+
+const status = (nota: NotaFiscal) => <Tag value={nota.status} severity={STATUS_SEVERITY[nota.status]} />;
+
+/** Ações com botão só de ícone: sempre com aria-label. */
+const acoes = (nota: NotaFiscal) => (
+  <div style={{ display: 'flex', gap: '0.25rem' }}>
+    <Button text rounded icon={`drg-icon ${EnumIcons.Outlined.visibility}`} aria-label={`Ver nota ${nota.numero}`} />
+    <Button text rounded icon={`drg-icon ${EnumIcons.Outlined.delete}`} aria-label={`Excluir nota ${nota.numero}`} />
+  </div>
+);
+
+const CelulasExample = () => {
+  const [notas, setNotas] = useState(NOTAS);
+  const [first, setFirst] = useState(0);
+
+  const quantidade = (nota: NotaFiscal) => (
+    <InputNumber
+      compact
+      min={1}
+      value={nota.quantidade}
+      aria-label={`Quantidade da nota ${nota.numero}`}
+      onChange={(event) =>
+        setNotas((current) => current.map((item) => (item.id === nota.id ? { ...item, quantidade: event.value ?? 1 } : item)))
+      }
+    />
+  );
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-end' }}>
+      <DataTable value={notas} dataKey="id" style={{ width: '100%' }}>
+        <Column header="Nota / Série" body={duasLinhas} />
+        <Column header="Situação" body={status} />
+        <Column header="Ações" body={acoes} />
+        <Column header="Quantidade" body={quantidade} />
+      </DataTable>
+      <Paginator compact first={first} rows={10} totalRecords={1560} onPageChange={(event) => setFirst(event.first)} />
+    </div>
+  );
+};
+
+export const CelulasDoSistemaDeVendas: Story = {
+  render: () => <CelulasExample />,
+  args: { value: NOTAS },
+  parameters: {
+    layout: 'padded',
+    docs: {
+      description: {
+        story:
+          'Receita das células do Sistema de Vendas, com templates <code>body</code>: texto em duas linhas, <code>Tag</code> de situação, botões só de ícone (com <code>aria-label</code>) e <code>InputNumber</code> compacto. Abaixo, o <code>Paginator</code> compacto.',
+      },
+    },
+  },
+};
+

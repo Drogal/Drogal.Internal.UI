@@ -23608,6 +23608,143 @@
   box-shadow: 0 0 0 0.1rem rgb(165.4, 212.6, 243.8);
 }
 
+.p-selectbutton.drg-option-card {
+  --drg-option-card-width: 12.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.p-selectbutton.drg-option-card .p-button {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ebebeb;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  color: var(--gray-900);
+  box-shadow: none;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.p-selectbutton.drg-option-card .p-button:not(.p-disabled):not(.p-highlight):hover {
+  border-color: #1F95E3;
+  background-color: #edf0fa;
+  color: var(--gray-900);
+}
+.p-selectbutton.drg-option-card .p-button:focus-visible {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem rgb(165.4, 212.6, 243.8);
+}
+.p-selectbutton.drg-option-card .p-button.p-highlight, .p-selectbutton.drg-option-card .p-button.p-highlight:hover {
+  border-color: #1F95E3;
+  background-color: #1F95E3;
+  color: #ffffff;
+}
+.p-selectbutton.drg-option-card .p-button.p-highlight .drg-option-card__description, .p-selectbutton.drg-option-card .p-button.p-highlight:hover .drg-option-card__description {
+  color: #ffffff;
+}
+.p-selectbutton.drg-option-card .p-button.p-disabled {
+  opacity: 0.5;
+}
+.p-selectbutton.drg-option-card .drg-option-card__content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.p-selectbutton.drg-option-card .drg-option-card__icon {
+  display: inline-flex;
+}
+.p-selectbutton.drg-option-card .drg-option-card__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+}
+.p-selectbutton.drg-option-card .drg-option-card__description {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #898989;
+}
+.p-selectbutton.drg-option-card.drg-option-card--large .p-button {
+  width: var(--drg-option-card-width);
+  min-height: 6.875rem;
+}
+.p-selectbutton.drg-option-card.drg-option-card--large .drg-option-card__content {
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+.p-selectbutton.drg-option-card.drg-option-card--large .drg-option-card__icon .drg-icon {
+  font-size: 1.5rem;
+}
+.p-selectbutton.drg-option-card.drg-option-card--compact .p-button {
+  height: 2.5rem;
+}
+.p-selectbutton.drg-option-card.drg-option-card--compact .drg-option-card__content {
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+.p-selectbutton.drg-option-card.drg-option-card--compact .drg-option-card__icon .drg-icon {
+  font-size: 1rem;
+}
+
+.drg-paginator-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.drg-paginator-compact__nav, .drg-paginator-compact__page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.375rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #6c6c6c;
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.drg-paginator-compact__nav:hover:not(:disabled):not(.drg-paginator-compact__page--active), .drg-paginator-compact__page:hover:not(:disabled):not(.drg-paginator-compact__page--active) {
+  background-color: #f5f5f5;
+}
+.drg-paginator-compact__nav:focus-visible, .drg-paginator-compact__page:focus-visible {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem rgb(165.4, 212.6, 243.8);
+}
+.drg-paginator-compact__nav {
+  border-color: #e1e1e1;
+}
+.drg-paginator-compact__nav .drg-icon {
+  font-size: 1rem;
+}
+.drg-paginator-compact__nav:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.drg-paginator-compact__page--active {
+  border-color: #1F95E3;
+  background-color: #1F95E3;
+  color: #ffffff;
+  cursor: default;
+}
+.drg-paginator-compact__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  color: #6c6c6c;
+  font-size: 0.875rem;
+}
+
 @layer primereact {
   * {
     box-sizing: border-box;

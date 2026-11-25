@@ -1,0 +1,64 @@
+// Paginator compacto, conforme o Figma do Sistema de Vendas: botões de 32px,
+// anterior e próximo com borda, página atual em azul cheio.
+.drg-paginator-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  &__nav,
+  &__page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.375rem;
+    border: 1px solid transparent;
+    border-radius: $borderRadius;
+    background: transparent;
+    color: $shade700;
+    font: inherit;
+    font-size: 0.875rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+
+    &:hover:not(:disabled):not(.drg-paginator-compact__page--active) {
+      background-color: $shade100;
+    }
+
+    &:focus-visible {
+      @include focused();
+    }
+  }
+
+  &__nav {
+    border-color: $shade400;
+
+    .drg-icon {
+      font-size: 1rem;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
+
+  &__page--active {
+    border-color: $primaryColor;
+    background-color: $primaryColor;
+    color: #ffffff;
+    cursor: default;
+  }
+
+  &__ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    color: $shade700;
+    font-size: 0.875rem;
+  }
+}

@@ -22,6 +22,8 @@
 @import './components/page-header/_page-header';
 @import './components/process-steps/_process-steps';
 @import './components/file-upload/_file-upload';
+@import './components/option-card/_option-card';
+@import './components/paginator-compact/_paginator-compact';
 
 @layer primereact {
     @import '_common';
