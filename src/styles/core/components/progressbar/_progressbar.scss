@@ -1,0 +1,20 @@
+// Barra fina, sem percentual, como no Figma do Sistema de Vendas.
+// Trilho e preenchimento vêm do tema ($progressBarBg e $progressBarValueBg).
+.p-progressbar.drg-progressbar {
+  &--medium,
+  &--small {
+    .p-progressbar-value {
+      border-radius: inherit;
+    }
+  }
+
+  &--medium {
+    height: 6px;
+    border-radius: 3px;
+  }
+
+  &--small {
+    height: 4px;
+    border-radius: 2px;
+  }
+}

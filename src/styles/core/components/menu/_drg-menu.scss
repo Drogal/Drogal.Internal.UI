@@ -1,0 +1,42 @@
+// Menu do DS, conforme o Figma do Sistema de Vendas (Menu Item):
+// itens de 44px, texto e ícone escuros e atalho de teclado à direita.
+// Fundo de hover e foco vem do tema ($menuitemHoverBg = #edf0fa).
+.p-menu.drg-menu {
+  .p-menuitem-link {
+    padding: 0.625rem 1rem;
+    gap: 0.625rem;
+  }
+
+  .p-menuitem-text,
+  .p-menuitem-icon {
+    color: var(--gray-900);
+  }
+
+  .p-menuitem-icon {
+    display: inline-flex;
+    margin-right: 0;
+    font-size: 1.125rem;
+  }
+
+  .p-menuitem-link.p-disabled {
+    opacity: 0.5;
+  }
+
+  .drg-menu__link {
+    display: flex;
+    align-items: center;
+  }
+
+  .drg-menu__shortcut {
+    margin-left: auto;
+    padding: 0.125rem 0.5rem;
+    border: 1px solid $shade400;
+    border-radius: 4px;
+    background-color: $shade100;
+    color: $shade600;
+    font-family: inherit;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    white-space: nowrap;
+  }
+}
