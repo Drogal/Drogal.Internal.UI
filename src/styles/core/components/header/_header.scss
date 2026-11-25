@@ -73,6 +73,22 @@
   flex-shrink: 0;
 }
 
+/* Conteúdo à direita (prop end), antes do menu do usuário: status, filial etc. */
+.drg-header-end {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: 80px;
+  flex-shrink: 0;
+  color: var(--primary-color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  @media (max-width: 767px) {
+    gap: 1rem;
+  }
+}
+
 /* ── Logo ─────────────────────────────────────────────────────────────────── */
 
 .drg-logo {

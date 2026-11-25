@@ -3,8 +3,9 @@ import {
 } from "primereact/inputtextarea";
 import type { InputTextareaProps } from "../../../types/local__primereact/inputtextarea/inputtextarea";
 import InputFieldWrapper from "../../Label/InputFieldWrapper";
+import { useFieldMessage, type FieldMessageProps } from "../../Label/InputFieldWrapper/useFieldMessage";
 
-interface ExtendedProps extends InputTextareaProps {
+interface ExtendedProps extends InputTextareaProps, FieldMessageProps {
   title: string;
 }
 
@@ -20,11 +21,22 @@ interface ExtendedProps extends InputTextareaProps {
  * Encapsula o componente `InputTextarea` do PrimeReact,
  * mantendo total compatibilidade com suas props originais.
  */
-export const InputTextArea = (props: ExtendedProps) => {
+export const InputTextArea = ({ helpText, error, ...props }: ExtendedProps) => {
+  const field = useFieldMessage({ helpText, error, invalid: props.invalid, describedBy: props["aria-describedby"] });
   const { disabled } = props;
   return (
-    <InputFieldWrapper title={props.title} name={props.name}>
-      <PureInputTextArea {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
+    <InputFieldWrapper
+      title={props.title}
+      name={props.name}
+      required={props.required}
+      helpText={helpText}
+      error={error}
+      messageId={field.messageId}
+    >
+      <PureInputTextArea {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant}
+        invalid={field.invalid}
+        aria-describedby={field.describedBy}
+      />
     </InputFieldWrapper>
   );
 };

@@ -3,6 +3,11 @@ import { useState } from 'react';
 
 import '../../../../theme.css';
 import { Header } from '../../../../components/Header';
+import { Icon } from '../../../../components/Icon';
+import { IconField } from '../../../../components/Input/IconField';
+import { InputIcon } from '../../../../components/Input/InputIcon';
+import { InputText } from '../../../../components/Input/InputText';
+import EnumIcons from '../../../../icons/EnumIcons';
 
 const sampleUser = {
   name: 'João da Silva',
@@ -71,6 +76,11 @@ const meta = {
     children: {
       control: false,
       description: 'Conteúdo opcional exibido no centro do header, respeitando a altura máxima de 80px',
+      table: { type: { summary: 'ReactNode' } },
+    },
+    end: {
+      control: false,
+      description: 'Conteúdo à direita, antes do menu do usuário (ex.: status e filial no PDV)',
       table: { type: { summary: 'ReactNode' } },
     },
     onMenuToggle: {
@@ -146,6 +156,53 @@ export const ComChildren: Story = {
         story: 'Header com conteúdo customizado no centro via `children`. O conteúdo respeita o height máximo de 80px.',
       },
     },
+  },
+};
+
+const BuscaProduto = () => (
+  <IconField iconPosition="left" style={{ width: '30rem', marginLeft: '1rem' }}>
+    <InputIcon className={`drg-icon ${EnumIcons.Outlined.search}`} />
+    <InputText title="" aria-label="Buscar produto" placeholder="Buscar produto (código, nome, EAN) ou pressione F3" style={{ width: '100%' }} />
+  </IconField>
+);
+
+const StatusEFilial = ({ online }: { online: boolean }) => (
+  <>
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+      <span
+        aria-hidden="true"
+        style={{ width: 8, height: 8, borderRadius: '50%', background: online ? '#8bae2c' : '#a83a54' }}
+      />
+      {online ? 'Online' : 'Offline'}
+    </span>
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+      <Icon name={EnumIcons.Outlined.desktop_windows} aria-hidden="true" style={{ fontSize: '1.25rem' }} />
+      Filial 001
+    </span>
+  </>
+);
+
+export const PDV: Story = {
+  args: {
+    user: sampleUser,
+    children: <BuscaProduto />,
+    end: <StatusEFilial online />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Header do PDV: busca de produto no <code>children</code> e, no <code>end</code>, o status da conexão e a filial, à direita e antes do menu do usuário. O ponto de status aqui é provisório, até existir o <code>StatusIndicator</code>.',
+      },
+    },
+  },
+};
+
+export const PDVOffline: Story = {
+  args: {
+    user: sampleUser,
+    children: <BuscaProduto />,
+    end: <StatusEFilial online={false} />,
   },
 };
 

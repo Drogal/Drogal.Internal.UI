@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
 import '../../../../theme.css'
-import { InputNumber } from '../../../../components/Input/InputNumber';
+import { InputNumber, type InputNumberDrgProps } from '../../../../components/Input/InputNumber';
 
 const meta = {
   title: 'Drogal Internal UI/DS/InputNumber',
@@ -355,3 +355,36 @@ export const Large: Story = {
     placeholder: 'Tamanho grande',
   },
 };
+
+const CompactExample = (args: InputNumberDrgProps) => {
+  const [value, setValue] = useState<number | null>(1);
+  return <InputNumber {...args} value={value} onChange={(e) => setValue(e.value)} />;
+};
+
+export const Compact: Story = {
+  render: (args) => <CompactExample {...args} />,
+  args: {
+    compact: true,
+    min: 1,
+    max: 99,
+    'aria-label': 'Quantidade',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Seletor de quantidade "− 1 +" do carrinho (<code>compact</code>). No mínimo, o botão "−" fica cinza; no máximo, o "+".',
+      },
+    },
+  },
+};
+
+export const CompactDesabilitado: Story = {
+  args: {
+    compact: true,
+    value: 1,
+    disabled: true,
+    'aria-label': 'Quantidade',
+  },
+};
+

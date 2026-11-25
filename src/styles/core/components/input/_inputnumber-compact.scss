@@ -1,0 +1,56 @@
+// InputNumber compacto "− 1 +" (prop compact), conforme o Figma do Sistema de Vendas:
+// caixa de 30px de altura, botões de 28px e o valor centralizado.
+.p-inputnumber.drg-inputnumber--compact {
+  display: inline-flex;
+  align-items: stretch;
+  height: 1.875rem;
+  border: 1px solid $shade400;
+  border-radius: 6px;
+  background-color: #ffffff;
+  overflow: hidden;
+
+  .p-inputnumber-input {
+    width: 2.25rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--gray-900);
+
+    &:enabled:focus {
+      box-shadow: none;
+    }
+  }
+
+  .p-inputnumber-button {
+    width: 1.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--gray-900);
+
+    .drg-icon {
+      font-size: 1rem;
+    }
+
+    &:enabled:hover {
+      background-color: $shade100;
+      color: var(--gray-900);
+    }
+  }
+
+  .drg-inputnumber__button--limit {
+    color: $shade600;
+  }
+
+  &:focus-within {
+    border-color: $primaryColor;
+  }
+
+  &.p-disabled,
+  &:has(.p-inputnumber-input:disabled) {
+    opacity: 0.6;
+  }
+}

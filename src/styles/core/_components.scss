@@ -12,6 +12,8 @@
 @import './components/tag/_tag';
 @import './components/progressbar/_progressbar';
 @import './components/menu/_drg-menu';
+@import './components/input/_toggle-field';
+@import './components/input/_inputnumber-compact';
 
 @layer primereact {
     @import '_common';

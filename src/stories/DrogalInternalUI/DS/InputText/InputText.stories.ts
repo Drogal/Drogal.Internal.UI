@@ -11,6 +11,16 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    helpText: {
+      control: 'text',
+      description: 'Texto de ajuda exibido abaixo do campo',
+      table: { type: { summary: 'string' } },
+    },
+    error: {
+      control: 'text',
+      description: 'Mensagem de erro abaixo do campo. Marca o campo como inválido e tem prioridade sobre `helpText`.',
+      table: { type: { summary: 'string' } },
+    },
     value: {
       control: 'text',
       description: 'Value of the component',
@@ -313,5 +323,25 @@ export const FullExample: Story = {
     required: true,
     maxLength: 50,
     autoComplete: 'name',
+  },
+};
+
+export const ComAjuda: Story = {
+  args: {
+    title: 'CNPJ',
+    name: 'cnpj',
+    required: true,
+    placeholder: '12.345.678/0001-90',
+    helpText: 'Somente números; a máscara é aplicada automaticamente.',
+  },
+};
+
+export const ComErro: Story = {
+  args: {
+    title: 'CNPJ',
+    name: 'cnpj',
+    required: true,
+    defaultValue: '12.345.678/0001-90',
+    error: 'CNPJ inválido. Confira os dígitos.',
   },
 };

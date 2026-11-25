@@ -3,6 +3,7 @@ import {
 } from "primereact/inputtext";
 import type { InputTextProps } from "../../../types/local__primereact/inputtext/inputtext";
 import InputFieldWrapper from "../../Label/InputFieldWrapper";
+import { useFieldMessage, type FieldMessageProps } from "../../Label/InputFieldWrapper/useFieldMessage";
 
 /**
  * @description
@@ -19,18 +20,29 @@ import InputFieldWrapper from "../../Label/InputFieldWrapper";
  */
 
 
-export interface InputTextDrgProps extends InputTextProps {
+export interface InputTextDrgProps extends InputTextProps, FieldMessageProps {
   title: string;
   disabled?: boolean;
 }
 
-export const InputText = (props: InputTextDrgProps) => {
+export const InputText = ({ helpText, error, ...props }: InputTextDrgProps) => {
+  const field = useFieldMessage({ helpText, error, invalid: props.invalid, describedBy: props["aria-describedby"] });
 
   const { disabled } = props;
 
   return (
-    <InputFieldWrapper title={props.title} name={props.name}>
-      <PureInputText {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
+    <InputFieldWrapper
+      title={props.title}
+      name={props.name}
+      required={props.required}
+      helpText={helpText}
+      error={error}
+      messageId={field.messageId}
+    >
+      <PureInputText {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant}
+        invalid={field.invalid}
+        aria-describedby={field.describedBy}
+      />
     </InputFieldWrapper>
   );
 };

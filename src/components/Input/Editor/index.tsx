@@ -1,8 +1,9 @@
 import { Editor as PureEditor } from "primereact/editor";
 import type { EditorProps } from "../../../types/local__primereact/editor/editor";
 import InputFieldWrapper from "../../Label/InputFieldWrapper";
+import { useFieldMessage, type FieldMessageProps } from "../../Label/InputFieldWrapper/useFieldMessage";
 
-interface ExtendedProps extends EditorProps {
+interface ExtendedProps extends EditorProps, FieldMessageProps {
   title: string;
 }
 
@@ -18,9 +19,16 @@ interface ExtendedProps extends EditorProps {
  * Encapsula o componente `Editor` do PrimeReact,
  * mantendo total compatibilidade com suas props originais.
  */
-export const Editor = (props: ExtendedProps) => {
+export const Editor = ({ helpText, error, ...props }: ExtendedProps) => {
+  const field = useFieldMessage({ helpText, error });
   return (
-    <InputFieldWrapper title={props.title} name={props.name}>
+    <InputFieldWrapper
+      title={props.title}
+      name={props.name}
+      helpText={helpText}
+      error={error}
+      messageId={field.messageId}
+    >
       <PureEditor {...props} />
     </InputFieldWrapper>
   )

@@ -39,7 +39,16 @@ export interface SideMenuGroup {
   items: SideMenuItem[];
 }
 
+export type SideMenuVariant = "default" | "compact";
+
 export interface SideMenuProps {
+  /**
+   * `default`: coluna de 14rem com ícone e rótulo lado a lado.
+   * `compact`: coluna estreita (6rem) com o ícone acima do rótulo e o item ativo marcado por uma barra à esquerda,
+   * como a Sidebar do Sistema de Vendas. Vale a partir de 768px; no celular, a fila e a gaveta não mudam.
+   * @default 'default'
+   */
+  variant?: SideMenuVariant;
   /** Itens soltos, sem grupo. Com `groups`, vêm antes dos grupos. */
   items?: SideMenuItem[];
   /** Itens agrupados, cada grupo com o seu título. O item ativo é procurado em todos os grupos. */
@@ -92,6 +101,7 @@ const itemKey = (item: SideMenuItem): string | number => item.id ?? item.href ??
  * aberta pelo botão de menu do `Header` (`onMenuToggle`).
  */
 export const SideMenu = ({
+  variant = "default",
   items = [],
   groups = [],
   activeId,
@@ -206,6 +216,7 @@ export const SideMenu = ({
 
   const navClassName = [
     "drg-side-menu",
+    variant === "compact" && "drg-side-menu--compact",
     sticky && "drg-side-menu--sticky",
     drawer && "drg-side-menu--drawer",
     open && "drg-side-menu--open",

@@ -209,6 +209,62 @@
   }
 }
 
+/* ── Variante compacta (Sidebar do Sistema de Vendas) ──────────────────────────── */
+
+/* Só no desktop: coluna de 6rem, ícone acima do rótulo, item de 72px e o ativo com barra azul à esquerda. */
+@media (min-width: 768px) {
+  .drg-side-menu--compact {
+    --drg-side-menu-width: 6rem;
+
+    .drg-side-menu__link {
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.25rem;
+      min-height: 4.5rem;
+      padding: 0.75rem 0.25rem;
+      border-radius: 0;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      text-align: center;
+
+      .drg-icon {
+        font-size: 1.5rem;
+      }
+
+      &:hover,
+      &:focus-visible {
+        background: $shade100;
+        color: var(--surface-700);
+      }
+
+      &--active,
+      &--active:hover,
+      &--active:focus-visible {
+        background: $shade200;
+        color: $primaryColor;
+        box-shadow: inset 3px 0 0 $primaryColor;
+      }
+    }
+
+    .drg-side-menu__label {
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .drg-side-menu__group-title {
+      justify-content: center;
+      padding: 0.5rem 0.25rem 0.25rem;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+
+    .drg-side-menu__header,
+    .drg-side-menu__footer {
+      justify-content: center;
+    }
+  }
+}
+
 /* ── Gaveta no celular ──────────────────────────────────────────────────────── */
 
 /* Com `onMobileClose`, abaixo de 768px o menu sai da página e só aparece aberto, como gaveta à esquerda, por cima do

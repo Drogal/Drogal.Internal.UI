@@ -22467,6 +22467,23 @@
   flex-shrink: 0;
 }
 
+/* Conteúdo à direita (prop end), antes do menu do usuário: status, filial etc. */
+.drg-header-end {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: 80px;
+  flex-shrink: 0;
+  color: var(--primary-color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+@media (max-width: 767px) {
+  .drg-header-end {
+    gap: 1rem;
+  }
+}
+
 /* ── Logo ─────────────────────────────────────────────────────────────────── */
 .drg-logo {
   display: flex;
@@ -22829,6 +22846,50 @@
   }
 }
 
+/* ── Variante compacta (Sidebar do Sistema de Vendas) ──────────────────────────── */
+/* Só no desktop: coluna de 6rem, ícone acima do rótulo, item de 72px e o ativo com barra azul à esquerda. */
+@media (min-width: 768px) {
+  .drg-side-menu--compact {
+    --drg-side-menu-width: 6rem;
+  }
+  .drg-side-menu--compact .drg-side-menu__link {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    min-height: 4.5rem;
+    padding: 0.75rem 0.25rem;
+    border-radius: 0;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    text-align: center;
+  }
+  .drg-side-menu--compact .drg-side-menu__link .drg-icon {
+    font-size: 1.5rem;
+  }
+  .drg-side-menu--compact .drg-side-menu__link:hover, .drg-side-menu--compact .drg-side-menu__link:focus-visible {
+    background: #f5f5f5;
+    color: var(--surface-700);
+  }
+  .drg-side-menu--compact .drg-side-menu__link--active, .drg-side-menu--compact .drg-side-menu__link--active:hover, .drg-side-menu--compact .drg-side-menu__link--active:focus-visible {
+    background: #edf0fa;
+    color: #1F95E3;
+    box-shadow: inset 3px 0 0 #1F95E3;
+  }
+  .drg-side-menu--compact .drg-side-menu__label {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .drg-side-menu--compact .drg-side-menu__group-title {
+    justify-content: center;
+    padding: 0.5rem 0.25rem 0.25rem;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  .drg-side-menu--compact .drg-side-menu__header,
+  .drg-side-menu--compact .drg-side-menu__footer {
+    justify-content: center;
+  }
+}
 /* ── Gaveta no celular ──────────────────────────────────────────────────────── */
 /* Com `onMobileClose`, abaixo de 768px o menu sai da página e só aparece aberto, como gaveta à esquerda, por cima do
    cabeçalho (z-index 999) e de um fundo escurecido. */
@@ -22975,6 +23036,105 @@
   font-size: 0.75rem;
   line-height: 1.125rem;
   white-space: nowrap;
+}
+
+.drg-toggle-field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.drg-toggle-field:hover:not(.drg-toggle-field--disabled) {
+  border-color: #e1e1e1;
+}
+.drg-toggle-field .p-inputswitch {
+  flex-shrink: 0;
+}
+.drg-toggle-field .p-inputswitch .p-inputswitch-slider,
+.drg-toggle-field .p-inputswitch .p-inputswitch-slider:before {
+  border-radius: 999px;
+}
+.drg-toggle-field__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+.drg-toggle-field__title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: var(--gray-900);
+}
+.drg-toggle-field__description {
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  color: #898989;
+}
+.drg-toggle-field--checked {
+  border-color: #1F95E3;
+  background-color: #edf0fa;
+}
+.drg-toggle-field--checked:hover:not(.drg-toggle-field--disabled) {
+  border-color: #1F95E3;
+}
+.drg-toggle-field--checked .drg-toggle-field__title {
+  color: #1F95E3;
+}
+.drg-toggle-field--disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.p-inputnumber.drg-inputnumber--compact {
+  display: inline-flex;
+  align-items: stretch;
+  height: 1.875rem;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.p-inputnumber.drg-inputnumber--compact .p-inputnumber-input {
+  width: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--gray-900);
+}
+.p-inputnumber.drg-inputnumber--compact .p-inputnumber-input:enabled:focus {
+  box-shadow: none;
+}
+.p-inputnumber.drg-inputnumber--compact .p-inputnumber-button {
+  width: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--gray-900);
+}
+.p-inputnumber.drg-inputnumber--compact .p-inputnumber-button .drg-icon {
+  font-size: 1rem;
+}
+.p-inputnumber.drg-inputnumber--compact .p-inputnumber-button:enabled:hover {
+  background-color: #f5f5f5;
+  color: var(--gray-900);
+}
+.p-inputnumber.drg-inputnumber--compact .drg-inputnumber__button--limit {
+  color: #898989;
+}
+.p-inputnumber.drg-inputnumber--compact:focus-within {
+  border-color: #1F95E3;
+}
+.p-inputnumber.drg-inputnumber--compact.p-disabled, .p-inputnumber.drg-inputnumber--compact:has(.p-inputnumber-input:disabled) {
+  opacity: 0.6;
 }
 
 @layer primereact {
@@ -25022,6 +25182,29 @@
     font-size: 0.875rem;
     color: #6c6c6c;
     font-weight: 500;
+  }
+  .drg-field__control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+  .drg-field__help,
+  .drg-field__error {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  .drg-field__help {
+    color: #898989;
+  }
+  .drg-field__error {
+    color: #d45472;
+  }
+  .drg-input-spacing.drg-field--invalid .p-inputtext.p-component,
+  .drg-input-spacing.drg-field--invalid .p-multiselect.p-component,
+  .drg-input-spacing.drg-field--invalid .r-dropdown__control,
+  .drg-input-spacing.drg-field--invalid .p-editor-container .ql-toolbar,
+  .drg-input-spacing.drg-field--invalid .p-editor-container .ql-container {
+    border-color: #d45472;
   }
   .p-button {
     color: #ffffff;

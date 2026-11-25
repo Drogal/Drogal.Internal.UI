@@ -16,6 +16,13 @@ const ITEMS: SideMenuItem[] = [
   { id: 'throughput', label: 'Vazão', icon: EnumIcons.Outlined.tune },
 ];
 
+const VENDAS_ITEMS: SideMenuItem[] = [
+  { id: 'vendas', label: 'Vendas', icon: EnumIcons.Outlined.point_of_sale },
+  { id: 'clientes', label: 'Clientes', icon: EnumIcons.Outlined.person },
+  { id: 'notas', label: 'Notas fiscais', icon: EnumIcons.Outlined.description },
+  { id: 'produtos', label: 'Produtos', icon: EnumIcons.Outlined.archive },
+];
+
 const LINK_ITEMS: SideMenuItem[] = [
   { href: '/', label: 'Visão geral', icon: EnumIcons.Outlined.dashboard },
   { href: '/execution-flows', label: 'Fluxos de execução', icon: EnumIcons.Outlined.list_alt },
@@ -168,6 +175,13 @@ const meta = {
     },
     className: { control: false, table: { type: { summary: 'string' } } },
     style: { control: false, table: { type: { summary: 'CSSProperties' } } },
+    variant: {
+      control: 'select',
+      options: ['default', 'compact'],
+      description:
+        '`compact`: coluna de 6rem com o ícone acima do rótulo e o ativo marcado por uma barra à esquerda (Sidebar do Sistema de Vendas). Vale a partir de 768px.',
+      table: { type: { summary: "'default' | 'compact'" }, defaultValue: { summary: 'default' } },
+    },
   },
   decorators: [
     (Story) => (
@@ -187,6 +201,23 @@ export const Padrao: Story = {
     docs: {
       description: {
         story: 'Itens como botões, com o ativo definido por <code>activeId</code>.',
+      },
+    },
+  },
+};
+
+export const Compacto: Story = {
+  args: {
+    variant: 'compact',
+    items: VENDAS_ITEMS,
+    activeId: 'vendas',
+    ariaLabel: 'Sistema de Vendas',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Variante <code>compact</code>, a Sidebar do Sistema de Vendas. Abaixo de 768px volta à fila horizontal (ou à gaveta, com <code>onMobileClose</code>).',
       },
     },
   },

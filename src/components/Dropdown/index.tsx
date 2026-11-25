@@ -7,6 +7,7 @@ import Select, {
   type SingleValue,
 } from "react-select";
 import InputFieldWrapper from "../Label/InputFieldWrapper";
+import { useFieldMessage, type FieldMessageProps } from "../Label/InputFieldWrapper/useFieldMessage";
 
 type DropdownOption = Record<string, unknown>;
 
@@ -30,7 +31,8 @@ interface ExtendedProps
   extends Omit<
     ReactSelectProps<DropdownOption, boolean, GroupBase<DropdownOption>>,
     "onChange" | "options" | "value" | "isSearchable" | "isClearable"
-  > {
+  >,
+    FieldMessageProps {
   title: string;
   name?: string;
   options?: DropdownOption[] | LegacyGroupOption[];
@@ -72,8 +74,11 @@ export const Dropdown = ({
   isClearable,
   onChange,
   isMulti,
+  helpText,
+  error,
   ...rest
 }: ExtendedProps) => {
+  const field = useFieldMessage({ helpText, error, invalid: rest["aria-invalid"] === true || rest["aria-invalid"] === "true" });
   const getOptionLabel = (option: DropdownOption): string => {
     if (optionLabel && typeof option[optionLabel] === "string") {
       return option[optionLabel] as string;
@@ -188,7 +193,14 @@ export const Dropdown = ({
   };
 
   return (
-    <InputFieldWrapper title={title} name={name}>
+    <InputFieldWrapper
+      title={title}
+      name={name}
+      required={rest.required}
+      helpText={helpText}
+      error={error}
+      messageId={field.messageId}
+    >
       <Select
         {...rest}
         classNamePrefix={'r-dropdown' + (rest.classNamePrefix ? ` ${rest.classNamePrefix}` : '')}
@@ -201,6 +213,8 @@ export const Dropdown = ({
         isSearchable={isSearchable ?? filter ?? true}
         isClearable={isClearable ?? showClear ?? false}
         onChange={handleChange}
+        aria-invalid={field.invalid || undefined}
+        aria-errormessage={error ? field.messageId : rest["aria-errormessage"]}
       />
     </InputFieldWrapper>
   );

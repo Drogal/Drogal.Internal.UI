@@ -19,6 +19,11 @@ export interface HeaderProps {
   onLogout?: () => void;
   children?: React.ReactNode;
   /**
+   * Conteúdo à direita, antes do menu do usuário (ex.: status Online/Offline e a filial no PDV).
+   * O `children` continua logo após o logo.
+   */
+  end?: React.ReactNode;
+  /**
    * Com ele, abaixo de 768px aparece o botão de menu (hambúrguer), à esquerda do logo, para abrir o `SideMenu` em
    * gaveta (`mobileOpen` e `onMobileClose` dele). No desktop o botão não aparece.
    */
@@ -119,6 +124,7 @@ export const Header: React.FC<HeaderProps> = ({
   user,
   onLogout,
   children,
+  end,
   onMenuToggle,
   menuOpen = false,
   menuId,
@@ -141,6 +147,7 @@ export const Header: React.FC<HeaderProps> = ({
       <Logo src={logoSrc} alt={logoAlt} href={logoHref} />
       {children && <div className="drg-header-content">{children}</div>}
       <div className="drg-header-spacer" />
+      {end && <div className="drg-header-end">{end}</div>}
       <UserMenu user={user} onLogout={onLogout} />
     </div>
   </header>

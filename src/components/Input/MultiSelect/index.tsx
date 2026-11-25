@@ -1,9 +1,10 @@
 import { MultiSelect as PureMultiSelect } from "primereact/multiselect";
 import type { MultiSelectProps } from "../../../types/local__primereact/multiselect/multiselect";
 import InputFieldWrapper from "../../Label/InputFieldWrapper";
+import { useFieldMessage, type FieldMessageProps } from "../../Label/InputFieldWrapper/useFieldMessage";
 
 
-interface ExtendedProps extends MultiSelectProps {
+interface ExtendedProps extends MultiSelectProps, FieldMessageProps {
   title: string;
 }
 
@@ -22,11 +23,22 @@ interface ExtendedProps extends MultiSelectProps {
  * Encapsula o componente `MultiSelect` do PrimeReact,
  * mantendo total compatibilidade com suas props originais.
  */
-export const MultiSelect = (props: ExtendedProps) => {
+export const MultiSelect = ({ helpText, error, ...props }: ExtendedProps) => {
+  const field = useFieldMessage({ helpText, error, invalid: props.invalid, describedBy: props["aria-describedby"] });
   const { disabled } = props;
   return (
-    <InputFieldWrapper title={props.title} name={props.name}>
-      <PureMultiSelect {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
+    <InputFieldWrapper
+      title={props.title}
+      name={props.name}
+      required={props.required}
+      helpText={helpText}
+      error={error}
+      messageId={field.messageId}
+    >
+      <PureMultiSelect {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant}
+        invalid={field.invalid}
+        aria-describedby={field.describedBy}
+      />
     </InputFieldWrapper>
   );
 };

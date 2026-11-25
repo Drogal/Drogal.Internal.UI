@@ -5,3 +5,36 @@
   color: $inputTextColor;
   font-weight: 500;
 }
+
+// Mensagem de ajuda e de erro abaixo do campo (InputFieldWrapper), conforme o Figma do Sistema de Vendas.
+.drg-field__control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.drg-field__help,
+.drg-field__error {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.drg-field__help {
+  color: $shade600;
+}
+
+.drg-field__error {
+  color: $dangerButtonBg;
+}
+
+// Com erro, a borda do campo fica na cor de erro do Figma (#d45472), mais forte que o $inputErrorBorderColor do tema.
+// Especificidade acima da regra .p-inputtext.p-invalid.p-component do tema, que fica na mesma camada.
+.drg-input-spacing.drg-field--invalid {
+  .p-inputtext.p-component,
+  .p-multiselect.p-component,
+  .r-dropdown__control,
+  .p-editor-container .ql-toolbar,
+  .p-editor-container .ql-container {
+    border-color: $dangerButtonBg;
+  }
+}
