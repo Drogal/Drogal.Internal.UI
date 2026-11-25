@@ -52,6 +52,20 @@ export const Primary: Story = {
   },
 };
 
+export const SemTitulo: Story = {
+  render: (args) => (
+    <IconField {...args}>
+      <InputIcon >
+        <Icon name={EnumIcons.Outlined.search} />
+      </InputIcon>
+      <InputText title='' placeholder="Digite o CNPJ do cliente" />
+    </IconField>
+  ),
+  args: {
+    iconPosition: 'left',
+  },
+};
+
 export const IconLeft: Story = {
   render: (args) => (
     <IconField {...args}>

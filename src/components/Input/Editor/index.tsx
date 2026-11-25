@@ -1,6 +1,6 @@
 import { Editor as PureEditor } from "primereact/editor";
 import type { EditorProps } from "../../../types/local__primereact/editor/editor";
-import LabelInput from "../../Label/LabelInput";
+import InputFieldWrapper from "../../Label/InputFieldWrapper";
 
 interface ExtendedProps extends EditorProps {
   title: string;
@@ -20,9 +20,8 @@ interface ExtendedProps extends EditorProps {
  */
 export const Editor = (props: ExtendedProps) => {
   return (
-    <div className="drg-input-spacing">
-      <LabelInput title={props.title} name={props.name} />
+    <InputFieldWrapper title={props.title} name={props.name}>
       <PureEditor {...props} />
-    </div>
+    </InputFieldWrapper>
   )
 };

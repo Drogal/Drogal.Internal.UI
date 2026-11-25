@@ -1,6 +1,6 @@
 import { Password as PureInputPassword } from "primereact/password";
 import type { PasswordProps } from "../../../types/local__primereact/password/password";
-import LabelInput from "../../Label/LabelInput";
+import InputFieldWrapper from "../../Label/InputFieldWrapper";
 
 interface ExtendedProps extends PasswordProps {
   title: string;
@@ -21,9 +21,8 @@ interface ExtendedProps extends PasswordProps {
 export const InputPassword = (props: ExtendedProps) => {
   const { disabled } = props;
   return (
-    <div className="drg-input-spacing">
-      <LabelInput title={props.title} name={props.name} />
+    <InputFieldWrapper title={props.title} name={props.name}>
       <PureInputPassword {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
-    </div>
+    </InputFieldWrapper>
   );
 };

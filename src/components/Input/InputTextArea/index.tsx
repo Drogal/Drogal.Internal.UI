@@ -2,7 +2,7 @@ import {
   InputTextarea as PureInputTextArea
 } from "primereact/inputtextarea";
 import type { InputTextareaProps } from "../../../types/local__primereact/inputtextarea/inputtextarea";
-import LabelInput from "../../Label/LabelInput";
+import InputFieldWrapper from "../../Label/InputFieldWrapper";
 
 interface ExtendedProps extends InputTextareaProps {
   title: string;
@@ -23,9 +23,8 @@ interface ExtendedProps extends InputTextareaProps {
 export const InputTextArea = (props: ExtendedProps) => {
   const { disabled } = props;
   return (
-    <div className="drg-input-spacing">
-      <LabelInput title={props.title} name={props.name} />
+    <InputFieldWrapper title={props.title} name={props.name}>
       <PureInputTextArea {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
-    </div>
+    </InputFieldWrapper>
   );
 };

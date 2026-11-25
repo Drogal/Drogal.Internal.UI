@@ -3,8 +3,17 @@
     position: relative;
 }
 
+// Sem label: o input ocupa todo o IconField, então centraliza verticalmente
 .p-icon-field>.p-input-icon {
     position: absolute;
-    top: 68%;
+    top: 50%;
     margin-top: -.5rem;
+}
+
+// Com label (InputText com `title` renderiza .drg-input-spacing): o input fica
+// na base do IconField, então ancora o ícone pela base, alinhado ao padding do input
+.p-icon-field:has(> .drg-input-spacing)>.p-input-icon {
+    top: auto;
+    bottom: calc(#{nth($inputPadding, 1)} + 1px);
+    margin-top: 0;
 }

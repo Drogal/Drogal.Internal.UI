@@ -1,6 +1,6 @@
 import { MultiSelect as PureMultiSelect } from "primereact/multiselect";
 import type { MultiSelectProps } from "../../../types/local__primereact/multiselect/multiselect";
-import LabelInput from "../../Label/LabelInput";
+import InputFieldWrapper from "../../Label/InputFieldWrapper";
 
 
 interface ExtendedProps extends MultiSelectProps {
@@ -25,9 +25,8 @@ interface ExtendedProps extends MultiSelectProps {
 export const MultiSelect = (props: ExtendedProps) => {
   const { disabled } = props;
   return (
-    <div className="drg-input-spacing">
-      <LabelInput title={props.title} name={props.name} />
+    <InputFieldWrapper title={props.title} name={props.name}>
       <PureMultiSelect {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
-    </div>
+    </InputFieldWrapper>
   );
 };

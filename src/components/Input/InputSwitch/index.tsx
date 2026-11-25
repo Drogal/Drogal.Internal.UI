@@ -1,6 +1,6 @@
 import { InputSwitch as PureInputSwitch } from "primereact/inputswitch";
 import type { InputSwitchProps } from "../../../types/local__primereact/inputswitch/inputswitch";
-import LabelInput from "../../Label/LabelInput";
+import InputFieldWrapper from "../../Label/InputFieldWrapper";
 
 interface ExtendedProps extends InputSwitchProps {
   title: string;
@@ -20,9 +20,8 @@ interface ExtendedProps extends InputSwitchProps {
  */
 export const InputSwitch = (props: ExtendedProps) => {
   return (
-    <div className="drg-input-spacing">
-      <LabelInput title={props.title} name={props.name} />
+    <InputFieldWrapper title={props.title} name={props.name}>
       <PureInputSwitch {...props} />
-    </div>
+    </InputFieldWrapper>
   );
 };

@@ -6,7 +6,7 @@ import Select, {
   type Props as ReactSelectProps,
   type SingleValue,
 } from "react-select";
-import LabelInput from "../Label/LabelInput";
+import InputFieldWrapper from "../Label/InputFieldWrapper";
 
 type DropdownOption = Record<string, unknown>;
 
@@ -188,8 +188,7 @@ export const Dropdown = ({
   };
 
   return (
-    <div className="drg-input-spacing">
-      <LabelInput title={title} name={name} />
+    <InputFieldWrapper title={title} name={name}>
       <Select
         {...rest}
         classNamePrefix={'r-dropdown' + (rest.classNamePrefix ? ` ${rest.classNamePrefix}` : '')}
@@ -203,6 +202,6 @@ export const Dropdown = ({
         isClearable={isClearable ?? showClear ?? false}
         onChange={handleChange}
       />
-    </div>
+    </InputFieldWrapper>
   );
 };

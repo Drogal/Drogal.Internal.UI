@@ -1,6 +1,6 @@
 import { AutoComplete as PureAutoComplete } from "primereact/autocomplete";
 import type { AutoCompleteProps } from "../../types/local__primereact/autocomplete/autocomplete";
-import LabelInput from "../Label/LabelInput";
+import InputFieldWrapper from "../Label/InputFieldWrapper";
 
 // @ts-ignore: Ignore next line for documentation generation
 interface ExtendedProps extends AutoCompleteProps {
@@ -18,9 +18,8 @@ interface ExtendedProps extends AutoCompleteProps {
 export const AutoComplete = (props: ExtendedProps) => {
   const { disabled } = props;
   return (
-    <div className="drg-input-spacing">
-      <LabelInput title={props.title} name={props.name} />
+    <InputFieldWrapper title={props.title} name={props.name}>
       <PureAutoComplete {...props} disabled={disabled} variant={disabled ? 'filled' : props.variant} />
-    </div>
+    </InputFieldWrapper>
   );
 };

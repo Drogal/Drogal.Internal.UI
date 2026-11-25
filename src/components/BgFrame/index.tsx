@@ -3,8 +3,8 @@ import React from 'react';
 export type BgFrameVariant = 'filled' | 'outlined';
 
 export interface BgFrameProps {
-  title?: string;
-  subtitle?: string;
+  title?: string | React.ReactNode;
+  subtitle?: string | React.ReactNode;
   variant?: BgFrameVariant;
   children?: React.ReactNode;
 }
