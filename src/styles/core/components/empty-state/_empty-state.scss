@@ -1,0 +1,38 @@
+// EmptyState, conforme o Figma do Sistema de Vendas: ícone cinza de 48px,
+// título de 16px e descrição cinza de 14px, centralizados.
+.drg-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  text-align: center;
+
+  &__icon {
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+    color: $shade600;
+
+    .drg-icon {
+      font-size: 3rem;
+    }
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    color: var(--gray-900);
+  }
+
+  &__description {
+    max-width: 23rem;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    color: $shade600;
+  }
+
+  &__action {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,82 @@
+// PageHeader, conforme o Figma do Sistema de Vendas: título de 28px, subtítulo cinza de 14px,
+// link de voltar azul acima e ações alinhadas ao centro, à direita.
+.drg-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.125rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #1a87ce;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    text-decoration: none;
+    cursor: pointer;
+
+    .drg-icon {
+      font-size: 1.125rem;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      @include focused();
+      border-radius: 4px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 2.25rem;
+    color: var(--gray-900);
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: $shade600;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    flex-shrink: 0;
+  }
+}

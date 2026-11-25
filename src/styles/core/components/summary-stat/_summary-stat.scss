@@ -1,0 +1,44 @@
+// SummaryStat, conforme o Figma do Sistema de Vendas: rótulo de 14px e valor de 24px,
+// com fundo só nas variantes info e success.
+.drg-summary-stat {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--gray-900);
+
+  &__label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    color: $shade600;
+  }
+
+  &__value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &--info {
+    background-color: $shade200;
+    color: $primaryColor;
+  }
+
+  &--success {
+    background-color: #f1f6e5;
+    color: #5b7419;
+  }
+
+  &--danger {
+    color: $dangerButtonBg;
+  }
+
+  &--info &__label,
+  &--success &__label,
+  &--danger &__label {
+    color: inherit;
+  }
+}

@@ -1,0 +1,30 @@
+// StatusIndicator, conforme o Figma do Sistema de Vendas: ponto de 8px e texto de 14px.
+.drg-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: inherit;
+  white-space: nowrap;
+
+  &__dot {
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+  }
+
+  &--online &__dot {
+    background-color: #8bae2c;
+  }
+
+  &--offline &__dot {
+    background-color: #a83a54;
+  }
+
+  &--disconnected &__dot {
+    background-color: $dangerButtonBg;
+  }
+}

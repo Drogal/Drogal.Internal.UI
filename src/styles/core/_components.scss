@@ -14,6 +14,14 @@
 @import './components/menu/_drg-menu';
 @import './components/input/_toggle-field';
 @import './components/input/_inputnumber-compact';
+@import './components/status-indicator/_status-indicator';
+@import './components/result/_result';
+@import './components/empty-state/_empty-state';
+@import './components/description-list/_description-list';
+@import './components/summary-stat/_summary-stat';
+@import './components/page-header/_page-header';
+@import './components/process-steps/_process-steps';
+@import './components/file-upload/_file-upload';
 
 @layer primereact {
     @import '_common';

@@ -1,0 +1,145 @@
+// FileUpload e FileItem, conforme o Figma do Sistema de Vendas.
+.drg-file-upload {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.75rem 1.5rem;
+  border: 1px dashed $shade400;
+  border-radius: $borderRadius;
+  background-color: $shade100;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+
+  &:hover,
+  &--dragging {
+    border-color: $primaryColor;
+    background-color: $shade200;
+  }
+
+  &:has(.drg-file-upload__input:focus-visible) {
+    @include focused();
+  }
+
+  // O input fica escondido mas focável: a área inteira é o rótulo dele.
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__icon {
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+    color: $primaryColor;
+
+    .drg-icon {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    color: $primaryColor;
+  }
+
+  &__hint {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: $shade600;
+  }
+
+  &--disabled {
+    cursor: default;
+    opacity: 0.5;
+
+    &:hover {
+      border-color: $shade400;
+      background-color: $shade100;
+    }
+  }
+}
+
+.drg-file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid $shade300;
+  border-radius: $borderRadius;
+  background-color: #ffffff;
+
+  &__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: $shade600;
+
+    .drg-icon {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name {
+    overflow: hidden;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__filename {
+    color: var(--gray-900);
+  }
+
+  &__size {
+    color: $shade600;
+  }
+
+  &__error {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: $dangerButtonBg;
+  }
+
+  &__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: $shade600;
+    cursor: pointer;
+
+    .drg-icon {
+      font-size: 1.125rem;
+    }
+
+    &:hover {
+      background-color: $shade100;
+      color: var(--gray-900);
+    }
+
+    &:focus-visible {
+      @include focused();
+    }
+  }
+}

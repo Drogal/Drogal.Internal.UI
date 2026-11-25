@@ -4,6 +4,7 @@ import { useState } from 'react';
 import '../../../../theme.css';
 import { Header } from '../../../../components/Header';
 import { Icon } from '../../../../components/Icon';
+import { StatusIndicator } from '../../../../components/StatusIndicator';
 import { IconField } from '../../../../components/Input/IconField';
 import { InputIcon } from '../../../../components/Input/InputIcon';
 import { InputText } from '../../../../components/Input/InputText';
@@ -168,13 +169,7 @@ const BuscaProduto = () => (
 
 const StatusEFilial = ({ online }: { online: boolean }) => (
   <>
-    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-      <span
-        aria-hidden="true"
-        style={{ width: 8, height: 8, borderRadius: '50%', background: online ? '#8bae2c' : '#a83a54' }}
-      />
-      {online ? 'Online' : 'Offline'}
-    </span>
+    <StatusIndicator status={online ? 'online' : 'offline'} />
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
       <Icon name={EnumIcons.Outlined.desktop_windows} aria-hidden="true" style={{ fontSize: '1.25rem' }} />
       Filial 001
@@ -192,7 +187,7 @@ export const PDV: Story = {
     docs: {
       description: {
         story:
-          'Header do PDV: busca de produto no <code>children</code> e, no <code>end</code>, o status da conexão e a filial, à direita e antes do menu do usuário. O ponto de status aqui é provisório, até existir o <code>StatusIndicator</code>.',
+          'Header do PDV: busca de produto no <code>children</code> e, no <code>end</code>, o status da conexão (<code>StatusIndicator</code>) e a filial, à direita e antes do menu do usuário.',
       },
     },
   },
