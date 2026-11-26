@@ -6,7 +6,7 @@ import { OptionCard, type OptionCardOption, type OptionCardProps, type OptionCar
 import EnumIcons from '../../../../icons/EnumIcons';
 
 const FORMAS_DE_PAGAMENTO: OptionCardOption[] = [
-  { value: 'pix', label: 'PIX', description: 'Pagamento instantâneo', icon: EnumIcons.Outlined.qr_code },
+  { value: 'pix', label: 'PIX', description: 'Pagamento instantâneo', icon: EnumIcons.Outlined.qr_code_2 },
   { value: 'credito', label: 'Crédito', description: 'Em até 12 vezes', icon: EnumIcons.Outlined.credit_card },
   { value: 'dinheiro', label: 'Dinheiro', description: 'Com cálculo de troco', icon: EnumIcons.Outlined.payments },
   { value: 'link', label: 'Link', description: 'Indisponível nesta loja', icon: EnumIcons.Outlined.attach_money, disabled: true },

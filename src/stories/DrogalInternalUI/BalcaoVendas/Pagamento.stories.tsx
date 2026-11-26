@@ -20,7 +20,7 @@ import { sourceDocs } from './shared/source';
 const TOTAL = 3224.16;
 
 const FORMAS: OptionCardOption[] = [
-  { value: 'pix', label: 'PIX', description: 'Pagamento instantâneo', icon: EnumIcons.Outlined.qr_code },
+  { value: 'pix', label: 'PIX', description: 'Pagamento instantâneo', icon: EnumIcons.Outlined.qr_code_2 },
   { value: 'credito', label: 'Crédito', description: 'Em até 12 vezes', icon: EnumIcons.Outlined.credit_card },
   { value: 'debito', label: 'Débito', description: 'À vista no cartão', icon: EnumIcons.Outlined.credit_card },
   { value: 'dinheiro', label: 'Dinheiro', description: 'Com cálculo de troco', icon: EnumIcons.Outlined.payments },

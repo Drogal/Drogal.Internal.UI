@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>;
 
 export const VendaVazia: Story = {
   args: {
-    icon: EnumIcons.Outlined.qr_code_scanner,
+    icon: EnumIcons.Outlined.barcode_scanner,
     title: 'Nenhum produto adicionado',
     description: 'Escaneie um produto para iniciar',
   },

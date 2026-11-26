@@ -36,7 +36,7 @@ const OfflineTela = () => (
         className="w-full justify-content-start"
       />
       <BgFrame variant="card" title="Itens da venda" icon={EnumIcons.Outlined.shopping_cart}>
-        <EmptyState icon={EnumIcons.Outlined.qr_code_scanner} title="Nenhum produto adicionado" description="Escaneie um produto para iniciar" />
+        <EmptyState icon={EnumIcons.Outlined.barcode_scanner} title="Nenhum produto adicionado" description="Escaneie um produto para iniciar" />
       </BgFrame>
     </div>
   </PdvLayout>

@@ -85,7 +85,7 @@ const VendaVaziaTela = () => (
       <div className="col-12 lg:col-8">
         <BgFrame variant="card" title="Itens da venda" icon={EnumIcons.Outlined.shopping_cart}>
           <EmptyState
-            icon={EnumIcons.Outlined.qr_code_scanner}
+            icon={EnumIcons.Outlined.barcode_scanner}
             title="Nenhum produto adicionado"
             description="Escaneie um produto ou use a busca (F3) para iniciar"
           />
@@ -177,7 +177,7 @@ const VendaComProdutosTela = () => {
             actions={<Button label="Limpar venda" text severity="danger" size="small" onClick={() => setItens([])} />}
           >
             {itens.length === 0 ? (
-              <EmptyState icon={EnumIcons.Outlined.qr_code_scanner} title="Nenhum produto adicionado" description="Escaneie um produto para iniciar" />
+              <EmptyState icon={EnumIcons.Outlined.barcode_scanner} title="Nenhum produto adicionado" description="Escaneie um produto para iniciar" />
             ) : (
               <DataTable value={itens} dataKey="id">
                 <Column header="Produto" body={produto} />

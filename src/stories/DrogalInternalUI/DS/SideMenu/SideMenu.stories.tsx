@@ -20,7 +20,7 @@ const VENDAS_ITEMS: SideMenuItem[] = [
   { id: 'vendas', label: 'Vendas', icon: EnumIcons.Outlined.point_of_sale },
   { id: 'clientes', label: 'Clientes', icon: EnumIcons.Outlined.person },
   { id: 'notas', label: 'Notas fiscais', icon: EnumIcons.Outlined.description },
-  { id: 'produtos', label: 'Produtos', icon: EnumIcons.Outlined.archive },
+  { id: 'produtos', label: 'Produtos', icon: EnumIcons.Outlined.package },
 ];
 
 const LINK_ITEMS: SideMenuItem[] = [
