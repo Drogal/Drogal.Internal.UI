@@ -85,3 +85,37 @@ export const ComClasse: Story = {
     className: 'p-2',
   },
 };
+
+export const ComClassName: Story = {
+  args: {
+    name: EnumIcons.Outlined.lucide_check_circle,
+    className: 'text-green-600 text-4xl',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'O <code>className</code> é somado às classes do ícone (<code>drg-icon</code> e o nome), então dá para mudar cor e tamanho com utilitários sem perder o ícone.',
+      },
+    },
+  },
+};
+
+export const FamiliasDoFigma: Story = {
+  args: { name: EnumIcons.Outlined.person },
+  render: () => (
+    <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', fontSize: '2rem' }}>
+      <Icon name={EnumIcons.Outlined.person} className="text-500" />
+      <Icon name={EnumIcons.Outlined.symbols_person} className="text-primary" />
+      <Icon name={EnumIcons.Outlined.lucide_user} className="text-green-600" />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'O mesmo conceito nas três famílias da lib: <code>person</code> (Material Icons), <code>symbols_person</code> (Material Symbols) e <code>lucide_user</code> (Lucide), cada um com uma cor via <code>className</code>.',
+      },
+    },
+  },
+};

@@ -10,6 +10,10 @@ export interface EmptyStateProps extends Omit<HTMLAttributes<HTMLDivElement>, "t
   description?: ReactNode;
   /** Ação abaixo da descrição, como um botão para tentar de novo. */
   action?: ReactNode;
+  /** Classe extra no título, somada a `drg-empty-state__title`. */
+  classNameTitle?: string;
+  /** Classe extra no ícone (o `<i>`), somada às classes do ícone. */
+  classNameIcon?: string;
 }
 
 /**
@@ -19,17 +23,17 @@ export interface EmptyStateProps extends Omit<HTMLAttributes<HTMLDivElement>, "t
  * busca sem resultado ou falha ao carregar. Ícone, título e descrição
  * centralizados, com ação opcional.
  */
-export const EmptyState = ({ icon, title, description, action, className, ...props }: EmptyStateProps) => {
+export const EmptyState = ({ icon, title, description, action, className, classNameTitle, classNameIcon, ...props }: EmptyStateProps) => {
   const classes = ["drg-empty-state", className].filter(Boolean).join(" ");
 
   return (
     <div {...props} className={classes}>
       {icon && (
         <span className="drg-empty-state__icon" aria-hidden="true">
-          <Icon name={icon} />
+          <Icon name={icon} className={classNameIcon || ''} />
         </span>
       )}
-      <span className="drg-empty-state__title">{title}</span>
+      <span className={`drg-empty-state__title ${classNameTitle || ''}`}>{title}</span>
       {description && <span className="drg-empty-state__description">{description}</span>}
       {action && <div className="drg-empty-state__action">{action}</div>}
     </div>

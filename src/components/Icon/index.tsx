@@ -5,6 +5,11 @@ interface IconProps extends React.HTMLAttributes<HTMLElement> {
   name: typeof EnumIcons.Outlined[keyof typeof EnumIcons.Outlined] | typeof EnumIcons.Rounded[keyof typeof EnumIcons.Rounded];
 }
 
-export const Icon = (props: IconProps) => {
-  return <i className={`drg-icon ${props.name}`} {...props} />;
+/**
+ * Ícone da lib (classes `drg-outlined-*` e `drg-rounded-*`).
+ * O `className` recebido é somado às classes do ícone, sem substituí-las.
+ */
+export const Icon = ({ name, className, ...props }: IconProps) => {
+  const classes = ["drg-icon", name, className].filter(Boolean).join(" ");
+  return <i {...props} className={classes} />;
 }

@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import '../../../../theme.css';
@@ -62,6 +63,31 @@ const meta = {
       control: false,
       description: 'Conteúdo à direita do cabeçalho, como um botão de ação',
       table: { type: { summary: 'ReactNode' } },
+    },
+    className: {
+      control: 'text',
+      description: 'Classe extra na `div` raiz',
+      table: { type: { summary: 'string' } },
+    },
+    classNameTitle: {
+      control: 'text',
+      description: 'Classe extra no título, somada a `drg-bg-frame__title`',
+      table: { type: { summary: 'string' } },
+    },
+    classNameSubtitle: {
+      control: 'text',
+      description: 'Classe extra no subtítulo, somada a `drg-bg-frame__subtitle`',
+      table: { type: { summary: 'string' } },
+    },
+    classNameIcon: {
+      control: 'text',
+      description: 'Classe extra no ícone do cabeçalho, somada às classes do ícone',
+      table: { type: { summary: 'string' } },
+    },
+    restProps: {
+      control: false,
+      description: 'Atributos extras repassados para a `div` raiz (ex.: `id`, `data-*`, `aria-*`)',
+      table: { type: { summary: 'HTMLAttributes<HTMLDivElement>' } },
     },
     children: {
       control: false,
@@ -192,6 +218,89 @@ export const CardSemCabecalho: Story = {
     docs: {
       description: {
         story: 'Card só com conteúdo. Sem <code>title</code>, <code>subtitle</code> e <code>actions</code>, o cabeçalho não é renderizado.',
+      },
+    },
+  },
+};
+
+export const ClassesPersonalizadas: Story = {
+  args: {
+    variant: 'card',
+    title: 'Pagamento pendente',
+    subtitle: 'Finalize o pagamento para emitir a nota',
+    icon: EnumIcons.Outlined.lucide_alert_triangle,
+    className: 'border-1 border-orange-200',
+    classNameTitle: 'text-orange-700',
+    classNameSubtitle: 'text-orange-600',
+    classNameIcon: 'text-orange-500',
+    children: <ConteudoExemplo />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Cada parte do cabeçalho aceita uma classe extra: <code>className</code> (raiz), <code>classNameTitle</code>, <code>classNameSubtitle</code> e <code>classNameIcon</code>. As classes são somadas às do componente, sem substituí-las. Aqui com utilitários do PrimeFlex para um card de alerta.',
+      },
+    },
+  },
+};
+
+export const TituloDestacado: Story = {
+  args: {
+    variant: 'filled',
+    title: 'Resumo da venda',
+    subtitle: 'Venda 008742 · 25/11/2026',
+    icon: EnumIcons.Outlined.lucide_file_text,
+    classNameTitle: 'text-2xl text-primary',
+    classNameSubtitle: 'uppercase',
+    classNameIcon: 'text-primary text-2xl',
+    children: <ConteudoExemplo />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Título maior e na cor primária, subtítulo em maiúsculas e ícone acompanhando o título.',
+      },
+    },
+  },
+};
+
+export const IconePorStatus: Story = {
+  args: { title: 'Status', variant: 'card' },
+  render: () => (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+      <BgFrame variant="card" title="Pagamento confirmado" icon={EnumIcons.Outlined.lucide_check_circle} classNameIcon="text-green-600" />
+      <BgFrame variant="card" title="Aguardando maquininha" icon={EnumIcons.Outlined.lucide_clock} classNameIcon="text-orange-500" />
+      <BgFrame variant="card" title="Pagamento recusado" icon={EnumIcons.Outlined.lucide_x} classNameIcon="text-pink-500" />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Só o <code>classNameIcon</code> muda: o mesmo card indica o status pela cor do ícone.',
+      },
+    },
+  },
+};
+
+export const AtributosExtras: Story = {
+  args: {
+    variant: 'card',
+    title: 'Dados do cliente',
+    icon: EnumIcons.Outlined.lucide_user,
+    restProps: {
+      id: 'secao-cliente',
+      role: 'region',
+      'aria-label': 'Dados do cliente',
+      'data-testid': 'card-cliente',
+    } as React.HTMLAttributes<HTMLDivElement>,
+    children: <ConteudoExemplo />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '<code>restProps</code> repassa atributos para a <code>div</code> raiz: <code>id</code> para âncoras, <code>role</code> e <code>aria-label</code> para leitor de tela, <code>data-testid</code> para testes.',
       },
     },
   },
